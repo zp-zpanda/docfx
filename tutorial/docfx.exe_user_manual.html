@@ -8,7 +8,7 @@
     <title>docfx.exe User Manual | DocFX website </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="docfx.exe User Manual | DocFX website ">
-    <meta name="generator" content="docfx 2.56.2.0">
+    <meta name="generator" content="docfx 2.56.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -139,7 +139,7 @@ For example: <code>docfx metadata --property TargetFramework=net46</code> genera
 <pre><code>docfx build [-o:&lt;output_path&gt;] [-t:&lt;template folder&gt;]
 </code></pre>
 <p><code>docfx build</code> generates documentation for current folder.</p>
-<p>If <code>toc.yml</code> or <code>toc.md</code> is found in current folder, it will be rendered as the top level TABLE-OF-CONTENT. As in website, it will be rendered as the top navigation bar.</p>
+<p>If <code>toc.yml</code> or <code>toc.md</code> is found in current folder, it will be rendered as the top level TABLE-OF-CONTENT. As in website, it will be rendered as the top navigation bar. Path in <code>toc.yml</code> or <code>toc.md</code> are relative to the TOC file.</p>
 <div class="NOTE">
 <h5>Note</h5>
 <p>Please note that <code>homepage</code> is not supported in <code>toc.md</code>.
@@ -225,11 +225,11 @@ And if <code>href</code> is referencing to a <strong>folder</strong>, it must en
 <tbody>
 <tr>
 <td>src</td>
-<td>Defines the source projects to have metadata generated, which is in <code>File Mapping Format</code>.</td>
+<td>Defines the source projects to have metadata generated, which is in <code>File Mapping Format</code>. Relative paths are relative to the docfx.json file being used. To go up a folder use <code>../</code>.</td>
 </tr>
 <tr>
 <td>dest</td>
-<td>Defines the output folder of the generated metadata files.</td>
+<td>Defines the output folder of the generated metadata files. Relative paths are relative to the docfx.json file being used. To go up a folder use <code>../</code>.</td>
 </tr>
 <tr>
 <td>force</td>
