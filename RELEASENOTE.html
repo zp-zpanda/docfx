@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Version Notes (Current Version: v2.56.6) | DocFX website </title>
+    <title>Version Notes (Current Version: v2.56.7) | DocFX website </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Version Notes (Current Version: v2.56.6) | DocFX website ">
-    <meta name="generator" content="docfx 2.56.6.0">
+    <meta name="title" content="Version Notes (Current Version: v2.56.7) | DocFX website ">
+    <meta name="generator" content="docfx 2.56.7.0">
     
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" href="styles/docfx.vendor.css">
@@ -70,8 +70,30 @@
         <div class="article row grid">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="version-notes-current-version-v2566">Version Notes (Current Version: v2.56.6)</h1>
+<h1 id="version-notes-current-version-v2567">Version Notes (Current Version: v2.56.7)</h1>
 
+<h2 id="v2567">v2.56.7</h2>
+<ol>
+<li>Page UI updates:
+<ol>
+<li>Support more inheritance levels in UI. Thanks @georgius! (#6880)</li>
+<li>Fix AnchorJS links hover issue. (#6910)</li>
+</ol>
+</li>
+<li>Remove warning of <code>$schema</code> in JSON schema element. Thanks @kzu! (#6927)</li>
+<li>Fix MacOS case insensitive issue. Thanks @georgius! (#6888)</li>
+<li>Fix <code>hasAttribute</code> not working in API filter. (#5159)</li>
+<li>Fix xref service calls with empty uid. (#6917)</li>
+<li>Fix grammar issue in documentation. (#7063)</li>
+<li>Package updates:
+<ol>
+<li>Upgrade axios to 0.21.1 (#6969)</li>
+<li>Upgrade iTextSharp to 5.5.12 (#7104)</li>
+<li>Upgrade YamlDotNet.Signed to 5.1.0 (#7107)</li>
+<li>Revert FSharp.Compiler.Service back to 17.0.1 as its references are missing on myget (#7029)</li>
+</ol>
+</li>
+</ol>
 <h2 id="v2566">v2.56.6</h2>
 <ol>
 <li>Fix invalid table generation in XML documentation comments. Thanks @georgius! (#6864)</li>
