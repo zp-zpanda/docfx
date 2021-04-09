@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Version Notes (Current Version: v2.56.7) | DocFX website </title>
+    <title>Version Notes (Current Version: v2.57) | DocFX website </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Version Notes (Current Version: v2.56.7) | DocFX website ">
-    <meta name="generator" content="docfx 2.56.7.0">
+    <meta name="title" content="Version Notes (Current Version: v2.57) | DocFX website ">
+    <meta name="generator" content="docfx 2.57.0.0">
     
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="stylesheet" href="styles/docfx.vendor.css">
@@ -70,8 +70,32 @@
         <div class="article row grid">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="version-notes-current-version-v2567">Version Notes (Current Version: v2.56.7)</h1>
+<h1 id="version-notes-current-version-v257">Version Notes (Current Version: v2.57)</h1>
 
+<h2 id="v257">v2.57</h2>
+<ol>
+<li>Improve display of enum flags. Thanks @mikernet! (#7043)</li>
+<li>Some improvements in <code>docfx.console.targets</code>. Thanks @alexrp! (#7117)</li>
+<li>New tools available: TocDocfxCreation, DocLinkChecker, DocLanguageTranslator and some examples. Thanks @Ellerbach! (#7231)</li>
+<li>Security updates:
+<ol>
+<li>Replace use of MD5, SHA1 with SHA256. (#7149, #7157)</li>
+<li>Specify <code>noopener</code>/<code>noreferer</code> for external link. (#7204)</li>
+<li>Avoid reinterpreting DOM text as HTML without escaping meta-characters. (#7210)</li>
+<li>Check certificate revocation list in HTTP calls. (#7142)</li>
+<li>Upgrade some NPM, NuGet packages. (#7135, #7147)</li>
+<li>Migrate bower to NPM. (#7273)</li>
+<li>Enable CodeQL. (#7184)</li>
+</ol>
+</li>
+<li>Bug fix:
+<ol>
+<li>Wrong default value for nullable parameters. Thanks @mikernet! (#7054)</li>
+<li><code>&lt;code source=...&gt;</code> not work when using DLL + XML documents as input. Thanks @james-hunt-ra! (#7096)</li>
+<li>Sub navbar not fully shows if remove <code>.html</code> extension from URL. Thanks @CyberAndrii! (#7046)</li>
+</ol>
+</li>
+</ol>
 <h2 id="v2567">v2.56.7</h2>
 <ol>
 <li>Page UI updates:
@@ -671,21 +695,21 @@ console.log('hello world');
 ```
 </code></pre>
 <p>Renders to:</p>
-<div class="tabGroup" id="tabgroup_CeZOj-G++Q">
+<div class="tabGroup" id="tabgroup_bHGHmlrG6S">
 <ul role="tablist">
 <li role="presentation">
-<a href="#tabpanel_CeZOj-G++Q_csharp" role="tab" aria-controls="tabpanel_CeZOj-G++Q_csharp" data-tab="csharp" tabindex="0" aria-selected="true">Csharp</a>
+<a href="#tabpanel_bHGHmlrG6S_csharp" role="tab" aria-controls="tabpanel_bHGHmlrG6S_csharp" data-tab="csharp" tabindex="0" aria-selected="true">Csharp</a>
 </li>
 <li role="presentation">
-<a href="#tabpanel_CeZOj-G++Q_js" role="tab" aria-controls="tabpanel_CeZOj-G++Q_js" data-tab="js" tabindex="-1">JavaScript</a>
+<a href="#tabpanel_bHGHmlrG6S_js" role="tab" aria-controls="tabpanel_bHGHmlrG6S_js" data-tab="js" tabindex="-1">JavaScript</a>
 </li>
 </ul>
-<section id="tabpanel_CeZOj-G++Q_csharp" role="tabpanel" data-tab="csharp">
+<section id="tabpanel_bHGHmlrG6S_csharp" role="tabpanel" data-tab="csharp">
 
 <pre><code class="lang-cs">Console.WriteLine(&quot;Hello world&quot;);
 </code></pre>
 </section>
-<section id="tabpanel_CeZOj-G++Q_js" role="tabpanel" data-tab="js" aria-hidden="true" hidden="hidden">
+<section id="tabpanel_bHGHmlrG6S_js" role="tabpanel" data-tab="js" aria-hidden="true" hidden="hidden">
 
 <pre><code class="lang-js">console.log('hello world');
 </code></pre>
