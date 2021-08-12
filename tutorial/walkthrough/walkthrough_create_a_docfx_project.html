@@ -8,7 +8,7 @@
     <title>Walkthrough Part I: Generate a Simple Documentation Website | DocFX website </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Walkthrough Part I: Generate a Simple Documentation Website | DocFX website ">
-    <meta name="generator" content="docfx 2.58.0.0">
+    <meta name="generator" content="docfx 2.59.0.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -92,6 +92,14 @@
 <li>Start Command Line under <code>D:\docfx_walkthrough</code></li>
 <li>Call <code>docfx init -q</code>. This command generates a <code>docfx_project</code> folder with the default <code>docfx.json</code> file under it. <code>docfx.json</code> is the configuration file <code>docfx</code> uses to generate documentation. <code>-q</code> option means generating the project quietly using default values, you can also try <code>docfx init</code> and follow the instructions to provide your own settings.</li>
 </ol>
+<p>When finished, <code>docfx init</code> will create a set of subdirectories, used to hold the source files required for generating a DocFx website:</p>
+<ul>
+<li><strong>\src</strong> - contains the optional .NET language project files (*.csproj), which contain the type information used to generate managed API docs.</li>
+<li><strong>\api</strong> - if the \src subdirectory contains project files, DocFx will generate .YML metadata files from them and store them here. The .YML files contain the structured type information, including any <code>///</code> comments provided in the source code. A stub landing page (index.md) and TOC (toc.yml) are generated as well. You learn more about this process in <a href="walkthrough_create_a_docfx_project_2.html">Walkthrough Part II: Adding API Documentation to the Website</a>.</li>
+<li><strong>\apidoc</strong> - contains Markdown files used to overwrite the auto-generated text from <code>///</code> comments.</li>
+<li><strong>\articles</strong> - contains Markdown files used to provide ancillary conceptual documentation, for explaining how to use your API documentation, etc.</li>
+<li><strong>\images</strong> - contains image files referenced from Markdown files.</li>
+</ul>
 <h2 id="step3-build-our-website">Step3. Build our website</h2>
 <p>Run command <code>docfx docfx_project/docfx.json</code>. Note that a new subfolder <code>_site</code> is generated under that folder. This is where the static website is generated.</p>
 <h2 id="step4-preview-our-website">Step4. Preview our website</h2>
@@ -141,17 +149,7 @@
 <li><p><a href="advanced_walkthrough.html">Walkthrough Advanced: Customize Your Website</a></p>
 </li>
 </ul>
-<div id="disqus_thread"></div>
-                <script>
-                (function() { // DON'T EDIT BELOW THIS LINE
-                var d = document, s = d.createElement('script');
-                s.src = 'https://docfx-github.disqus.com/embed.js';
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-                })();
-                </script>
-                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-            </article>
+</article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
@@ -160,9 +158,6 @@
                 <ul class="nav">
                   <li>
                     <a href="https://github.com/dotnet/docfx/blob/dev/Documentation/tutorial/walkthrough/walkthrough_create_a_docfx_project.md/#L1" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="#disqus_thread" class="contribution-link">0 Comments</a>
                   </li>
                 </ul>
               </div>
@@ -192,17 +187,5 @@
     <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
     <script type="text/javascript" src="../../styles/docfx.js"></script>
     <script type="text/javascript" src="../../styles/main.js"></script>
-    <script id="dsq-count-scr" src="//docfx-github.disqus.com/count.js" async=""></script>
-    
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-    
-      ga('create', 'UA-99241001-1', 'auto');
-      ga('send', 'pageview');
-    
-    </script>
   </body>
 </html>

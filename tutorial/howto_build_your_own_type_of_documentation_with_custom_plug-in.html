@@ -8,7 +8,7 @@
     <title>How-to: Build your own type of documentation with a custom plug-in | DocFX website </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="How-to: Build your own type of documentation with a custom plug-in | DocFX website ">
-    <meta name="generator" content="docfx 2.58.0.0">
+    <meta name="generator" content="docfx 2.59.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -98,11 +98,11 @@
 </ol>
 <h2 id="preparation">Preparation</h2>
 <ol>
-<li><p>Create a new C# class library project in <code>Visual Studio</code>, targets .NET Framework 4.7.2.</p>
+<li><p>Create a new C# class library project in <code>Visual Studio</code>, targets .NET Framework 4.7.2 or later.</p>
 </li>
 <li><p>Add nuget packages:</p>
 <ul>
-<li><code>System.Collections.Immutable</code> with version 1.3.1</li>
+<li><code>System.Collections.Immutable</code> with version 1.3.1 or later (if not already included in your .NET Framework target version)</li>
 <li><code>Microsoft.Composition</code> with version 1.0.31</li>
 </ul>
 </li>
@@ -116,7 +116,7 @@ otherwise add the nuget packages with the same version as DocFX.</p>
 <li><p>Add a project for converting rtf to html:<br>
 Clone project <a href="https://github.com/mmanela/MarkupConverter">MarkupConverter</a>, and reference it.</p>
 </li>
-<li><p>Copy the code file <code>C#,C++,F#,VB\ParallelExtensionsExtras\TaskSchedulers\StaTaskScheduler.cs</code> from <a href="https://code.msdn.microsoft.com/ParExtSamples">ParExtSamples</a></p>
+<li><p>Copy the code file <code>CSharp/parallel/ParallelExtensionsExtras/TaskSchedulers/StaTaskScheduler.cs</code> from <a href="https://github.com/dotnet/samples">DotNet Samples</a></p>
 </li>
 </ol>
 <h2 id="create-a-document-processor">Create a document processor</h2>
@@ -170,7 +170,8 @@ When two or more processors compete for the same file, DocFX will give it to the
     };
 }
 </code></pre>
-<p>We use <code>Dictionary&lt;string, object&gt;</code> as the data model, similar to how <a href="https://github.com/dotnet/docfx/blob/dev/src/Microsoft.DocAsCode.EntityModel/Plugins/ConceptualDocumentProcessor.cs">ConceptualDocumentProcessor</a> stores the content of markdown files.</p>
+<p>We use <code>Dictionary&lt;string, object&gt;</code> as the data model, similar to how <a href="https://github.com/dotnet/docfx/blob/dev/src/Microsoft.DocAsCode.Build.ConceptualDocuments/ConceptualDocumentProcessor.cs">ConceptualDocumentProcessor</a>
+stores the content of markdown files.</p>
 </li>
 <li><p>Implement <code>Save</code> method as follows:</p>
 <pre><code class="lang-csharp" name="Save">public SaveResult Save(FileModel model)
@@ -267,9 +268,9 @@ public IEnumerable&lt;FileModel&gt; Prebuild(ImmutableList&lt;FileModel&gt; mode
 <li>Build our project.</li>
 <li>Copy the output dll files to:
 <ul>
-<li><p>Global: the folder with name <code>Plugins</code> under DocFX.exe</p>
+<li><p>Global: a folder you create, named <code>Plugins</code> under the folder where DocFX.exe resides.</p>
 </li>
-<li><p>Non-global: the folder with name <code>Plugins</code> under a template folder. Then run <code>DocFX build</code> command with parameter <code>-t {template}</code>.</p>
+<li><p>Non-global: a folder you create with the name <code>Plugins</code> under a template folder. Then run <code>DocFX build</code> command with parameter <code>-t {template}</code>.</p>
 <p><em>Hint</em>: DocFX can merge templates so create a template that only contains the <code>Plugins</code> folder, then run the command <code>DocFX build</code> with parameter <code>-t {templateForRender},{templateForPlugins}</code>.</p>
 </li>
 </ul>
@@ -280,17 +281,7 @@ public IEnumerable&lt;FileModel&gt; Prebuild(ImmutableList&lt;FileModel&gt; mode
 <li>Run command <code>DocFX init</code> and set the source article with <code>**.rtf</code>.</li>
 <li>Run command <code>DocFX build</code>.</li>
 </ol>
-<div id="disqus_thread"></div>
-                <script>
-                (function() { // DON'T EDIT BELOW THIS LINE
-                var d = document, s = d.createElement('script');
-                s.src = 'https://docfx-github.disqus.com/embed.js';
-                s.setAttribute('data-timestamp', +new Date());
-                (d.head || d.body).appendChild(s);
-                })();
-                </script>
-                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-            </article>
+</article>
           </div>
           
           <div class="hidden-sm col-md-2" role="complementary">
@@ -299,9 +290,6 @@ public IEnumerable&lt;FileModel&gt; Prebuild(ImmutableList&lt;FileModel&gt; mode
                 <ul class="nav">
                   <li>
                     <a href="https://github.com/dotnet/docfx/blob/dev/Documentation/tutorial/howto_build_your_own_type_of_documentation_with_custom_plug-in.md/#L1" class="contribution-link">Improve this Doc</a>
-                  </li>
-                  <li>
-                    <a href="#disqus_thread" class="contribution-link">0 Comments</a>
                   </li>
                 </ul>
               </div>
@@ -331,17 +319,5 @@ public IEnumerable&lt;FileModel&gt; Prebuild(ImmutableList&lt;FileModel&gt; mode
     <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
     <script type="text/javascript" src="../styles/docfx.js"></script>
     <script type="text/javascript" src="../styles/main.js"></script>
-    <script id="dsq-count-scr" src="//docfx-github.disqus.com/count.js" async=""></script>
-    
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-    
-      ga('create', 'UA-99241001-1', 'auto');
-      ga('send', 'pageview');
-    
-    </script>
   </body>
 </html>
