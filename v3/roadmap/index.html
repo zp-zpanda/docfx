@@ -6,34 +6,17 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta name="author" content="yufeih" />
-<meta name="conceptual" content="<h2 id=&quot;the-present-state&quot;>The Present State</h2>
-<p>Docfx is the core compiler to power the content pipeline of <a href=&quot;https://docs.microsoft.com&quot; data-linktype=&quot;external&quot;>Microsoft Docs</a>. Docfx v3 has gained enough features and is stable enough to support the need for Microsoft Docs. We have completely retired docfx v2 internally for Microsoft Docs and are willing to make docfx v3 publicly consumable by the open source community.</p>
-<p>However, there are a few architectural differences between Microsoft Docs and an open-source community release. We still have a bit of work to do before it is publicly consumable. Until then, we recommend users to keep using docfx v2.</p>
-<h2 id=&quot;the-gap&quot;>The Gap</h2>
-<p>The architectural difference between Microsoft Docs and a community release requires additional investments in the following areas:</p>
-<ul>
-<li><p><strong>Static Site</strong>: Microsoft Docs is not a pure static website, while most of the core contents are served statically, a substantial portion of site features are either dedicated micro-services or rendered dynamically. Features like site search, versioning needs to be built separately for the community release.</p>
-</li>
-<li><p><strong>API Reference</strong>: Microsoft Docs uses a separate set of tools to ingest API references for a variety of programming languages in addition to C#. While it is different from the <code>metadata</code> command in docfx v2, it presents an opportunity for us to support more programming languages in docfx v3 and converge into one API reference pipeline. These ingestion tools today requires deep knowledge and complex configuration to work with. Work is needed to consolidate and simplify the pipeline setup for the community release.</p>
-</li>
-<li><p><strong>PDF</strong>: Microsoft Docs supports PDF files. The tooling for PDF today consumes docfx v3 build output but is not directly wired to docfx. Work is needed to consolidate and simplify the pipeline setup for the community release.</p>
-</li>
-<li><p><strong>Site Template</strong>: Microsoft Docs uses a monolith site template suited for its dynamic rendering architecture, which may or may not be reusable for the community release. There is a basic working <a href=&quot;https://github.com/docascode/template&quot; data-linktype=&quot;external&quot;>site template for docfx v3</a> migrated from the docfx v2. Work is needed to improve this template for the community release.</p>
-</li>
-</ul>
-<h2 id=&quot;the-future-plan&quot;>The Future Plan</h2>
-<p>We are wiling to ship a formal v3 release for the open-source community. There are just other priorities that have taken precedence over this work. We will keep this roadmap updated once there is more information to share.</p>
-" />
 <meta name="depot_name" content="." />
 <meta name="document_id" content="f53dcdfa-0429-713f-6bb5-cc6ca6f75185" />
 <meta name="document_version_independent_id" content="138623b6-75f7-2513-34ea-a67f946d6fda" />
 <meta name="gitcommit" content="https://github.com/dotnet/docfx/blob/e3cda9060f9719e1ddb8d11c74569c99d10076b7/docs/roadmap.md" />
 <meta name="locale" content="en-us" />
 <meta name="menu_path" content="/menu.json" />
-<meta name="original_content_git_url" content="https://github.com/dotnet/docfx/blob/v3-docs-gs/docs/roadmap.md" />
+<meta name="original_content_git_url" content="https://github.com/dotnet/docfx/blob/v3-release/docs/roadmap.md" />
 <meta name="rawTitle" content="<h1 id=&quot;roadmap&quot;>Roadmap</h1>" />
 <meta name="schema" content="Conceptual" />
 <meta name="site_name" content="Docs" />
+<meta name="toc_rel" content="../toc/" />
 <meta name="updated_at" content="2021-09-29 02:42 AM" />
 <meta name="wordCount" content="374" />
 
@@ -95,6 +78,11 @@
     <li class="contributors-holder">
         <ul class="contributors">
               <li>
+                <a href="https://github.com/yufeih" title="Yufei Huang">
+                  <img src="https://github.com/yufeih.png?size=32" role="presentation"/>
+                </a>
+              </li>
+              <li>
                 <a href="https://github.com/bitbonk" title="bitbonk">
                   <img src="https://github.com/bitbonk.png?size=32" role="presentation"/>
                 </a>
@@ -134,7 +122,7 @@
           </a>
         </li>
         <li>
-          <a href="https://github.com/dotnet/docfx/blob/v3-docs-gs/docs/roadmap.md" class="contribution-link">
+          <a href="https://github.com/dotnet/docfx/blob/v3-release/docs/roadmap.md" class="contribution-link">
             <span class="glyphicon glyphicon-pencil"></span>Edit this doc
           </a>
         </li>
