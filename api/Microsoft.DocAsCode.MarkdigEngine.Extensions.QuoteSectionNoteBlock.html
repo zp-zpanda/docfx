@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Class QuoteSectionNoteBlock
    | DocFX website ">
-    <meta name="generator" content="docfx 2.58.9.0">
+    <meta name="generator" content="docfx 2.59.0.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -99,6 +99,8 @@
     <div><span class="xref">Markdig.Syntax.IMarkdownObject</span></div>
     <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ilist-1">IList</a>&lt;<span class="xref">Markdig.Syntax.Block</span>&gt;</div>
     <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.icollection-1">ICollection</a>&lt;<span class="xref">Markdig.Syntax.Block</span>&gt;</div>
+    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">IReadOnlyList</a>&lt;<span class="xref">Markdig.Syntax.Block</span>&gt;</div>
+    <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">IReadOnlyCollection</a>&lt;<span class="xref">Markdig.Syntax.Block</span>&gt;</div>
     <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">IEnumerable</a>&lt;<span class="xref">Markdig.Syntax.Block</span>&gt;</div>
     <div><a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.ienumerable">IEnumerable</a></div>
   </div>
@@ -171,7 +173,22 @@
       <span class="xref">Markdig.Syntax.Block.IsBreakable</span>
     </div>
     <div>
+      <span class="xref">Markdig.Syntax.Block.NewLine</span>
+    </div>
+    <div>
       <span class="xref">Markdig.Syntax.Block.RemoveAfterProcessInlines</span>
+    </div>
+    <div>
+      <span class="xref">Markdig.Syntax.Block.TriviaBefore</span>
+    </div>
+    <div>
+      <span class="xref">Markdig.Syntax.Block.TriviaAfter</span>
+    </div>
+    <div>
+      <span class="xref">Markdig.Syntax.Block.LinesBefore</span>
+    </div>
+    <div>
+      <span class="xref">Markdig.Syntax.Block.LinesAfter</span>
     </div>
     <div>
       <span class="xref">Markdig.Syntax.Block.ProcessInlinesBegin</span>
@@ -204,32 +221,32 @@
       <span class="xref">Markdig.Syntax.MarkdownObject.Line</span>
     </div>
     <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#System_Object_Equals_System_Object_">Object.Equals(Object)</a>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">Object.Equals(Object)</a>
     </div>
     <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#System_Object_Equals_System_Object_System_Object_">Object.Equals(Object, Object)</a>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">Object.Equals(Object, Object)</a>
     </div>
     <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.gethashcode#System_Object_GetHashCode">Object.GetHashCode()</a>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.gethashcode#system-object-gethashcode">Object.GetHashCode()</a>
     </div>
     <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.gettype#System_Object_GetType">Object.GetType()</a>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.gettype#system-object-gettype">Object.GetType()</a>
     </div>
     <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.memberwiseclone#System_Object_MemberwiseClone">Object.MemberwiseClone()</a>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.memberwiseclone#system-object-memberwiseclone">Object.MemberwiseClone()</a>
     </div>
     <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.referenceequals#System_Object_ReferenceEquals_System_Object_System_Object_">Object.ReferenceEquals(Object, Object)</a>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.referenceequals#system-object-referenceequals(system-object-system-object)">Object.ReferenceEquals(Object, Object)</a>
     </div>
     <div>
-      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.tostring#System_Object_ToString">Object.ToString()</a>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.object.tostring#system-object-tostring">Object.ToString()</a>
     </div>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Microsoft.DocAsCode.MarkdigEngine.Extensions.html">Microsoft.DocAsCode.MarkdigEngine.Extensions</a></h6>
   <h6><strong>Assembly</strong>: Microsoft.DocAsCode.MarkdigEngine.Extensions.dll</h6>
   <h5 id="Microsoft_DocAsCode_MarkdigEngine_Extensions_QuoteSectionNoteBlock_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public class QuoteSectionNoteBlock : ContainerBlock, IBlock, IMarkdownObject, IList&lt;Block&gt;, ICollection&lt;Block&gt;, IEnumerable&lt;Block&gt;, IEnumerable</code></pre>
+    <pre><code class="lang-csharp hljs">public class QuoteSectionNoteBlock : ContainerBlock, IBlock, IMarkdownObject, IList&lt;Block&gt;, ICollection&lt;Block&gt;, IReadOnlyList&lt;Block&gt;, IReadOnlyCollection&lt;Block&gt;, IEnumerable&lt;Block&gt;, IEnumerable</code></pre>
   </div>
   <h3 id="constructors">Constructors
   </h3>
@@ -429,6 +446,12 @@
   </div>
   <div>
       <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.icollection-1">System.Collections.Generic.ICollection&lt;T&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ireadonlylist-1">System.Collections.Generic.IReadOnlyList&lt;T&gt;</a>
+  </div>
+  <div>
+      <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ireadonlycollection-1">System.Collections.Generic.IReadOnlyCollection&lt;T&gt;</a>
   </div>
   <div>
       <a class="xref" href="https://docs.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1">System.Collections.Generic.IEnumerable&lt;T&gt;</a>
