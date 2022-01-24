@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="author" content="yufeih" />
+<meta name="depot_name" content="." />
+<meta name="document_id" content="f53dcdfa-0429-713f-6bb5-cc6ca6f75185" />
+<meta name="document_version_independent_id" content="138623b6-75f7-2513-34ea-a67f946d6fda" />
+<meta name="gitcommit" content="https://github.com/dotnet/docfx/blob/e3cda9060f9719e1ddb8d11c74569c99d10076b7/docs/roadmap.md" />
+<meta name="locale" content="en-us" />
+<meta name="menu_path" content="/menu.json" />
+<meta name="original_content_git_url" content="https://github.com/dotnet/docfx/blob/v3-release/docs/roadmap.md" />
+<meta name="rawTitle" content="<h1 id=&quot;roadmap&quot;>Roadmap</h1>" />
+<meta name="schema" content="Conceptual" />
+<meta name="site_name" content="Docs" />
+<meta name="toc_rel" content="../toc.json" />
+<meta name="updated_at" content="2021-09-29 02:42 AM" />
+<meta name="wordCount" content="374" />
+
+
+	<title>Roadmap</title>
+
+	<link rel="stylesheet" href="../dist/docfx.css">
+	<script type="text/javascript" src="../dist/docfx.js"></script>
+</head>
+
+<body data-spy="scroll" data-target="#affix" data-offset="120">
+	<div id="wrapper">
+		<header>
+<nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+<a class="navbar-brand" href="../">
+  <img id="logo" class="svg" src="../svg/logo.svg">
+</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar">
+    </div>
+  </div>
+</nav>
+
+<div class="subnav navbar navbar-default">
+  <div class="container hide-when-search" id="breadcrumb">
+  </div>
+</div>
+		</header>
+
+		<div role="main" class="container body-content page-type-conceptual">
+<div class="sidenav hide-when-search">
+  <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+  <div class="sidetoggle collapse" id="sidetoggle">
+    <div id="sidetoc">
+      <div id="sidetoggle">
+        <div>
+          <div class="sidefilter">
+            <form class="toc-filter">
+              <span class="glyphicon glyphicon-search filter-icon"></span>
+              <span class="glyphicon glyphicon-remove clear-icon" id="toc_filter_clear"></span>
+              <input type="text" id="toc_filter_input" placeholder="Filter" onkeypress="if(event.keyCode==13) {return false;}">
+            </form>
+          </div>
+          <div class="sidetoc">
+            <div class="toc" id="toc">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+				<div class="article row grid-right">
+
+					<div class="col-md-10">
+
+						<article class="content wrap" id="_content" data-uid="">
+							<h1 id="roadmap">Roadmap</h1>
+<ul class="metabar">
+  <li>
+    <time datetime="9/29/2021">9/29/2021</time>
+  </li>
+  <li class="readingTime">2 minutes to read</li>
+    <li class="contributors-holder">
+        <ul class="contributors">
+              <li>
+                <a href="https://github.com/yufeih" title="Yufei Huang">
+                  <img src="https://github.com/yufeih.png?size=32" role="presentation"/>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/bitbonk" title="bitbonk">
+                  <img src="https://github.com/bitbonk.png?size=32" role="presentation"/>
+                </a>
+              </li>
+        </ul>
+      </a>
+    </li>
+</ul>							<h2 id="the-present-state">The Present State</h2>
+<p>Docfx is the core compiler to power the content pipeline of <a href="https://docs.microsoft.com" data-linktype="external">Microsoft Docs</a>. Docfx v3 has gained enough features and is stable enough to support the need for Microsoft Docs. We have completely retired docfx v2 internally for Microsoft Docs and are willing to make docfx v3 publicly consumable by the open source community.</p>
+<p>However, there are a few architectural differences between Microsoft Docs and an open-source community release. We still have a bit of work to do before it is publicly consumable. Until then, we recommend users to keep using docfx v2.</p>
+<h2 id="the-gap">The Gap</h2>
+<p>The architectural difference between Microsoft Docs and a community release requires additional investments in the following areas:</p>
+<ul>
+<li><p><strong>Static Site</strong>: Microsoft Docs is not a pure static website, while most of the core contents are served statically, a substantial portion of site features are either dedicated micro-services or rendered dynamically. Features like site search, versioning needs to be built separately for the community release.</p>
+</li>
+<li><p><strong>API Reference</strong>: Microsoft Docs uses a separate set of tools to ingest API references for a variety of programming languages in addition to C#. While it is different from the <code>metadata</code> command in docfx v2, it presents an opportunity for us to support more programming languages in docfx v3 and converge into one API reference pipeline. These ingestion tools today requires deep knowledge and complex configuration to work with. Work is needed to consolidate and simplify the pipeline setup for the community release.</p>
+</li>
+<li><p><strong>PDF</strong>: Microsoft Docs supports PDF files. The tooling for PDF today consumes docfx v3 build output but is not directly wired to docfx. Work is needed to consolidate and simplify the pipeline setup for the community release.</p>
+</li>
+<li><p><strong>Site Template</strong>: Microsoft Docs uses a monolith site template suited for its dynamic rendering architecture, which may or may not be reusable for the community release. There is a basic working <a href="https://github.com/docascode/template" data-linktype="external">site template for docfx v3</a> migrated from the docfx v2. Work is needed to improve this template for the community release.</p>
+</li>
+</ul>
+<h2 id="the-future-plan">The Future Plan</h2>
+<p>We are wiling to ship a formal v3 release for the open-source community. There are just other priorities that have taken precedence over this work. We will keep this roadmap updated once there is more information to share.</p>
+
+						</article>
+
+					</div>
+
+<div class="hidden-sm col-md-2" role="complementary">
+  <div class="sideaffix">
+    <div class="contribution">
+      <ul class="nav">
+        <li>
+          <a id="switch-theme" class="contribution-link">
+            <span class="glyphicon glyphicon-cog"></span>Theme
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/dotnet/docfx/blob/v3-release/docs/roadmap.md" class="contribution-link">
+            <span class="glyphicon glyphicon-pencil"></span>Edit this doc
+          </a>
+        </li>
+      </ul>
+    </div>
+    <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+    </nav>
+  </div>
+</div>
+				</div>
+		</div>
+
+<footer>
+  <div class="footer">
+    <div class="container">
+    © Microsoft
+    <div class="github-star-button">
+      <iframe src="https://ghbtns.com/github-btn.html?user=dotnet&repo=docfx&type=star&count=true" frameborder="0" scrolling="0" width="150" height="20" title="GitHub"></iframe>
+    </div>
+    </div>
+  </div>
+</footer>
+	</div>
+</body>
+
+</html>
