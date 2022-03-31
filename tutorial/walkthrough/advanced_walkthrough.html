@@ -8,7 +8,7 @@
     <title>&#128295; Walkthrough Advanced: Customize Your Website | DocFX website </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="&#128295; Walkthrough Advanced: Customize Your Website | DocFX website ">
-    <meta name="generator" content="docfx 2.59.0.0">
+    <meta name="generator" content="docfx 2.59.1.0">
     
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="stylesheet" href="../../styles/docfx.vendor.css">
@@ -135,7 +135,7 @@
     ],
 </code></pre>
 <p>Now rebuild your project and you'll see your template changes applied to the site or PDF. To apply a template manually for the next build only, append the <code>-t</code> switch with the template filepath:</p>
-<p><code>docfx build docfx.json -t C:\&lt;filepath&gt;\templates\&lt;your custom template folder&gt; --serve</code></p>
+<p><code>docfx build docfx.json -t default,C:\&lt;filepath&gt;\templates\&lt;your custom template folder&gt; --serve</code></p>
 <div class="NOTE">
 <h5>Note</h5>
 <p>In order for the local web site to pick up changes to dependent assets, such as .JS and .CSS files, you'll need to do a hard reload/refresh once the site is running. In most browsers you'll use the CTRL+F5 key sequence, and not the standard F5 or CTRL+R &quot;refresh&quot; sequence.</p>
