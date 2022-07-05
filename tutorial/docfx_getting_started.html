@@ -8,7 +8,7 @@
     <title>Getting Started with DocFX | DocFX website </title>
     <meta name="viewport" content="width=device-width">
     <meta name="title" content="Getting Started with DocFX | DocFX website ">
-    <meta name="generator" content="docfx 2.59.2.0">
+    <meta name="generator" content="docfx 2.59.3.0">
     
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -102,7 +102,19 @@ For a detailed description about DFM, please refer to <a href="../spec/docfx_fla
 <p><em>Step1.</em> Install DocFX. Choose from one of the following sources:</p>
 <ul>
 <li><strong><a href="https://chocolatey.org/packages/docfx">Chocolatey</a></strong>: <code>choco install docfx -y</code>.</li>
-<li><strong><a href="https://formulae.brew.sh/formula/docfx">Homebrew</a></strong> (owned by community): <code>brew install docfx</code>.</li>
+<li><strong><a href="https://formulae.brew.sh/formula/docfx">Homebrew</a></strong> (owned by community):
+<ul>
+<li>Intel chip: <code>brew install docfx</code>.</li>
+<li>M1 chip: DocFX doesn't support the new mac M1 chips so you will need to use <a href="https://support.apple.com/en-nz/HT211861">Rosetta</a> to run it. Follow these steps:
+<ul>
+<li><a href="https://github.com/homebrew/install#uninstall-homebrew">Uninstall Homebrew</a></li>
+<li>Re-install brew with the following command: <code>arch -x86_64 /bin/bash -c &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)&quot;</code></li>
+<li>Install docfx: <code>arch -x86_64 brew install docfx</code></li>
+<li>Run docfx: <code>arch -x86_64 docfx path/to/docfx.json --serve</code></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><strong>GitHub</strong>: download and unzip <code>docfx.zip</code> from <a href="https://github.com/dotnet/docfx/releases">https://github.com/dotnet/docfx/releases</a>, extract it to a local folder, and add it to PATH so you can run it anywhere.</li>
 <li><strong>NuGet</strong>: <code>nuget install docfx.console</code>. <code>docfx.exe</code> is under folder <em>docfx.console/tools/</em>.</li>
 </ul>
