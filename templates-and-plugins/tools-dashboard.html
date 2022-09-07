@@ -7,7 +7,7 @@
   <title>Available tools | </title>
   <meta name="title" content="Available tools | ">
   <meta name="viewport" content="width=device-width">
-  <meta name="generator" content="docfx 2.59.3.0">
+  <meta name="generator" content="docfx 2.59.4.0">
   <link rel="shortcut icon" href="../favicon.ico">
   <link rel="stylesheet" href="../styles/docfx.vendor.css">
   <link rel="stylesheet" href="../styles/docfx.css">
@@ -30,6 +30,8 @@
     padding: 16px;
   }
   .template-screenshot {
+    display: flex;
+    justify-content: center;
     position: relative;
     margin-bottom: 16px;
     padding-top: 60%;
@@ -38,8 +40,10 @@
   .template-screenshot-img {
     position: absolute;
     top: 0;
-    width: 100%;
+    width: auto;
     height: auto;
+    max-height: 100%;
+    max-width: 100%;
   }
   .template-title {
     font-weight: 600;
@@ -95,7 +99,7 @@
           <ul id="template-container">
               <li class="template-item">
                 <div class="template-screenshot">
-                  <img src="images/docfstocgenerator.screenshot.png" class="template-screenshot-img">
+                  <img src="images/docfxtocgenerator.screenshot.png" class="template-screenshot-img">
                 </div>
                 <a class="template-title" href="https://github.com/Ellerbach/docfx-companion-tools">DocFxTocGenerator</a>
                 <p class="template-desc"><p>Generate a Table of Contents (TOC) in YAML format for DocFX. It has features like the ability to configure the order of files and the names of documents and folders. This tool is part of the DocFx Companion Tools set that can be installed using Chocolatey.</p>
