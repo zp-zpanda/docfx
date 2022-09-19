@@ -1,0 +1,8 @@
+{"dependency_type":"file","from_file_path":"/home/runner/work/docfx/docfx/docs/developer-guide.md","to_file_path":"/home/runner/work/docfx/docfx/docs/roadmap.md"}
+{"dependency_type":"metadata","from_file_path":"/home/runner/work/docfx/docfx/docs/developer-guide.md","to_file_path":"/home/runner/work/docfx/docfx/docs/toc.yml"}
+{"dependency_type":"metadata","from_file_path":"/home/runner/work/docfx/docfx/docs/getting-started.md","to_file_path":"/home/runner/work/docfx/docfx/docs/toc.yml"}
+{"dependency_type":"metadata","from_file_path":"/home/runner/work/docfx/docfx/docs/index.yml","to_file_path":"/home/runner/work/docfx/docfx/docs/toc.yml"}
+{"dependency_type":"file","from_file_path":"/home/runner/work/docfx/docfx/docs/menu.yml","to_file_path":"/home/runner/work/docfx/docfx/docs/getting-started.md"}
+{"dependency_type":"file","from_file_path":"/home/runner/work/docfx/docfx/docs/menu.yml","to_file_path":"/home/runner/work/docfx/docfx/docs/index.yml"}
+{"dependency_type":"metadata","from_file_path":"/home/runner/work/docfx/docfx/docs/roadmap.md","to_file_path":"/home/runner/work/docfx/docfx/docs/toc.yml"}
+{"dependency_type":"file","from_file_path":"/home/runner/work/docfx/docfx/docs/toc.yml","to_file_path":"/home/runner/work/docfx/docfx/docs/getting-started.md"}

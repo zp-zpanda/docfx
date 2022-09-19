@@ -1,0 +1,419 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="yufeih" />
+<meta name="depot_name" content="." />
+<meta name="document_id" content="c8efe12b-9eac-ff16-02c6-c0ab7281096b" />
+<meta name="document_version_independent_id" content="fe8cb868-7c8e-0e67-d92a-e96746d41112" />
+<meta name="gitcommit" content="https://github.com/dotnet/docfx/blob/64dae507c8e88cf731fcb9f984a9723f906e562a/docs/developer-guide.md" />
+<meta name="locale" content="en-us" />
+<meta name="menu_path" content="/menu.json" />
+<meta name="original_content_git_url" content="https://github.com/dotnet/docfx/blob/v3-release/docs/developer-guide.md" />
+<meta name="rawTitle" content="<h1 id=&quot;developer-guide&quot;>Developer Guide</h1>" />
+<meta name="schema" content="Conceptual" />
+<meta name="site_name" content="Docs" />
+<meta name="toc_rel" content="../toc.json" />
+<meta name="updated_at" content="2022-03-09 07:01 AM" />
+<meta name="wordCount" content="1697" />
+
+
+  <title>Developer Guide</title>
+
+  <link rel="stylesheet" href="../dist/docfx.css">
+</head>
+
+<body>
+  <header>
+<nav class="navbar navbar-expand-md navbar-dark">
+  <div class="container-xxl">
+    <a class="navbar-brand" href="../">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbar"></div>
+  </div>
+</nav>
+  </header>
+
+  <main class="container-xxl layout-conceptual page-type-conceptual">
+        <nav class="layout-breadcrumb" id="breadcrumb" aria-label="breadcrumb"></nav>
+
+      <nav class="layout-toc">
+<div class="sticky-top navbar navbar-expand-md navbar-light bg-white">
+  <a class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#toc-pannel" aria-controls="toc-pannel" aria-expanded="false">
+    Table of Contents
+  </a>
+  <div class="collapse navbar-collapse" id="toc-pannel">
+    <div>
+      <input class="form-control" type="text" id="toc-filter" placeholder="Filter">
+      <div class="toc" id="toc"></div>
+    </div>
+  </div>
+</div>
+      </nav>
+
+      <article>
+        <h1 id="developer-guide">Developer Guide</h1>
+<ul class="metabar">
+  <li>
+    <time datetime="3/9/2022">3/9/2022</time>
+  </li>
+  <li class="readingTime">8 minutes to read</li>
+    <li class="contributors-holder">
+        <ul class="contributors">
+              <li>
+                <a href="https://github.com/yufeih" title="Yufei Huang">
+                  <img src="https://github.com/yufeih.png?size=32" role="presentation"/>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/AngryBerryMS" title="Shichao Zhang">
+                  <img src="https://github.com/AngryBerryMS.png?size=32" role="presentation"/>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/byszhoubin" title="Bin Zhou">
+                  <img src="https://github.com/byszhoubin.png?size=32" role="presentation"/>
+                </a>
+              </li>
+        </ul>
+      </a>
+    </li>
+</ul>
+        <h2 id="build-and-test">Build and Test</h2>
+<p>Prerequisites:</p>
+<ul>
+<li><a href="https://git-scm.com/" data-linktype="external">git</a></li>
+<li><a href="https://dotnet.microsoft.com/download/dotnet-core/2.2" data-linktype="external">.NET Core SDK 2.2</a> or above</li>
+</ul>
+<p>Build and test this project by running <code>build.ps1</code> on Windows, or by running <code>build.sh</code> on Mac OS and Linux.</p>
+<p>You can use <a href="https://www.visualstudio.com/vs/" data-linktype="external">Visual Studio</a> or <a href="https://code.visualstudio.com/" data-linktype="external">Visual Studio Code</a> with <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp" data-linktype="external">C# extension</a> to develop the project.</p>
+<h2 id="local-debug-tutorial-for-docfx-v3">Local Debug Tutorial for Docfx v3</h2>
+<blockquote>
+<p><strong>For Microsoft Internal Users:</strong></p>
+<p>Make sure you have the permissions to run this repo locally. Contact <a href="mailto:docfxvnext@microsoft.com" data-linktype="external">docfxvnext@microsoft.com</a> to add read permission, please.</p>
+</blockquote>
+<h3 id="step-1-clone-repo">Step 1: Clone Repo</h3>
+<p>Clone the repo and check out to v3 branch.</p>
+<pre><code class="lang-shell">git clone https://github.com/dotnet/docfx
+git checkout v3
+</code></pre>
+<h3 id="step-2-open-the-repo-with-visual-studio">Step 2: Open the Repo with Visual Studio</h3>
+<p>Open <code>docfx.sln</code> with Visual Studio. Add <code>Debug arguments</code> for <code>docfx</code> project to specify the repo you want to debug, build arguments for example: <code>build &quot;C:\workspace\test-repo&quot;</code></p>
+<pre><code class="lang-shell">build &quot;your repo on local disk&quot;
+</code></pre>
+<blockquote>
+<p><strong>Note:</strong></p>
+<p>Currently, docfx v3 supports 2 environment variables, that is, <code>DocsEnvironment.Prod</code>(<strong>default</strong>) and <code>DocsEnvironment.PPE</code>. Please config a proper environment variable before building.</p>
+</blockquote>
+<h3 id="step-3-debug">Step 3: Debug</h3>
+<p>Now you can set breakpoints and debug with your specified repo.</p>
+<h3 id="more-build-options">More Build Options:</h3>
+<table>
+<thead>
+<tr>
+<th>option</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>o|output</td>
+<td>Output directory in which to place built artifacts.</td>
+</tr>
+<tr>
+<td>output-type</td>
+<td>Specify the output type.</td>
+</tr>
+<tr>
+<td>dry-run</td>
+<td>Do not produce build artifact and only produce validation result.</td>
+</tr>
+<tr>
+<td>no-dry-sync</td>
+<td>Do not run dry sync for learn validation.</td>
+</tr>
+<tr>
+<td>no-restore</td>
+<td>Do not restore dependencies before build.</td>
+</tr>
+<tr>
+<td>no-cache</td>
+<td>Do not use cache dependencies in build, always fetch latest dependencies.</td>
+</tr>
+<tr>
+<td>template-base-path</td>
+<td>The base path used for referencing the template resource file when applying liquid.</td>
+</tr>
+</tbody>
+</table>
+<p>There are some common scenarios for reference. And you can combine these options in need.</p>
+<ul>
+<li>Build a static Html website.
+<pre><code class="lang-shell">docfx build {docset-path}
+</code></pre>
+</li>
+<li>Faster way to see validation results without producing build outputs.
+<pre><code class="lang-shell">docfx build --dry-run {docset-path}
+</code></pre>
+</li>
+<li>Debug <a href="https://docs.microsoft.com" data-linktype="external">https://docs.microsoft.com</a> internal publishing build output format:
+<pre><code class="lang-shell">docfx build --output-type pagejson {docset-path}
+</code></pre>
+</li>
+<li>See verbose console output.
+<pre><code class="lang-shell">docfx build -v {docset-path}
+</code></pre>
+</li>
+<li>Update all dependencies (dependent repositories, validation rules, etc.) to the latest version.
+<pre><code class="lang-shell">docfx restore {docset-path}
+</code></pre>
+</li>
+</ul>
+<h2 id="release-process">Release Process</h2>
+<p>We continuously deploy <code>v3</code> branch to <a href="https://docfx.pkgs.visualstudio.com/docfx/_packaging/docs-build-v3-prod/nuget/v3/index.json" data-linktype="external">Production Azure DevOps Feed</a>. It is then deployed to <a href="https://docs.microsoft.com" data-linktype="external">docs</a> on a regular cadence. For this to work, <code>v3</code> branch <strong>MUST</strong> always be in <a href="#definition-of-ready-to-ship" data-linktype="self-bookmark">Ready to Ship</a> state.</p>
+<p>Large feature work happens in feature branches. Feature branch name starts with <code>feature/</code>.</p>
+<p>Pull request validation, continuos deployment to <a href="https://docfx.pkgs.visualstudio.com/docfx/_packaging/docs-build-v3-test/nuget/v3/index.json" data-linktype="external">Sandbox Azure DevOps Feed</a> is enabled automatically on <code>v3</code> branch and all feature branches.</p>
+<p>Package version produced from <code>v3</code> branch is higher than other branches:</p>
+<ul>
+<li><code>v3</code>: <code>3.0.0-beta-{commitDepth}-{commitHash}</code></li>
+<li>Other branches *: <code>3.0.0-alpha-{branch}-{commitDepth}-{commitHash}</code></li>
+</ul>
+<p>We currently do not deploy to NuGet until features blocking community adoption are implemented.</p>
+<p>In general we prefer <strong>Squash and merge</strong> against <code>v3</code> or feature branches. When merging from feature branches to <code>v3</code> with a lot of changes, we prefer <strong>Rebase and merge</strong>.</p>
+<h3 id="definition-of-ready-to-ship">Definition of Ready to Ship</h3>
+<ul>
+<li><p>All test cases pass</p>
+</li>
+<li><p>No performance regression</p>
+</li>
+<li><p>No open issues that affects end users</p>
+</li>
+<li><p>No unintended breaking changes *</p>
+<ul>
+<li>Input output data contract</li>
+<li>Config</li>
+<li>Errors and Warnings</li>
+</ul>
+<p>*<em>At this stage, changes to ideal output, config, error message and line number are not considered breaking</em></p>
+</li>
+</ul>
+<h2 id="triage-process">Triage Process</h2>
+<p>We are happy to accept small fixes and small enhancements through pull requests directly.
+For proposals or large changes, we use the following process to pickup, review and approve issues that aligns with our <a href="../roadmap/" data-linktype="relative-path">roadmap</a> and priority:</p>
+<ol>
+<li><p>Create an issue on GitHub to start a discussion of the proposal.</p>
+</li>
+<li><p>We assign a team member when an issue is picked up in review meetings.</p>
+</li>
+<li><p>Assignee label the issue as <code>ready-for-review</code> for approval in review meetings only when the following conditions are met:</p>
+<ul>
+<li>Contains enough details for someone else to start work on it.</li>
+<li>Contains work items to support the end to end scenario, including internal works needed beyond docfx.</li>
+<li>No open questions.</li>
+<li>A draft API proposal to illustrate the change if applicable.</li>
+</ul>
+</li>
+<li><p>Assignee label the issue as <code>needs-discussion</code> for group discussion in review meeting only when the following conditions are met:</p>
+<ul>
+<li>The issue can be addressed by different solutions.</li>
+<li>Contains enough details for all possible solutions.</li>
+</ul>
+</li>
+<li><p>Label the issue as <code>needs-confirm</code> if the change potentially affects our partners.</p>
+</li>
+</ol>
+<p>Running the review meeting:</p>
+<ol>
+<li><p>Go through issues without assignees that is not labeled as <code>future</code>. Assign a team member if the issue is ready to pickup, otherwise label it as <code>future</code>. If the issue has a due date, assign a milestone. We usually have milestones for the next 2 quarters. Issues with assignees can start at any time based on priority and bandwidth.</p>
+</li>
+<li><p>Go through issues with the <code>ready-for-review</code> label. Remove the <code>ready-for-review</code> label to indicate that reviewing is done. Add <code>approved</code> label to approve the design so it is ready to accept pull requests.</p>
+</li>
+<li><p>Go through issues with the <code>needs-discussion</code> label. Remove the <code>needs-discussion</code> label to indicate that discussion is done.</p>
+</li>
+<li><p>Check our issues with <code>future</code> label from every month and pick up from there when we have capacity.</p>
+</li>
+</ol>
+<h2 id="coding-guidelines">Coding Guidelines</h2>
+<h3 id="c">C#</h3>
+<p>We follow <a href="https://github.com/dotnet/corefx/blob/master/Documentation/coding-guidelines/coding-style.md" data-linktype="external">C# Coding Style</a> recommended by dotnet team. Stylecop and FxCop have been enabled for this project to enforce some of the rules.</p>
+<h3 id="writing-tests">Writing Tests</h3>
+<p>All code should be written in a &quot;test first&quot; or &quot;test driven development&quot; style. A typical development flow is simply write a test, see it fail, fix it with code, then refactor.</p>
+<p>Tests should be fast, we try to keep total test execution time within 10s for in most cases.</p>
+<p>Prefer writing yaml based end to end tests:</p>
+<ul>
+<li>It clearly defines inputs and expected outputs, providing a consistent and readable way to define and communicate behaviors.</li>
+<li>It has no dependency on source code, giving us the freedom to refactor without changing test cases.</li>
+</ul>
+<p>When writing yaml test, keep in mind that yaml tests serves <strong>MORE</strong> as a <strong>documentation</strong> for collaboration then a pure regression test:</p>
+<ul>
+<li>Keep each test short and minimum:
+<ul>
+<li>Ideally in less than 10 lines.</li>
+<li>Prefer short symbols like <code>a.md</code> over long file names</li>
+</ul>
+</li>
+<li>One test should only cover a single aspect:
+<ul>
+<li>Don't mix scenarios into one yaml test.</li>
+<li>Don't copy and paste generated output directly into expected outputs.</li>
+<li>Only check outputs related to the current test aspect.</li>
+</ul>
+</li>
+<li>Provide a one liner to describe the scenario, avoid using numbers.</li>
+</ul>
+<p>When you do need a unit test, use <code>[Theory]</code> for data driven tests, this makes it easier to add more test cases.</p>
+<p>All test cases run in parallel, so keep them stateless and thread safe.</p>
+<h3 id="immutability-and-pure">Immutability and Pure</h3>
+<p>Whenever possible, write simple functions that takes some inputs and produces some outputs without introducing any side effects. Side effects includes manipulating a shared state, manipulating the input, accessing or mutating global or static state, reading additional variables from environments or files, writing outputs to files.</p>
+<p>Write complex functions by composing smaller, simpler functions. Write functions that takes the minimum required parameters and dependencies.</p>
+<p>Tuples, readonly, nested functions are the tools to help write these stateless pure functions. Try returning multiple outputs with tuples over manipulating an input context.</p>
+<h3 id="data-modeling">Data Modeling</h3>
+<p>JSON <code>(.json)</code> is the format of our data contract. YAML <code>(.yml)</code> is an alternative and preferred input format for config and authoring.</p>
+<p>Whenever JSON is supported as an input format, YAML is supported as well. The same is true vice-versa.</p>
+<p>When YAML is used, we only support a subset of YAML that is JSON compatible, features like multiple documents, non-scalar keys, anchors and references are not supported.</p>
+<p>The following guidelines apply to both input models and output models:</p>
+<ul>
+<li><p>Flattened structure is preferred over nested structure, because YAML is indention based, nested structure creates a very bad YAML authoring experience.</p>
+</li>
+<li><p>The default JSON naming convention is <em>snake_case</em> for property names and enum values:</p>
+</li>
+</ul>
+<pre><code class="lang-json">{
+    &quot;a_property_name&quot;: &quot;an_enum_value&quot;
+}
+</code></pre>
+<ul>
+<li><code>null</code>s are ignored using <code>[NullValueHandling.Ignore]</code> to void <a href="https://en.wikipedia.org/wiki/Tony_Hoare" data-linktype="external">the billion-dollar mistake</a>. We will be using <a href="https://blogs.msdn.microsoft.com/dotnet/2017/11/15/nullable-reference-types-in-csharp/" data-linktype="external">strict null checking</a> when C# 8 arrives.</li>
+</ul>
+<blockquote>
+<p>Note that <code>null</code>s for unknown properties marked as <code>[JsonExtensionData]</code> are still preserved.</p>
+</blockquote>
+<ul>
+<li><p>Make data contract <a href="https://stackoverflow.com/questions/250001/poco-definition" data-linktype="external">POCO (plain Old C# Object)</a>:</p>
+<ul>
+<li>With only simple serializable properties</li>
+<li>With no methods that contains business logic</li>
+</ul>
+</li>
+<li><p>Avoid <code>[JsonProperty]</code> unless the property does not use the above naming convention for backward compatibility reasons:</p>
+<ul>
+<li>It ensures we provide consistent input and output user experience.</li>
+<li>It ensures our C# model directly maps to data contract using the same name.</li>
+<li>It is easier to find all naming exceptions by searching <code>[JsonProperty]</code>.</li>
+</ul>
+</li>
+<li><p>Avoid <code>[JsonIgnore]</code>: use of <code>[JsonIgnore]</code> typically means that you are mixing logic with data. You can use tuples to pass <code>JsonIgnored</code> parameters.</p>
+</li>
+<li><p>Avoid polymorphism : type information does not exist in wire format, use enums instead.</p>
+</li>
+</ul>
+<h3 id="naming-conventions">Naming Conventions</h3>
+<p>We use the following naming conventions to improve shared understanding and enforce consistency. These rules are intend to be objective to avoid misunderstanding.</p>
+<table>
+<thead>
+<tr>
+<th>Convention</th>
+<th>Use case</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>{Command}.Run</code></td>
+<td>Entry point for a command.</td>
+<td><code>Build.Run</code></td>
+</tr>
+<tr>
+<td><code>Build.Build{ContentType}</code></td>
+<td>Entry point for a particular content build.</td>
+<td><code>Build.BuildPage</code></td>
+</tr>
+<tr>
+<td><code>{ClassName}.Load{XXX}</code></td>
+<td>Loads the content of a file from disk into a data model, the semantic is equivalent to <em>de-serialization</em>, additional logics are placed in other methods.</td>
+<td><code>BuildPage.Load</code></td>
+</tr>
+<tr>
+<td><code>{ClassName}.Transform{XXX}</code></td>
+<td>Transforms inputs to outputs, <strong>SHOULD NOT</strong> mutate input model, <strong>MAY</strong> take additional callbacks.</td>
+<td><code>HtmlUtility.TransformLinks</code></td>
+</tr>
+<tr>
+<td><code>{ClassName}.Update{XXX}</code></td>
+<td>Update input model to a new state, <strong>SHOULD</strong> mutate input model, <strong>MAY</strong> take additional callbacks.</td>
+<td><code>BuildTableOfContent.UpdateMonikers</code></td>
+</tr>
+<tr>
+<td><code>{ClassName}.Get{XXX}</code></td>
+<td>Simple stateless method that retrieves information from input, <strong>SHOULD NOT</strong> mutable states or have any side effect</td>
+<td><code>MonikerProvider.GetMonikers</code></td>
+</tr>
+<tr>
+<td><code>{ClassName}.Resolve{XXX}</code></td>
+<td>Retrieves information from input, <strong>SHOULD NOT</strong> mutable states, but <strong>MAY</strong> have side effects that are invisible to the caller</td>
+<td><code>DependencyProvider.ResolveLink</code></td>
+</tr>
+<tr>
+<td><code>{XXX}Map</code>, <code>{XXX}Builder</code></td>
+<td>Builds an <strong>immutable</strong> <code>{XXX}Map</code> from a <strong>mutable</strong> <code>{XXX}Builder</code></td>
+<td><code>DependencyMap</code>, <code>DependencyMapBuilder</code></td>
+</tr>
+<tr>
+<td><code>{XXX}Provider</code></td>
+<td>Groups <strong>instance</strong> helper methods for <strong>Get</strong> or <strong>Resolve</strong></td>
+<td><code>MonikerProvider</code></td>
+</tr>
+<tr>
+<td><code>{XXX}Utility</code></td>
+<td>Groups <strong>static</strong> helper methods</td>
+<td><code>GitUtility</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="regression-test-expected-diffs">Regression Test Expected Diffs</h2>
+<ul>
+<li>Sometimes the contributors list may change. You may check against corresponding GitHub pages to double confirm whether the changes are expected or not.
+<ul>
+<li>There will be a new contributor when a new contributor edits the article.</li>
+<li>A contributor will be deleted if her/his public email is disabled. If the new contributor list becomes empty, the whole contributor list will disappear.</li>
+<li>Display name of contributors may change when they change their display name.</li>
+</ul>
+</li>
+<li>When new validation rules added, they may have the corresponding effects in the diff.</li>
+<li>If the content of articles changed, there will be diffs about content change as well as &quot;word_count&quot;, .publish.json and .dependencymap.json, etc.</li>
+<li>Some metadata changes such as &quot;update_at&quot; are expected.
+<ul>
+<li>update_at</li>
+<li>update_at_date_time</li>
+<li>_op_article_date_quotedISO8601</li>
+</ul>
+</li>
+</ul>
+<p>If you are confused about some diffs and finally understand they are expected, please add them here.</p>
+
+
+      </article>
+
+      <aside>
+        <div class="sticky-top">
+          <nav id="in-this-article" class="in-this-article"></nav>
+        </div>
+      </aside>
+  </main>
+
+  <footer>
+<div class="container-xxl">
+
+</div>
+  </footer>
+
+  <script type="text/javascript" src="../dist/docfx.js"></script>
+</body>
+
+</html>
