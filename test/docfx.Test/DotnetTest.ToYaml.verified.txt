@@ -1,0 +1,786 @@
+﻿{
+  dotnet/cat/api/CatLibrary.Cat`2.yml: {
+    id: CatLibrary.Cat`2,
+    languageId: csharp,
+    title: Cat<T,K> Class,
+    summary: Here's main class of this Demo.You can see mostly type of article within this class and you for more detail, please see the remarks.this class is a template class. It has two Generic parameter. they are:  and .The extension method of this class can refer to  class,
+    fact: {
+      Namespace: {
+        link: CatLibrary,
+        href: CatLibrary
+      },
+      Assembly: CatLibrary.dll
+    },
+    body: [
+      {
+        declaration:
+[Serializable]
+[DefaultMember("Item")]
+public class Cat<T, K> : ICat, IAnimal where T : class, new()where K : struct
+      },
+      {
+        section: Examples,
+        body: [
+          {
+            markdown:
+Here's example of how to create an instance of this class. As T is limited with class and K is limited with struct.
+                var a = new Cat(object, int)();
+                int catNumber = new int();
+                unsafe
+                {
+                    a.GetFeetLength(catNumber);
+                }
+            As you see, here we bring in pointer so we need to add unsafe keyword.
+          }
+        ]
+      },
+      {
+        section: Remarks,
+        body: [
+          {
+            markdown:
+Here's all the content you can see in this class.Constructors. With different input parameters.Methods. Including:
+            
+            Template method.
+            
+            Normal method wit generic parameter.
+            
+            Override method.
+            
+            unsafe method with pointer.
+            Operators. You can also see explicit operator here.Properties. Include normal property and index.Events.Fields.EII. ExplicitImplementInterface. including eii property, eii method, eii event.Extension Methods. The extension methods not definition in this class, but we can find it!
+          }
+        ]
+      },
+      {
+        section: Type Parameters,
+        body: [
+          {
+            parameters: [
+              {
+                name: T,
+                description: This type should be class and can new instance.
+              },
+              {
+                name: K,
+                description: This type is a struct type, class type can't be used for this parameter.
+              }
+            ]
+          }
+        ]
+      },
+      {
+        section: Constructors,
+        body: [
+          {
+            jumplist: [
+              {
+                name: Cat(),
+                description: Default constructor.
+              },
+              {
+                name: Cat(T ownType),
+                description: Constructor with one generic parameter.
+              },
+              {
+                name: Cat(string nickName, out int age, string realName, bool isHealthy),
+                description: It's a complex constructor. The parameter will have some attributes.
+              }
+            ]
+          }
+        ]
+      },
+      {
+        section: Fields,
+        body: [
+          {
+            jumplist: [
+              {
+                name: ownEat
+              },
+              {
+                name: isHealthy,
+                description: Field with attribute.
+              }
+            ]
+          }
+        ]
+      },
+      {
+        section: Properties,
+        body: [
+          {
+            jumplist: [
+              {
+                name: this[string a],
+                description: This is index property of Cat. You can see that the visibility is different between get and set method.
+              },
+              {
+                name: Age,
+                description: Hint cat's age.
+              },
+              {
+                name: Name,
+                description: EII property.
+              },
+              {
+                name: this[int a],
+                description: EII index.
+              }
+            ]
+          }
+        ]
+      },
+      {
+        section: Methods,
+        body: [
+          {
+            jumplist: [
+              {
+                name: CalculateFood(DateTime date),
+                description: It's a method with complex return type.
+              },
+              {
+                name: Jump(T ownType, K anotherOwnType, ref bool cheat),
+                description: This method have attribute above it.
+              },
+              {
+                name: Equals(object obj),
+                description: Override the method of Object.Equals(object obj).
+              },
+              {
+                name: GetTailLength(int* catName, params object[] parameters),
+                description:
+It's an unsafe method.
+            As you see,  is a pointer, so we need to add unsafe keyword.
+              }
+            ]
+          }
+        ]
+      },
+      {
+        section: Operators,
+        body: [
+          {
+            jumplist: [
+              {
+                name: operator +(Cat<T,K> lsr, int rsr),
+                description: Addition operator of this class.
+              },
+              {
+                name: operator -(Cat<T,K> lsr, int rsr),
+                description: Similar with operaotr +, refer to that topic.
+              },
+              {
+                name: explicit operator Tom(Cat<T,K> src),
+                description:
+Expilicit operator of this class.
+            It means this cat can evolve to change to Tom. Tom and Jerry.
+              }
+            ]
+          }
+        ]
+      },
+      {
+        section: Explicit Interface Implementations,
+        body: [
+          {
+            jumplist: [
+              {
+                name: CatLibrary.IAnimal.Eat(),
+                description: EII method.
+              },
+              {
+                name: CatLibrary.IAnimal.Eat<Tool>(Tool a),
+                description: EII template method.
+              },
+              {
+                name: CatLibrary.IAnimal.Eat(string food),
+                description: Implementation of Eat(food)
+              }
+            ]
+          }
+        ]
+      },
+      {
+        section: Events,
+        body: [
+          {
+            jumplist: [
+              {
+                name: ownEat,
+                description: Eat event of this cat
+              },
+              {
+                name: CatLibrary.ICat.eat,
+                description: EII event.
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  dotnet/cat/api/CatLibrary.CatException`1.yml: {
+    id: CatLibrary.CatException`1,
+    languageId: csharp,
+    title: CatException<T> Class,
+    fact: {
+      Namespace: {
+        link: CatLibrary,
+        href: CatLibrary
+      },
+      Assembly: CatLibrary.dll
+    },
+    body: [
+      {
+        declaration: public class CatException<T> : Exception
+      },
+      {
+        section: Type Parameters,
+        body: [
+          {
+            parameters: [
+              {
+                name: T
+              }
+            ]
+          }
+        ]
+      },
+      {
+        section: Constructors,
+        body: [
+          {
+            jumplist: [
+              {
+                name: CatException()
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  dotnet/cat/api/CatLibrary.Complex`2.yml: {
+    id: CatLibrary.Complex`2,
+    languageId: csharp,
+    title: Complex<T,J> Class,
+    fact: {
+      Namespace: {
+        link: CatLibrary,
+        href: CatLibrary
+      },
+      Assembly: CatLibrary.dll
+    },
+    body: [
+      {
+        declaration: public class Complex<T, J>
+      },
+      {
+        section: Type Parameters,
+        body: [
+          {
+            parameters: [
+              {
+                name: T
+              },
+              {
+                name: J
+              }
+            ]
+          }
+        ]
+      },
+      {
+        section: Constructors,
+        body: [
+          {
+            jumplist: [
+              {
+                name: Complex()
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  dotnet/cat/api/CatLibrary.FakeDelegate`1.yml: {
+    id: CatLibrary.FakeDelegate`1,
+    languageId: csharp,
+    title: FakeDelegate<T> Delegate,
+    summary: Fake delegate,
+    fact: {
+      Namespace: {
+        link: CatLibrary,
+        href: CatLibrary
+      },
+      Assembly: CatLibrary.dll
+    },
+    body: [
+      {
+        declaration: public delegate int FakeDelegate<T>(long num, string name, params object[] scores)
+      },
+      {
+        section: Type Parameters,
+        body: [
+          {
+            parameters: [
+              {
+                name: T,
+                description: Fake para
+              }
+            ]
+          }
+        ]
+      },
+      {
+        section: Parameters,
+        body: [
+          {
+            parameters: [
+              {
+                name: num,
+                type: long,
+                description: Fake para
+              },
+              {
+                name: name,
+                type: string,
+                description: Fake para
+              },
+              {
+                name: scores,
+                type: object[],
+                description: Optional Parameter.
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  dotnet/cat/api/CatLibrary.IAnimal.yml: {
+    id: CatLibrary.IAnimal,
+    languageId: csharp,
+    title: IAnimal Interface,
+    summary: This is basic interface of all animal.,
+    fact: {
+      Namespace: {
+        link: CatLibrary,
+        href: CatLibrary
+      },
+      Assembly: CatLibrary.dll
+    },
+    body: [
+      {
+        declaration:
+[DefaultMember("Item")]
+public interface IAnimal
+      },
+      {
+        section: Properties,
+        body: [
+          {
+            jumplist: [
+              {
+                name: Name,
+                description: Name of Animal.
+              },
+              {
+                name: this[int index],
+                description: Return specific number animal's name.
+              }
+            ]
+          }
+        ]
+      },
+      {
+        section: Methods,
+        body: [
+          {
+            jumplist: [
+              {
+                name: Eat(),
+                description: Animal's eat method.
+              },
+              {
+                name: Eat<Tool>(Tool tool),
+                description: Overload method of eat. This define the animal eat by which tool.
+              },
+              {
+                name: Eat(string food),
+                description: Feed the animal with some food
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  dotnet/cat/api/CatLibrary.ICat.yml: {
+    id: CatLibrary.ICat,
+    languageId: csharp,
+    title: ICat Interface,
+    summary: Cat's interface,
+    fact: {
+      Namespace: {
+        link: CatLibrary,
+        href: CatLibrary
+      },
+      Assembly: CatLibrary.dll
+    },
+    body: [
+      {
+        declaration: public interface ICat : IAnimal
+      },
+      {
+        section: Events,
+        body: [
+          {
+            jumplist: [
+              {
+                name: eat,
+                description: eat event of cat. Every cat must implement this event.
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  dotnet/cat/api/CatLibrary.ICatExtension.yml: {
+    id: CatLibrary.ICatExtension,
+    languageId: csharp,
+    title: ICatExtension Class,
+    summary:
+It's the class that contains ICat interface's extension method.
+            This class must be public and static.Also it shouldn't be a geneic class,
+    fact: {
+      Namespace: {
+        link: CatLibrary,
+        href: CatLibrary
+      },
+      Assembly: CatLibrary.dll
+    },
+    body: [
+      {
+        declaration: public static class ICatExtension
+      },
+      {
+        section: Methods,
+        body: [
+          {
+            jumplist: [
+              {
+                name: Sleep(this ICat icat, long hours),
+                description: Extension method hint that how long the cat can sleep.
+              },
+              {
+                name: Play(this ICat icat, string toy),
+                description: Extension method to let cat play
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  dotnet/cat/api/CatLibrary.MRefDelegate`3.yml: {
+    id: CatLibrary.MRefDelegate`3,
+    languageId: csharp,
+    title: MRefDelegate<K,T,L> Delegate,
+    summary: Generic delegate with many constrains.,
+    fact: {
+      Namespace: {
+        link: CatLibrary,
+        href: CatLibrary
+      },
+      Assembly: CatLibrary.dll
+    },
+    body: [
+      {
+        declaration: public delegate void MRefDelegate<K, T, L>(K k, T t, L l) where K : class, IComparable where T : struct where L : Tom, IEnumerable<long>
+      },
+      {
+        section: Type Parameters,
+        body: [
+          {
+            parameters: [
+              {
+                name: K,
+                description: Generic K.
+              },
+              {
+                name: T,
+                description: Generic T.
+              },
+              {
+                name: L,
+                description: Generic L.
+              }
+            ]
+          }
+        ]
+      },
+      {
+        section: Parameters,
+        body: [
+          {
+            parameters: [
+              {
+                name: k,
+                type: K,
+                description: Type K.
+              },
+              {
+                name: t,
+                type: T,
+                description: Type T.
+              },
+              {
+                name: l,
+                type: L,
+                description: Type L.
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  dotnet/cat/api/CatLibrary.MRefNormalDelegate.yml: {
+    id: CatLibrary.MRefNormalDelegate,
+    languageId: csharp,
+    title: MRefNormalDelegate Delegate,
+    summary: Delegate in the namespace,
+    fact: {
+      Namespace: {
+        link: CatLibrary,
+        href: CatLibrary
+      },
+      Assembly: CatLibrary.dll
+    },
+    body: [
+      {
+        declaration: public delegate void MRefNormalDelegate(List<string> pics, out string name)
+      },
+      {
+        section: Parameters,
+        body: [
+          {
+            parameters: [
+              {
+                name: pics,
+                type: List<string>,
+                description: a name list of pictures.
+              },
+              {
+                name: name,
+                type: string,
+                description: give out the needed name.
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  dotnet/cat/api/CatLibrary.Tom.yml: {
+    id: CatLibrary.Tom,
+    languageId: csharp,
+    title: Tom Class,
+    summary: Tom class is only inherit from Object. Not any member inside itself.,
+    fact: {
+      Namespace: {
+        link: CatLibrary,
+        href: CatLibrary
+      },
+      Assembly: CatLibrary.dll
+    },
+    body: [
+      {
+        declaration: public class Tom
+      },
+      {
+        section: Constructors,
+        body: [
+          {
+            jumplist: [
+              {
+                name: Tom()
+              }
+            ]
+          }
+        ]
+      },
+      {
+        section: Methods,
+        body: [
+          {
+            jumplist: [
+              {
+                name: TomMethod(Complex<TomFromBaseClass,TomFromBaseClass> a, Tuple<string,Tom> b),
+                description: This is a Tom Method with complex type as return
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  dotnet/cat/api/CatLibrary.TomFromBaseClass.yml: {
+    id: CatLibrary.TomFromBaseClass,
+    languageId: csharp,
+    title: TomFromBaseClass Class,
+    summary: *TomFromBaseClass* inherits from @,
+    fact: {
+      Namespace: {
+        link: CatLibrary,
+        href: CatLibrary
+      },
+      Assembly: CatLibrary.dll
+    },
+    body: [
+      {
+        declaration: public class TomFromBaseClass : Tom
+      },
+      {
+        section: Constructors,
+        body: [
+          {
+            jumplist: [
+              {
+                name: TomFromBaseClass(int k),
+                description: This is a #ctor with parameter
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  dotnet/cat/api/MRef.Demo.Enumeration.ColorType.yml: {
+    id: MRef.Demo.Enumeration.ColorType,
+    languageId: csharp,
+    title: ColorType Enum,
+    summary: Enumeration ColorType,
+    fact: {
+      Namespace: {
+        link: MRef.Demo.Enumeration,
+        href: MRef.Demo.Enumeration
+      },
+      Assembly: CatLibrary.dll
+    },
+    body: [
+      {
+        declaration: public enum ColorType
+      },
+      {
+        section: Remarks,
+        body: [
+          {
+            markdown:
+Red/Blue/Yellow can become all color you want.
+            
+            Orange = Red + Yellow
+            
+            Purple = Red + Blue
+            
+            Green = Blue + Yellow
+          }
+        ]
+      },
+      {
+        section: Fields,
+        body: [
+          {
+            parameters: [
+              {
+                name: Red,
+                description: this color is red
+              },
+              {
+                name: Blue,
+                description: blue like river
+              },
+              {
+                name: Yellow,
+                description: yellow comes from desert
+              }
+            ]
+          }
+        ]
+      },
+      {
+        section: See also,
+        body: [
+          {
+            markdown: 
+          }
+        ]
+      }
+    ]
+  },
+  dotnet/cat/api/TOC.yml: [
+    {
+      name: CatLibrary,
+      items: [
+        {
+          name: Cat<T,K>,
+          href: CatLibrary.Cat`2.yml
+        },
+        {
+          name: CatException<T>,
+          href: CatLibrary.CatException`1.yml
+        },
+        {
+          name: Complex<T,J>,
+          href: CatLibrary.Complex`2.yml
+        },
+        {
+          name: FakeDelegate<T>,
+          href: CatLibrary.FakeDelegate`1.yml
+        },
+        {
+          name: IAnimal,
+          href: CatLibrary.IAnimal.yml
+        },
+        {
+          name: ICat,
+          href: CatLibrary.ICat.yml
+        },
+        {
+          name: ICatExtension,
+          href: CatLibrary.ICatExtension.yml
+        },
+        {
+          name: MRefDelegate<K,T,L>,
+          href: CatLibrary.MRefDelegate`3.yml
+        },
+        {
+          name: MRefNormalDelegate,
+          href: CatLibrary.MRefNormalDelegate.yml
+        },
+        {
+          name: Tom,
+          href: CatLibrary.Tom.yml
+        },
+        {
+          name: TomFromBaseClass,
+          href: CatLibrary.TomFromBaseClass.yml
+        }
+      ]
+    },
+    {
+      name: MRef.Demo.Enumeration,
+      items: [
+        {
+          name: ColorType,
+          href: MRef.Demo.Enumeration.ColorType.yml
+        }
+      ]
+    }
+  ]
+}
