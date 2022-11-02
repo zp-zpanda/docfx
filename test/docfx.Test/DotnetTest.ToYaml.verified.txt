@@ -5,10 +5,7 @@
     title: Cat<T,K> Class,
     summary: Here's main class of this Demo.You can see mostly type of article within this class and you for more detail, please see the remarks.this class is a template class. It has two Generic parameter. they are:  and .The extension method of this class can refer to  class,
     fact: {
-      Namespace: {
-        link: CatLibrary,
-        href: CatLibrary
-      },
+      Namespace: CatLibrary,
       Assembly: CatLibrary.dll
     },
     body: [
@@ -225,10 +222,7 @@ Expilicit operator of this class.
     languageId: csharp,
     title: CatException<T> Class,
     fact: {
-      Namespace: {
-        link: CatLibrary,
-        href: CatLibrary
-      },
+      Namespace: CatLibrary,
       Assembly: CatLibrary.dll
     },
     body: [
@@ -266,10 +260,7 @@ Expilicit operator of this class.
     languageId: csharp,
     title: Complex<T,J> Class,
     fact: {
-      Namespace: {
-        link: CatLibrary,
-        href: CatLibrary
-      },
+      Namespace: CatLibrary,
       Assembly: CatLibrary.dll
     },
     body: [
@@ -311,10 +302,7 @@ Expilicit operator of this class.
     title: FakeDelegate<T> Delegate,
     summary: Fake delegate,
     fact: {
-      Namespace: {
-        link: CatLibrary,
-        href: CatLibrary
-      },
+      Namespace: CatLibrary,
       Assembly: CatLibrary.dll
     },
     body: [
@@ -366,10 +354,7 @@ Expilicit operator of this class.
     title: IAnimal Interface,
     summary: This is basic interface of all animal.,
     fact: {
-      Namespace: {
-        link: CatLibrary,
-        href: CatLibrary
-      },
+      Namespace: CatLibrary,
       Assembly: CatLibrary.dll
     },
     body: [
@@ -422,10 +407,7 @@ Expilicit operator of this class.
     title: ICat Interface,
     summary: Cat's interface,
     fact: {
-      Namespace: {
-        link: CatLibrary,
-        href: CatLibrary
-      },
+      Namespace: CatLibrary,
       Assembly: CatLibrary.dll
     },
     body: [
@@ -455,10 +437,7 @@ Expilicit operator of this class.
 It's the class that contains ICat interface's extension method.
             This class must be public and static.Also it shouldn't be a geneic class,
     fact: {
-      Namespace: {
-        link: CatLibrary,
-        href: CatLibrary
-      },
+      Namespace: CatLibrary,
       Assembly: CatLibrary.dll
     },
     body: [
@@ -490,10 +469,7 @@ It's the class that contains ICat interface's extension method.
     title: MRefDelegate<K,T,L> Delegate,
     summary: Generic delegate with many constrains.,
     fact: {
-      Namespace: {
-        link: CatLibrary,
-        href: CatLibrary
-      },
+      Namespace: CatLibrary,
       Assembly: CatLibrary.dll
     },
     body: [
@@ -553,10 +529,7 @@ It's the class that contains ICat interface's extension method.
     title: MRefNormalDelegate Delegate,
     summary: Delegate in the namespace,
     fact: {
-      Namespace: {
-        link: CatLibrary,
-        href: CatLibrary
-      },
+      Namespace: CatLibrary,
       Assembly: CatLibrary.dll
     },
     body: [
@@ -590,10 +563,7 @@ It's the class that contains ICat interface's extension method.
     title: Tom Class,
     summary: Tom class is only inherit from Object. Not any member inside itself.,
     fact: {
-      Namespace: {
-        link: CatLibrary,
-        href: CatLibrary
-      },
+      Namespace: CatLibrary,
       Assembly: CatLibrary.dll
     },
     body: [
@@ -633,10 +603,7 @@ It's the class that contains ICat interface's extension method.
     title: TomFromBaseClass Class,
     summary: *TomFromBaseClass* inherits from @,
     fact: {
-      Namespace: {
-        link: CatLibrary,
-        href: CatLibrary
-      },
+      Namespace: CatLibrary,
       Assembly: CatLibrary.dll
     },
     body: [
@@ -664,10 +631,7 @@ It's the class that contains ICat interface's extension method.
     title: ColorType Enum,
     summary: Enumeration ColorType,
     fact: {
-      Namespace: {
-        link: MRef.Demo.Enumeration,
-        href: MRef.Demo.Enumeration
-      },
+      Namespace: MRef.Demo.Enumeration,
       Assembly: CatLibrary.dll
     },
     body: [
@@ -696,15 +660,18 @@ Red/Blue/Yellow can become all color you want.
             parameters: [
               {
                 name: Red,
-                description: this color is red
+                description: this color is red,
+                default: 0
               },
               {
                 name: Blue,
-                description: blue like river
+                description: blue like river,
+                default: 1
               },
               {
                 name: Yellow,
-                description: yellow comes from desert
+                description: yellow comes from desert,
+                default: 2
               }
             ]
           }

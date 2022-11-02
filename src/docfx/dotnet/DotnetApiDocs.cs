@@ -97,7 +97,7 @@ public static class DotnetApiDocs
                 summary = comment?.summary,
                 fact = new()
                 {
-                    ["Namespace"] = new { link = type.Namespace, href = type.Namespace },
+                    ["Namespace"] = type.Namespace,
                     ["Assembly"] = $"{type.ParentModule?.Name}.dll",
                 },
             };
@@ -164,6 +164,7 @@ public static class DotnetApiDocs
                     {
                         name = item.Name,
                         description = XmlComment.Parse(xmlDoc?.GetDocumentation(item))?.summary,
+                        @default = $"{item.GetConstantValue()}",
                     })
                     .ToList();
 
