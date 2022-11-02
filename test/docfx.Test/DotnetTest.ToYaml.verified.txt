@@ -728,6 +728,9 @@ Red/Blue/Yellow can become all color you want.
       name: CatLibrary,
       items: [
         {
+          label: Classes
+        },
+        {
           name: Cat<T,K>,
           href: CatLibrary.Cat`2.yml
         },
@@ -740,8 +743,19 @@ Red/Blue/Yellow can become all color you want.
           href: CatLibrary.Complex`2.yml
         },
         {
-          name: FakeDelegate<T>,
-          href: CatLibrary.FakeDelegate`1.yml
+          name: ICatExtension,
+          href: CatLibrary.ICatExtension.yml
+        },
+        {
+          name: Tom,
+          href: CatLibrary.Tom.yml
+        },
+        {
+          name: TomFromBaseClass,
+          href: CatLibrary.TomFromBaseClass.yml
+        },
+        {
+          label: Interfaces
         },
         {
           name: IAnimal,
@@ -752,8 +766,11 @@ Red/Blue/Yellow can become all color you want.
           href: CatLibrary.ICat.yml
         },
         {
-          name: ICatExtension,
-          href: CatLibrary.ICatExtension.yml
+          label: Delegates
+        },
+        {
+          name: FakeDelegate<T>,
+          href: CatLibrary.FakeDelegate`1.yml
         },
         {
           name: MRefDelegate<K,T,L>,
@@ -762,20 +779,15 @@ Red/Blue/Yellow can become all color you want.
         {
           name: MRefNormalDelegate,
           href: CatLibrary.MRefNormalDelegate.yml
-        },
-        {
-          name: Tom,
-          href: CatLibrary.Tom.yml
-        },
-        {
-          name: TomFromBaseClass,
-          href: CatLibrary.TomFromBaseClass.yml
         }
       ]
     },
     {
       name: MRef.Demo.Enumeration,
       items: [
+        {
+          label: Enums
+        },
         {
           name: ColorType,
           href: MRef.Demo.Enumeration.ColorType.yml

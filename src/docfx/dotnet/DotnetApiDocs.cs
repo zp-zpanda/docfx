@@ -15,6 +15,8 @@ using YamlDotNet.Serialization;
 
 public static class DotnetApiDocs
 {
+    enum TypeLabel { None, Classes, Interfaces, Structs, Enums, Delegates }
+
     public static void ToYaml(string assemblyFileName, string outputDirectory)
     {
         Directory.CreateDirectory(outputDirectory);
@@ -43,6 +45,14 @@ public static class DotnetApiDocs
                 ConversionFlags.ShowTypeParameterVarianceModifier,
         };
 
+        var csharpDeclarationAmbience = new CSharpAmbience
+        {
+            ConversionFlags =
+                ConversionFlags.UseNullableSpecifierForValueTypes |
+                ConversionFlags.ShowTypeParameterList |
+                ConversionFlags.ShowTypeParameterVarianceModifier,
+        };
+
         var csharpJumplistAmbience = new CSharpAmbience
         {
             ConversionFlags = csharpNameAmbience.ConversionFlags |
@@ -58,11 +68,21 @@ public static class DotnetApiDocs
             .ConfigureDefaultValuesHandling(DefaultValuesHandling.OmitDefaults)
             .Build();
 
-        var toc = new List<(string @namespace, string name, string href)>();
+        var toc = new List<(string @namespace, TypeLabel label, string name, string href)>();
 
         foreach (var type in typeSystem.MainModule.TopLevelTypeDefinitions)
         {
-            if (ShouldIgnoreType())
+            var label = type.Kind switch
+            {
+                TypeKind.Class => TypeLabel.Classes,
+                TypeKind.Interface => TypeLabel.Interfaces,
+                TypeKind.Enum => TypeLabel.Enums,
+                TypeKind.Struct => TypeLabel.Structs,
+                TypeKind.Delegate or TypeKind.FunctionPointer => TypeLabel.Delegates,
+                _ => TypeLabel.None,
+            };
+
+            if (label is TypeLabel.None || ShouldIgnoreType())
                 continue;
 
             var comment = XmlComment.Parse(xmlDoc?.GetDocumentation(type));
@@ -96,7 +116,7 @@ public static class DotnetApiDocs
 
             File.WriteAllText(Path.Join(outputDirectory, $"{type.FullTypeName}.yml"), "#YamlMime:Reference\n" + serializer.Serialize(page));
 
-            toc.Add((type.Namespace, typeName, $"{type.FullTypeName}.yml"));
+            toc.Add((type.Namespace, label, typeName, $"{type.FullTypeName}.yml"));
 
             bool ShouldIgnoreType()
             {
@@ -213,7 +233,9 @@ public static class DotnetApiDocs
                     toc.GroupBy(e => e.@namespace).OrderBy(g => g.Key).Select(g => new
                     {
                         name = g.Key,
-                        items = g.OrderBy(e => e.name).Select(e => new { name = e.name, href = e.href }).ToList(),
+                        items = g.GroupBy(e => e.label).OrderBy(g => g.Key).SelectMany(g =>
+                            new object[] { new { label = g.Key.ToString() } }.Concat(
+                                g.OrderBy(e => e.name).Select(e => new { name = e.name, href = e.href }))).ToList(),
                     }).ToList()));
         }
 
