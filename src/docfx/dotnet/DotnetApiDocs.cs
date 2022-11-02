@@ -54,7 +54,7 @@ public static class DotnetApiDocs
                 ConversionFlags.ShowTypeParameterVarianceModifier,
         };
 
-        var csharpJumplistAmbience = new CSharpAmbience
+        var csharpSignatureAmbience = new CSharpAmbience
         {
             ConversionFlags = csharpNameAmbience.ConversionFlags |
                 ConversionFlags.ShowParameterList |
@@ -73,6 +73,22 @@ public static class DotnetApiDocs
 
         foreach (var type in typeSystem.MainModule.TopLevelTypeDefinitions)
         {
+            DumpType(type);
+        }
+
+        File.WriteAllText(
+            Path.Join(outputDirectory, "TOC.yml"),
+            serializer.Serialize(
+                toc.GroupBy(e => e.@namespace).OrderBy(g => g.Key).Select(g => new
+                {
+                    name = g.Key,
+                    items = g.GroupBy(e => e.label).OrderBy(g => g.Key).SelectMany(g =>
+                        new object[] { new { label = g.Key.ToString() } }.Concat(
+                            g.OrderBy(e => e.name).Select(e => new { name = e.name, href = e.href }))).ToList(),
+                }).ToList()));
+
+        void DumpType(ITypeDefinition type)
+        {
             var label = type.Kind switch
             {
                 TypeKind.Class => TypeLabel.Classes,
@@ -84,7 +100,7 @@ public static class DotnetApiDocs
             };
 
             if (label is TypeLabel.None || ShouldIgnoreType())
-                continue;
+                return;
 
             var comment = XmlComment.Parse(xmlDoc?.GetDocumentation(type));
             var typeName = csharpNameAmbience.ConvertSymbol(type);
@@ -92,7 +108,7 @@ public static class DotnetApiDocs
             var page = new ReferencePage
             {
                 id = type.FullTypeName.ToString(),
-                languageId= "csharp",
+                languageId = "csharp",
                 title = $"{typeName} {type.Kind}",
                 summary = comment?.summary,
                 fact = new()
@@ -104,16 +120,13 @@ public static class DotnetApiDocs
 
             page.body.Add(new { declaration = FormatCSharpDeclaration(type) });
 
-            if (comment?.example?.Any() ?? false)
-                page.body.Add(new { section = "Examples", body = comment.example.Select(e => new { markdown = e }).ToArray() });
+            AddTypeParameters(page.body, "Type Parameters", type.TypeParameters, comment?.typeparam);
 
-            if (!string.IsNullOrEmpty(comment?.remarks))
-                page.body.Add(new { section = "Remarks", body = new[] { new { markdown = comment.remarks } } });
+            AddExamplesAndRemarks(page.body, comment);
 
             DumpPage();
 
-            if (comment?.seealso?.Any() ?? false)
-                page.body.Add(new { section = "See also", body = comment.seealso.Select(e => new { markdown = e }).ToArray() });
+            AddSeeAlso(page.body, comment);
 
             File.WriteAllText(Path.Join(outputDirectory, $"{type.FullTypeName}.yml"), "#YamlMime:Reference\n" + serializer.Serialize(page));
 
@@ -134,29 +147,43 @@ public static class DotnetApiDocs
             {
                 return type.Kind switch
                 {
-                    TypeKind.Class or TypeKind.Struct or TypeKind.Interface => DumpClassLike(),
-                    TypeKind.Enum => DumpEnum(),
-                    TypeKind.Delegate => DumpDelegate(),
+                    TypeKind.Class or TypeKind.Struct or TypeKind.Interface => DumpClassLike(page.body),
+                    TypeKind.Enum => DumpEnum(page.body),
+                    TypeKind.Delegate => DumpDelegate(page.body),
                     _ => throw new NotSupportedException($"Unsupported type kind {type.Kind}"),
                 };
             }
 
-            bool DumpClassLike()
+            bool DumpClassLike(List<object> body)
             {
-                AddTypeParameters("Type Parameters", type.TypeParameters, comment?.typeparam);
+                var constructors = type.GetConstructors();
+                var fields = type.GetFields(options: GetMemberOptions.IgnoreInheritedMembers);
+                var properties = type.GetProperties(options: GetMemberOptions.IgnoreInheritedMembers);
+                var methods = type.GetMethods(m => !m.IsOperator && !m.IsExplicitInterfaceImplementation, options: GetMemberOptions.IgnoreInheritedMembers);
+                var operators = type.GetMethods(m => m.IsOperator, options: GetMemberOptions.IgnoreInheritedMembers);
+                var eiis = type.GetMethods(m => m.IsExplicitInterfaceImplementation, options: GetMemberOptions.IgnoreInheritedMembers);
+                var events = type.GetEvents(options: GetMemberOptions.IgnoreInheritedMembers);
 
-                AddJumplist("Constructors", type.GetConstructors());
-                AddJumplist("Fields", type.GetFields(options: GetMemberOptions.IgnoreInheritedMembers));
-                AddJumplist("Properties", type.GetProperties(options: GetMemberOptions.IgnoreInheritedMembers));
-                AddJumplist("Methods", type.GetMethods(m => !m.IsOperator && !m.IsExplicitInterfaceImplementation, options: GetMemberOptions.IgnoreInheritedMembers));
-                AddJumplist("Operators", type.GetMethods(m => m.IsOperator, options: GetMemberOptions.IgnoreInheritedMembers));
-                AddJumplist("Explicit Interface Implementations", type.GetMethods(m => m.IsExplicitInterfaceImplementation, options: GetMemberOptions.IgnoreInheritedMembers));
-                AddJumplist("Events", type.GetEvents(options: GetMemberOptions.IgnoreInheritedMembers));
+                AddJumplist(body, "Constructors", constructors);
+                AddJumplist(body, "Fields", fields);
+                AddJumplist(body, "Properties", properties);
+                AddJumplist(body, "Methods", methods);
+                AddJumplist(body, "Operators", operators);
+                AddJumplist(body, "Explicit Interface Implementations", eiis);
+                AddJumplist(body, "Events", events);
+
+                AddMemberDetails(body, "Constructors", constructors);
+                AddMemberDetails(body, "Fields", fields);
+                AddMemberDetails(body, "Properties", properties);
+                AddMemberDetails(body, "Methods", methods);
+                AddMemberDetails(body, "Operators", operators);
+                AddMemberDetails(body, "Explicit Interface Implementations", eiis);
+                AddMemberDetails(body, "Events", events);
 
                 return true;
             }
 
-            bool DumpEnum()
+            bool DumpEnum(List<object> body)
             {
                 var parameters = type
                     .GetFields(item => item.IsStatic, GetMemberOptions.IgnoreInheritedMembers)
@@ -169,22 +196,21 @@ public static class DotnetApiDocs
                     .ToList();
 
                 if (parameters.Count > 0)
-                    page.body.Add(new { section = "Fields", body = new[] { new { parameters } } });
+                    body.Add(new { section = "Fields", body = new[] { new { parameters } } });
 
                 return true;
             }
 
-            bool DumpDelegate()
+            bool DumpDelegate(List<object> body)
             {
                 var method = type.Methods.First(method => method.Name == "Invoke");
-                AddTypeParameters("Type Parameters", type.TypeParameters, comment?.typeparam);
-                AddParameterList("Parameters", method.Parameters, comment?.param);
-                AddReturnValue(method, comment?.returns);
+                AddParameterList(body, "Parameters", method.Parameters, comment?.param);
+                AddReturnValue(body, "Returns", method, comment);
 
                 return true;
             }
 
-            void AddJumplist(string section, IEnumerable<IEntity> items)
+            void AddJumplist(List<object> body, string section, IEnumerable<IEntity> items)
             {
                 if (!items.Any())
                     return;
@@ -192,16 +218,67 @@ public static class DotnetApiDocs
                 var jumplist = items
                     .Select(item => new
                     {
-                        name = csharpJumplistAmbience.ConvertSymbol(item),
+                        name = csharpSignatureAmbience.ConvertSymbol(item),
                         description = XmlComment.Parse(xmlDoc?.GetDocumentation(item))?.summary,
                     })
                     .OrderBy(item => item.name)
-                    .ToList();
+                .ToList();
 
-                page.body.Add(new { section, body = new[] { new { jumplist } } });
+                body.Add(new { section, body = new[] { new { jumplist } } });
             }
 
-            void AddParameterList(string section, IEnumerable<ISymbol> items, Dictionary<string, string>? comment = null)
+            void AddMemberDetails(List<object> body, string section, IEnumerable<IEntity> items)
+            {
+                if (!items.Any())
+                    return;
+
+                var sections = items
+                    .Select(item => new
+                    {
+                        section = csharpSignatureAmbience.ConvertSymbol(item),
+                        body = DumpMemberDetails(item),
+                    })
+                    .OrderBy(item => item.section)
+                    .ToList();
+
+                body.Add(new { section, body = sections });
+
+                List<object> DumpMemberDetails(IEntity item)
+                {
+                    var body = new List<object>();
+                    var comment = XmlComment.Parse(xmlDoc?.GetDocumentation(item));
+
+                    if (!string.IsNullOrEmpty(comment?.summary))
+                        body.Add(new { markdown = comment.summary });
+
+                    body.Add(new { declaration = FormatCSharpDeclaration(item) });
+
+                    if (item is IParameterizedMember parameterizedMember)
+                        AddParameterList(body, "Parameters", parameterizedMember.Parameters, comment?.param);
+
+                    if (item is IMember member)
+                    {
+                        var returnSection = member switch
+                        {
+                            IMethod => "Returns",
+                            IProperty => "Property Value",
+                            IField => "Field Value",
+                            _ => null,
+                        };
+
+                        if (returnSection != null)
+                            AddReturnValue(body, returnSection, member, comment);
+                    }
+
+                    AddExceptions(body, comment);
+                    AddExamplesAndRemarks(body, comment);
+                    AddSeeAlso(body, comment);
+
+                    return body;
+                }
+            }
+
+            void AddParameterList(List<object> body, string section, IEnumerable<ISymbol> items, Dictionary<string, string>? comment = null)
             {
                 if (!items.Any())
                     return;
@@ -213,12 +290,12 @@ public static class DotnetApiDocs
                         type = FormatCSharpType(item),
                         description = TryGetValue(comment, item.Name),
                     })
-                    .ToList();
+                .ToList();
 
-                page.body.Add(new { section, body = new[] { new { parameters } } });
+                body.Add(new { section, body = new[] { new { parameters } } });
             }
 
-            void AddTypeParameters(string section, IEnumerable<ISymbol> items, Dictionary<string, string>? comment = null)
+            void AddTypeParameters(List<object> body, string section, IEnumerable<ISymbol> items, Dictionary<string, string>? comment = null)
             {
                 if (!items.Any())
                     return;
@@ -229,37 +306,50 @@ public static class DotnetApiDocs
                     description = TryGetValue(comment, item.Name),
                 }).ToList();
 
-                page.body.Add(new { section, body = new[] { new { parameters } } });
+                body.Add(new { section, body = new[] { new { parameters } } });
             }
 
-            void AddReturnValue(IMethod method, string? description = null)
+            void AddReturnValue(List<object> body, string section, IMember member, XmlComment? comment)
             {
-                if (method.ReturnType.Kind == TypeKind.Void)
+                if (member.ReturnType.Kind == TypeKind.Void)
                     return;
 
-                var parameters = new[] { new { type = FormatCSharpType(type), description } };
+                var parameters = new[] { new { type = FormatCSharpType(member), description = comment?.returns } };
 
-                page.body.Add(new { section = "Returns", body = new[] { new { parameters } } });
+                body.Add(new { section, body = new[] { new { parameters } } });
             }
 
-            File.WriteAllText(
-                Path.Join(outputDirectory, "TOC.yml"),
-                serializer.Serialize(
-                    toc.GroupBy(e => e.@namespace).OrderBy(g => g.Key).Select(g => new
-                    {
-                        name = g.Key,
-                        items = g.GroupBy(e => e.label).OrderBy(g => g.Key).SelectMany(g =>
-                            new object[] { new { label = g.Key.ToString() } }.Concat(
-                                g.OrderBy(e => e.name).Select(e => new { name = e.name, href = e.href }))).ToList(),
-                    }).ToList()));
+            void AddExceptions(List<object> body, XmlComment? comment)
+            {
+                if (comment?.exception?.Any() ?? false)
+                {
+                    var exceptions = comment.exception.Select(e => new { markdown = e }).ToList();
+                    body.Add(new { section = "Exceptions", body = exceptions });
+                }
+            }
+
+            void AddExamplesAndRemarks(List<object> body, XmlComment? comment)
+            {
+                if (comment?.example?.Any() ?? false)
+                    body.Add(new { section = "Examples", body = comment.example.Select(e => new { markdown = e }).ToArray() });
+
+                if (!string.IsNullOrEmpty(comment?.remarks))
+                    body.Add(new { section = "Remarks", body = new[] { new { markdown = comment.remarks } } });
+            }
+
+            void AddSeeAlso(List<object> body, XmlComment? comment)
+            {
+                if (comment?.seealso?.Any() ?? false)
+                    body.Add(new { section = "See also", body = comment.seealso.Select(e => new { markdown = e }).ToArray() });
+            }
         }
 
-        string FormatCSharpDeclaration(ITypeDefinition type)
+        string FormatCSharpDeclaration(ISymbol symbol)
         {
             var result = new StringBuilder();
-            var ast = typeSystemAstBuilder.ConvertSymbol(type);
+            var ast = typeSystemAstBuilder.ConvertSymbol(symbol);
 
-            if (type.Properties.Any(p => p.IsIndexer) && ast is EntityDeclaration entityDecl)
+            if (symbol is ITypeDefinition type && type.Properties.Any(p => p.IsIndexer) && ast is EntityDeclaration entityDecl)
             {
                 // Remove the [DefaultMember] attribute if the class contains indexers
                 // https://github.com/icsharpcode/ILSpy/blob/v7.2.1/ICSharpCode.Decompiler/CSharp/CSharpDecompiler.cs#L1323

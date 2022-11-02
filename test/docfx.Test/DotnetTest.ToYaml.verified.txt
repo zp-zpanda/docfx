@@ -15,6 +15,23 @@
 public class Cat<T, K> : ICat, IAnimal where T : class, new()where K : struct
       },
       {
+        section: Type Parameters,
+        body: [
+          {
+            parameters: [
+              {
+                name: T,
+                description: This type should be class and can new instance.
+              },
+              {
+                name: K,
+                description: This type is a struct type, class type can't be used for this parameter.
+              }
+            ]
+          }
+        ]
+      },
+      {
         section: Examples,
         body: [
           {
@@ -45,23 +62,6 @@ Here's all the content you can see in this class.Constructors. With different in
             
             unsafe method with pointer.
             Operators. You can also see explicit operator here.Properties. Include normal property and index.Events.Fields.EII. ExplicitImplementInterface. including eii property, eii method, eii event.Extension Methods. The extension methods not definition in this class, but we can find it!
-          }
-        ]
-      },
-      {
-        section: Type Parameters,
-        body: [
-          {
-            parameters: [
-              {
-                name: T,
-                description: This type should be class and can new instance.
-              },
-              {
-                name: K,
-                description: This type is a struct type, class type can't be used for this parameter.
-              }
-            ]
           }
         ]
       },
@@ -214,6 +214,660 @@ Expilicit operator of this class.
             ]
           }
         ]
+      },
+      {
+        section: Constructors,
+        body: [
+          {
+            section: Cat(),
+            body: [
+              {
+                markdown: Default constructor.
+              },
+              {
+                declaration: public Cat()
+              }
+            ]
+          },
+          {
+            section: Cat(string nickName, out int age, string realName, bool isHealthy),
+            body: [
+              {
+                markdown: It's a complex constructor. The parameter will have some attributes.
+              },
+              {
+                declaration: public Cat(string nickName, out int age, [Out] string realName, [In] bool isHealthy)
+              },
+              {
+                section: Parameters,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        name: nickName,
+                        type: string,
+                        description: it's string type.
+                      },
+                      {
+                        name: age,
+                        type: int,
+                        description: It's an out and ref parameter.
+                      },
+                      {
+                        name: realName,
+                        type: string,
+                        description: It's an out paramter.
+                      },
+                      {
+                        name: isHealthy,
+                        type: bool,
+                        description: It's an in parameter.
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            section: Cat(T ownType),
+            body: [
+              {
+                markdown: Constructor with one generic parameter.
+              },
+              {
+                declaration: public Cat(T ownType)
+              },
+              {
+                section: Parameters,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        name: ownType,
+                        type: T,
+                        description: This parameter type defined by class.
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        section: Fields,
+        body: [
+          {
+            section: isHealthy,
+            body: [
+              {
+                markdown: Field with attribute.
+              },
+              {
+                declaration:
+[NonSerialized]
+[ContextStatic]
+public bool isHealthy
+              },
+              {
+                section: Field Value,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        type: bool
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            section: ownEat,
+            body: [
+              {
+                declaration:
+[CompilerGenerated]
+[DebuggerBrowsable(DebuggerBrowsableState.Never)]
+private EventHandler ownEat
+              },
+              {
+                section: Field Value,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        type: EventHandler
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        section: Properties,
+        body: [
+          {
+            section: Age,
+            body: [
+              {
+                markdown: Hint cat's age.
+              },
+              {
+                declaration: protected int Age { get; set
+              },
+              {
+                section: Property Value,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        type: int
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            section: Name,
+            body: [
+              {
+                markdown: EII property.
+              },
+              {
+                declaration: public string Name { get
+              },
+              {
+                section: Property Value,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        type: string
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            section: this[int a],
+            body: [
+              {
+                markdown: EII index.
+              },
+              {
+                declaration: string IAnimal.this[int a] { get
+              },
+              {
+                section: Parameters,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        name: a,
+                        type: int,
+                        description: Cat's number.
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                section: Property Value,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        type: string,
+                        description: Cat's name.
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            section: this[string a],
+            body: [
+              {
+                markdown: This is index property of Cat. You can see that the visibility is different between get and set method.
+              },
+              {
+                declaration: public int this[string a] { protected get; set
+              },
+              {
+                section: Parameters,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        name: a,
+                        type: string,
+                        description: Cat's name.
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                section: Property Value,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        type: int,
+                        description: Cat's number.
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        section: Methods,
+        body: [
+          {
+            section: CalculateFood(DateTime date),
+            body: [
+              {
+                markdown: It's a method with complex return type.
+              },
+              {
+                declaration: public Dictionary<string, List<int>> CalculateFood(DateTime date)
+              },
+              {
+                section: Parameters,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        name: date,
+                        type: DateTime,
+                        description: Date time to now.
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                section: Returns,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        type: Dictionary<string, List<int>>,
+                        description: It's a relationship map of different kind food.
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            section: Equals(object obj),
+            body: [
+              {
+                markdown: Override the method of Object.Equals(object obj).
+              },
+              {
+                declaration: public override bool Equals(object obj)
+              },
+              {
+                section: Parameters,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        name: obj,
+                        type: object,
+                        description: Can pass any class type.
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                section: Returns,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        type: bool,
+                        description: The return value tell you whehter the compare operation is successful.
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            section: GetTailLength(int* catName, params object[] parameters),
+            body: [
+              {
+                markdown:
+It's an unsafe method.
+            As you see,  is a pointer, so we need to add unsafe keyword.
+              },
+              {
+                declaration: public long GetTailLength(int* catName, params object[] parameters)
+              },
+              {
+                section: Parameters,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        name: catName,
+                        type: int*,
+                        description: Thie represent for cat name length.
+                      },
+                      {
+                        name: parameters,
+                        type: object[],
+                        description: Optional parameters.
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                section: Returns,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        type: long,
+                        description: Return cat tail's length.
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            section: Jump(T ownType, K anotherOwnType, ref bool cheat),
+            body: [
+              {
+                markdown: This method have attribute above it.
+              },
+              {
+                declaration:
+[Conditional("Debug")]
+public void Jump(T ownType, K anotherOwnType, ref bool cheat)
+              },
+              {
+                section: Parameters,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        name: ownType,
+                        type: T,
+                        description: Type come from class define.
+                      },
+                      {
+                        name: anotherOwnType,
+                        type: K,
+                        description: Type come from class define.
+                      },
+                      {
+                        name: cheat,
+                        type: bool,
+                        description: Hint whether this cat has cheat mode.
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                section: Exceptions,
+                body: [
+                  {
+                    markdown: This is an argument exception
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        section: Operators,
+        body: [
+          {
+            section: explicit operator Tom(Cat<T,K> src),
+            body: [
+              {
+                markdown:
+Expilicit operator of this class.
+            It means this cat can evolve to change to Tom. Tom and Jerry.
+              },
+              {
+                declaration: public static explicit operator Tom(Cat<T, K> src)
+              },
+              {
+                section: Parameters,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        name: src,
+                        type: Cat<T, K>,
+                        description: Instance of this class.
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                section: Returns,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        type: Tom,
+                        description: Advanced class type of cat.
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            section: operator -(Cat<T,K> lsr, int rsr),
+            body: [
+              {
+                markdown: Similar with operaotr +, refer to that topic.
+              },
+              {
+                declaration: public static int operator -(Cat<T, K> lsr, int rsr)
+              },
+              {
+                section: Parameters,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        name: lsr,
+                        type: Cat<T, K>
+                      },
+                      {
+                        name: rsr,
+                        type: int
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                section: Returns,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        type: int
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            section: operator +(Cat<T,K> lsr, int rsr),
+            body: [
+              {
+                markdown: Addition operator of this class.
+              },
+              {
+                declaration: public static int operator +(Cat<T, K> lsr, int rsr)
+              },
+              {
+                section: Parameters,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        name: lsr,
+                        type: Cat<T, K>,
+                        description: ...
+                      },
+                      {
+                        name: rsr,
+                        type: int,
+                        description: ~~~
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                section: Returns,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        type: int,
+                        description: Result with int type.
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        section: Explicit Interface Implementations,
+        body: [
+          {
+            section: CatLibrary.IAnimal.Eat(),
+            body: [
+              {
+                markdown: EII method.
+              },
+              {
+                declaration: void IAnimal.CatLibrary.IAnimal.Eat()
+              }
+            ]
+          },
+          {
+            section: CatLibrary.IAnimal.Eat(string food),
+            body: [
+              {
+                markdown: Implementation of Eat(food)
+              },
+              {
+                declaration: void IAnimal.CatLibrary.IAnimal.Eat(string food)
+              },
+              {
+                section: Parameters,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        name: food,
+                        type: string,
+                        description: Food to eat
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            section: CatLibrary.IAnimal.Eat<Tool>(Tool a),
+            body: [
+              {
+                markdown: EII template method.
+              },
+              {
+                declaration: void IAnimal.CatLibrary.IAnimal.Eat<Tool>(Tool a)
+              },
+              {
+                section: Parameters,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        name: a,
+                        type: Tool,
+                        description: Tool name.
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        section: Events,
+        body: [
+          {
+            section: CatLibrary.ICat.eat,
+            body: [
+              {
+                markdown: EII event.
+              },
+              {
+                declaration: event EventHandler CatLibrary.ICat.eat
+              }
+            ]
+          },
+          {
+            section: ownEat,
+            body: [
+              {
+                markdown: Eat event of this cat
+              },
+              {
+                declaration: public event EventHandler ownEat
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -248,6 +902,19 @@ Expilicit operator of this class.
             jumplist: [
               {
                 name: CatException()
+              }
+            ]
+          }
+        ]
+      },
+      {
+        section: Constructors,
+        body: [
+          {
+            section: CatException(),
+            body: [
+              {
+                declaration: public CatException()
               }
             ]
           }
@@ -289,6 +956,19 @@ Expilicit operator of this class.
             jumplist: [
               {
                 name: Complex()
+              }
+            ]
+          }
+        ]
+      },
+      {
+        section: Constructors,
+        body: [
+          {
+            section: Complex(),
+            body: [
+              {
+                declaration: public Complex()
               }
             ]
           }
@@ -411,6 +1091,138 @@ Expilicit operator of this class.
             ]
           }
         ]
+      },
+      {
+        section: Properties,
+        body: [
+          {
+            section: Name,
+            body: [
+              {
+                markdown: Name of Animal.
+              },
+              {
+                declaration: string Name { get
+              },
+              {
+                section: Property Value,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        type: string
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            section: this[int index],
+            body: [
+              {
+                markdown: Return specific number animal's name.
+              },
+              {
+                declaration: string this[int index] { get
+              },
+              {
+                section: Parameters,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        name: index,
+                        type: int,
+                        description: Animal number.
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                section: Property Value,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        type: string,
+                        description: Animal name.
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        section: Methods,
+        body: [
+          {
+            section: Eat(),
+            body: [
+              {
+                markdown: Animal's eat method.
+              },
+              {
+                declaration: void Eat()
+              }
+            ]
+          },
+          {
+            section: Eat(string food),
+            body: [
+              {
+                markdown: Feed the animal with some food
+              },
+              {
+                declaration: void Eat(string food)
+              },
+              {
+                section: Parameters,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        name: food,
+                        type: string,
+                        description: Food to eat
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            section: Eat<Tool>(Tool tool),
+            body: [
+              {
+                markdown: Overload method of eat. This define the animal eat by which tool.
+              },
+              {
+                declaration: void Eat<Tool>(Tool tool) where Tool : class
+              },
+              {
+                section: Parameters,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        name: tool,
+                        type: Tool,
+                        description: Tool name.
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -435,6 +1247,22 @@ Expilicit operator of this class.
               {
                 name: eat,
                 description: eat event of cat. Every cat must implement this event.
+              }
+            ]
+          }
+        ]
+      },
+      {
+        section: Events,
+        body: [
+          {
+            section: eat,
+            body: [
+              {
+                markdown: eat event of cat. Every cat must implement this event.
+              },
+              {
+                declaration: event EventHandler eat
               }
             ]
           }
@@ -469,6 +1297,71 @@ It's the class that contains ICat interface's extension method.
               {
                 name: Sleep(this ICat icat, long hours),
                 description: Extension method hint that how long the cat can sleep.
+              }
+            ]
+          }
+        ]
+      },
+      {
+        section: Methods,
+        body: [
+          {
+            section: Play(this ICat icat, string toy),
+            body: [
+              {
+                markdown: Extension method to let cat play
+              },
+              {
+                declaration: public static void Play(this ICat icat, string toy)
+              },
+              {
+                section: Parameters,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        name: icat,
+                        type: ICat,
+                        description: Cat
+                      },
+                      {
+                        name: toy,
+                        type: string,
+                        description: Something to play
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            section: Sleep(this ICat icat, long hours),
+            body: [
+              {
+                markdown: Extension method hint that how long the cat can sleep.
+              },
+              {
+                declaration: public static void Sleep(this ICat icat, long hours)
+              },
+              {
+                section: Parameters,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        name: icat,
+                        type: ICat,
+                        description: The type will be extended.
+                      },
+                      {
+                        name: hours,
+                        type: long,
+                        description: The length of sleep.
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           }
@@ -607,6 +1500,81 @@ It's the class that contains ICat interface's extension method.
             ]
           }
         ]
+      },
+      {
+        section: Constructors,
+        body: [
+          {
+            section: Tom(),
+            body: [
+              {
+                declaration: public Tom()
+              }
+            ]
+          }
+        ]
+      },
+      {
+        section: Methods,
+        body: [
+          {
+            section: TomMethod(Complex<TomFromBaseClass,TomFromBaseClass> a, Tuple<string,Tom> b),
+            body: [
+              {
+                markdown: This is a Tom Method with complex type as return
+              },
+              {
+                declaration: public Complex<string, TomFromBaseClass> TomMethod(Complex<TomFromBaseClass, TomFromBaseClass> a, Tuple<string, Tom> b)
+              },
+              {
+                section: Parameters,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        name: a,
+                        type: Complex<TomFromBaseClass, TomFromBaseClass>,
+                        description: A complex input
+                      },
+                      {
+                        name: b,
+                        type: Tuple<string, Tom>,
+                        description: Another complex input
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                section: Returns,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        type: Complex<string, TomFromBaseClass>,
+                        description: Complex @CatLibrary.TomFromBaseClass
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                section: Exceptions,
+                body: [
+                  {
+                    markdown: This is not implemented
+                  },
+                  {
+                    markdown: This is the exception to be thrown when implemented
+                  },
+                  {
+                    markdown: This is the exception in current documentation
+                  }
+                ]
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -631,6 +1599,36 @@ It's the class that contains ICat interface's extension method.
               {
                 name: TomFromBaseClass(int k),
                 description: This is a #ctor with parameter
+              }
+            ]
+          }
+        ]
+      },
+      {
+        section: Constructors,
+        body: [
+          {
+            section: TomFromBaseClass(int k),
+            body: [
+              {
+                markdown: This is a #ctor with parameter
+              },
+              {
+                declaration: public TomFromBaseClass(int k)
+              },
+              {
+                section: Parameters,
+                body: [
+                  {
+                    parameters: [
+                      {
+                        name: k,
+                        type: int,
+                        description: 
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           }
