@@ -1,0 +1,30 @@
+{
+  "name": "@docfx/workspace",
+  "private": true,
+  "version": "1.0.0",
+  "description": "API documentation tool",
+  "bin": "dist/cli.js",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dotnet/docfx.git"
+  },
+  "keywords": [
+    "docfx",
+    "documentation"
+  ],
+  "author": "Yufei Huang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dotnet/docfx/issues"
+  },
+  "homepage": "https://github.com/dotnet/docfx#readme",
+  "dependencies": {
+    "escape-html": "^1.0.3",
+    "yargs": "^17.6.0"
+  }
+}

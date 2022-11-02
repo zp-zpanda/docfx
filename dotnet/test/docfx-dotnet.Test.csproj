@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="../data/**/*" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="../testdata/**/*" LinkBase="testdata" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
   <ItemGroup>
@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../../src/docfx/docfx.csproj" />
+    <ProjectReference Include="../src/docfx-dotnet.csproj" />
   </ItemGroup>
 
 </Project>

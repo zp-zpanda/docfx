@@ -2,6 +2,7 @@
 .vscode
 
 bin
+dist
 drop
 obj
 
@@ -31,7 +32,6 @@ src/docfx.website.themes/default/styles/docfx.vendor.js
 src/docfx.website.themes/default/styles/lunr.js
 src/docfx.website.themes/default/styles/lunr.min.js
 src/docfx.website.themes/default/fonts/
-package-lock.json
 node_modules
 bower_components
 target

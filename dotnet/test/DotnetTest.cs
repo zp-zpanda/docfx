@@ -11,7 +11,7 @@ public static class DotnetTest
     public static TheoryData<string> GetTestCases()
     {
         var testCases = new TheoryData<string>();
-        foreach (var testCase in Directory.GetDirectories("dotnet"))
+        foreach (var testCase in Directory.GetDirectories("testdata"))
         {
             testCases.Add(testCase.Replace('\\', '/'));
         }

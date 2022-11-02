@@ -1,5 +1,5 @@
 ﻿{
-  dotnet/cat/api/CatLibrary.Cat`2.yml: {
+  testdata/cat/api/CatLibrary.Cat`2.yml: {
     id: CatLibrary.Cat`2,
     languageId: csharp,
     title: Cat<T,K> Class,
@@ -871,7 +871,7 @@ Expilicit operator of this class.
       }
     ]
   },
-  dotnet/cat/api/CatLibrary.CatException`1.yml: {
+  testdata/cat/api/CatLibrary.CatException`1.yml: {
     id: CatLibrary.CatException`1,
     languageId: csharp,
     title: CatException<T> Class,
@@ -922,7 +922,7 @@ Expilicit operator of this class.
       }
     ]
   },
-  dotnet/cat/api/CatLibrary.Complex`2.yml: {
+  testdata/cat/api/CatLibrary.Complex`2.yml: {
     id: CatLibrary.Complex`2,
     languageId: csharp,
     title: Complex<T,J> Class,
@@ -976,7 +976,7 @@ Expilicit operator of this class.
       }
     ]
   },
-  dotnet/cat/api/CatLibrary.FakeDelegate`1.yml: {
+  testdata/cat/api/CatLibrary.FakeDelegate`1.yml: {
     id: CatLibrary.FakeDelegate`1,
     languageId: csharp,
     title: FakeDelegate<T> Delegate,
@@ -1041,7 +1041,7 @@ Expilicit operator of this class.
       }
     ]
   },
-  dotnet/cat/api/CatLibrary.IAnimal.yml: {
+  testdata/cat/api/CatLibrary.IAnimal.yml: {
     id: CatLibrary.IAnimal,
     languageId: csharp,
     title: IAnimal Interface,
@@ -1226,7 +1226,7 @@ Expilicit operator of this class.
       }
     ]
   },
-  dotnet/cat/api/CatLibrary.ICat.yml: {
+  testdata/cat/api/CatLibrary.ICat.yml: {
     id: CatLibrary.ICat,
     languageId: csharp,
     title: ICat Interface,
@@ -1270,7 +1270,7 @@ Expilicit operator of this class.
       }
     ]
   },
-  dotnet/cat/api/CatLibrary.ICatExtension.yml: {
+  testdata/cat/api/CatLibrary.ICatExtension.yml: {
     id: CatLibrary.ICatExtension,
     languageId: csharp,
     title: ICatExtension Class,
@@ -1369,7 +1369,7 @@ It's the class that contains ICat interface's extension method.
       }
     ]
   },
-  dotnet/cat/api/CatLibrary.MRefDelegate`3.yml: {
+  testdata/cat/api/CatLibrary.MRefDelegate`3.yml: {
     id: CatLibrary.MRefDelegate`3,
     languageId: csharp,
     title: MRefDelegate<K,T,L> Delegate,
@@ -1429,7 +1429,7 @@ It's the class that contains ICat interface's extension method.
       }
     ]
   },
-  dotnet/cat/api/CatLibrary.MRefNormalDelegate.yml: {
+  testdata/cat/api/CatLibrary.MRefNormalDelegate.yml: {
     id: CatLibrary.MRefNormalDelegate,
     languageId: csharp,
     title: MRefNormalDelegate Delegate,
@@ -1463,7 +1463,7 @@ It's the class that contains ICat interface's extension method.
       }
     ]
   },
-  dotnet/cat/api/CatLibrary.Tom.yml: {
+  testdata/cat/api/CatLibrary.Tom.yml: {
     id: CatLibrary.Tom,
     languageId: csharp,
     title: Tom Class,
@@ -1578,7 +1578,7 @@ It's the class that contains ICat interface's extension method.
       }
     ]
   },
-  dotnet/cat/api/CatLibrary.TomFromBaseClass.yml: {
+  testdata/cat/api/CatLibrary.TomFromBaseClass.yml: {
     id: CatLibrary.TomFromBaseClass,
     languageId: csharp,
     title: TomFromBaseClass Class,
@@ -1636,7 +1636,7 @@ It's the class that contains ICat interface's extension method.
       }
     ]
   },
-  dotnet/cat/api/MRef.Demo.Enumeration.ColorType.yml: {
+  testdata/cat/api/MRef.Demo.Enumeration.ColorType.yml: {
     id: MRef.Demo.Enumeration.ColorType,
     languageId: csharp,
     title: ColorType Enum,
@@ -1698,7 +1698,7 @@ Red/Blue/Yellow can become all color you want.
       }
     ]
   },
-  dotnet/cat/api/TOC.yml: [
+  testdata/cat/api/TOC.yml: [
     {
       name: CatLibrary,
       items: [
