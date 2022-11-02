@@ -15,7 +15,6 @@
       {
         declaration:
 [Serializable]
-[DefaultMember("Item")]
 public class Cat<T, K> : ICat, IAnimal where T : class, new()where K : struct
       },
       {
@@ -375,9 +374,7 @@ Expilicit operator of this class.
     },
     body: [
       {
-        declaration:
-[DefaultMember("Item")]
-public interface IAnimal
+        declaration: public interface IAnimal
       },
       {
         section: Properties,

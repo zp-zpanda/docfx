@@ -2,6 +2,7 @@
 // The .NET Foundation licenses this file to you under the MIT license.
 
 using System.CommandLine;
+using System.Reflection.Metadata;
 using System.Text;
 using ICSharpCode.Decompiler;
 using ICSharpCode.Decompiler.CSharp;
@@ -239,13 +240,40 @@ public static class DotnetApiDocs
                     }).ToList()));
         }
 
-        string FormatCSharpDeclaration(ISymbol symbol)
+        string FormatCSharpDeclaration(ITypeDefinition type)
         {
             var result = new StringBuilder();
-            var ast = typeSystemAstBuilder.ConvertSymbol(symbol);
+            var ast = typeSystemAstBuilder.ConvertSymbol(type);
+
+            if (type.Properties.Any(p => p.IsIndexer) && ast is EntityDeclaration entityDecl)
+            {
+                // Remove the [DefaultMember] attribute if the class contains indexers
+                // https://github.com/icsharpcode/ILSpy/blob/v7.2.1/ICSharpCode.Decompiler/CSharp/CSharpDecompiler.cs#L1323
+                RemoveAttribute(entityDecl, "System.Reflection.DefaultMemberAttribute");
+            }
+
             using var writer = new StringWriter(result);
             ast.AcceptVisitor(new CSharpOutputVisitor(writer, settings.CSharpFormattingOptions));
             return result.ToString().Trim(' ', '{', '}', '\r', '\n', ';');
+        }
+
+        static void RemoveAttribute(EntityDeclaration entityDecl, string attributeType)
+        {
+            foreach (var section in entityDecl.Attributes)
+            {
+                foreach (var attr in section.Attributes)
+                {
+                    var symbol = attr.Type.GetSymbol();
+                    if (symbol is ITypeDefinition td && td.FullName == attributeType)
+                    {
+                        attr.Remove();
+                    }
+                }
+                if (section.Attributes.Count == 0)
+                {
+                    section.Remove();
+                }
+            }
         }
 
         string FormatCSharpType(ISymbol symbol)
