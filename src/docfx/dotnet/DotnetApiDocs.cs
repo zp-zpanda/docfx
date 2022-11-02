@@ -176,8 +176,10 @@ public static class DotnetApiDocs
 
             bool DumpDelegate()
             {
+                var method = type.Methods.First(method => method.Name == "Invoke");
                 AddTypeParameters("Type Parameters", type.TypeParameters, comment?.typeparam);
-                AddParameterList("Parameters", type.Methods.First(method => method.Name == "Invoke").Parameters, comment.param);
+                AddParameterList("Parameters", method.Parameters, comment?.param);
+                AddReturnValue(method, comment?.returns);
 
                 return true;
             }
@@ -193,6 +195,7 @@ public static class DotnetApiDocs
                         name = csharpJumplistAmbience.ConvertSymbol(item),
                         description = XmlComment.Parse(xmlDoc?.GetDocumentation(item))?.summary,
                     })
+                    .OrderBy(item => item.name)
                     .ToList();
 
                 page.body.Add(new { section, body = new[] { new { jumplist } } });
@@ -227,6 +230,16 @@ public static class DotnetApiDocs
                 }).ToList();
 
                 page.body.Add(new { section, body = new[] { new { parameters } } });
+            }
+
+            void AddReturnValue(IMethod method, string? description = null)
+            {
+                if (method.ReturnType.Kind == TypeKind.Void)
+                    return;
+
+                var parameters = new[] { new { type = FormatCSharpType(type), description } };
+
+                page.body.Add(new { section = "Returns", body = new[] { new { parameters } } });
             }
 
             File.WriteAllText(

@@ -75,12 +75,12 @@ Here's all the content you can see in this class.Constructors. With different in
                 description: Default constructor.
               },
               {
-                name: Cat(T ownType),
-                description: Constructor with one generic parameter.
-              },
-              {
                 name: Cat(string nickName, out int age, string realName, bool isHealthy),
                 description: It's a complex constructor. The parameter will have some attributes.
+              },
+              {
+                name: Cat(T ownType),
+                description: Constructor with one generic parameter.
               }
             ]
           }
@@ -92,11 +92,11 @@ Here's all the content you can see in this class.Constructors. With different in
           {
             jumplist: [
               {
-                name: ownEat
-              },
-              {
                 name: isHealthy,
                 description: Field with attribute.
+              },
+              {
+                name: ownEat
               }
             ]
           }
@@ -108,10 +108,6 @@ Here's all the content you can see in this class.Constructors. With different in
           {
             jumplist: [
               {
-                name: this[string a],
-                description: This is index property of Cat. You can see that the visibility is different between get and set method.
-              },
-              {
                 name: Age,
                 description: Hint cat's age.
               },
@@ -122,6 +118,10 @@ Here's all the content you can see in this class.Constructors. With different in
               {
                 name: this[int a],
                 description: EII index.
+              },
+              {
+                name: this[string a],
+                description: This is index property of Cat. You can see that the visibility is different between get and set method.
               }
             ]
           }
@@ -137,10 +137,6 @@ Here's all the content you can see in this class.Constructors. With different in
                 description: It's a method with complex return type.
               },
               {
-                name: Jump(T ownType, K anotherOwnType, ref bool cheat),
-                description: This method have attribute above it.
-              },
-              {
                 name: Equals(object obj),
                 description: Override the method of Object.Equals(object obj).
               },
@@ -149,6 +145,10 @@ Here's all the content you can see in this class.Constructors. With different in
                 description:
 It's an unsafe method.
             As you see,  is a pointer, so we need to add unsafe keyword.
+              },
+              {
+                name: Jump(T ownType, K anotherOwnType, ref bool cheat),
+                description: This method have attribute above it.
               }
             ]
           }
@@ -160,18 +160,18 @@ It's an unsafe method.
           {
             jumplist: [
               {
-                name: operator +(Cat<T,K> lsr, int rsr),
-                description: Addition operator of this class.
+                name: explicit operator Tom(Cat<T,K> src),
+                description:
+Expilicit operator of this class.
+            It means this cat can evolve to change to Tom. Tom and Jerry.
               },
               {
                 name: operator -(Cat<T,K> lsr, int rsr),
                 description: Similar with operaotr +, refer to that topic.
               },
               {
-                name: explicit operator Tom(Cat<T,K> src),
-                description:
-Expilicit operator of this class.
-            It means this cat can evolve to change to Tom. Tom and Jerry.
+                name: operator +(Cat<T,K> lsr, int rsr),
+                description: Addition operator of this class.
               }
             ]
           }
@@ -187,12 +187,12 @@ Expilicit operator of this class.
                 description: EII method.
               },
               {
-                name: CatLibrary.IAnimal.Eat<Tool>(Tool a),
-                description: EII template method.
-              },
-              {
                 name: CatLibrary.IAnimal.Eat(string food),
                 description: Implementation of Eat(food)
+              },
+              {
+                name: CatLibrary.IAnimal.Eat<Tool>(Tool a),
+                description: EII template method.
               }
             ]
           }
@@ -204,12 +204,12 @@ Expilicit operator of this class.
           {
             jumplist: [
               {
-                name: ownEat,
-                description: Eat event of this cat
-              },
-              {
                 name: CatLibrary.ICat.eat,
                 description: EII event.
+              },
+              {
+                name: ownEat,
+                description: Eat event of this cat
               }
             ]
           }
@@ -345,6 +345,19 @@ Expilicit operator of this class.
             ]
           }
         ]
+      },
+      {
+        section: Returns,
+        body: [
+          {
+            parameters: [
+              {
+                type: int,
+                description: Return a fake number to confuse you.
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -388,12 +401,12 @@ Expilicit operator of this class.
                 description: Animal's eat method.
               },
               {
-                name: Eat<Tool>(Tool tool),
-                description: Overload method of eat. This define the animal eat by which tool.
-              },
-              {
                 name: Eat(string food),
                 description: Feed the animal with some food
+              },
+              {
+                name: Eat<Tool>(Tool tool),
+                description: Overload method of eat. This define the animal eat by which tool.
               }
             ]
           }
@@ -450,12 +463,12 @@ It's the class that contains ICat interface's extension method.
           {
             jumplist: [
               {
-                name: Sleep(this ICat icat, long hours),
-                description: Extension method hint that how long the cat can sleep.
-              },
-              {
                 name: Play(this ICat icat, string toy),
                 description: Extension method to let cat play
+              },
+              {
+                name: Sleep(this ICat icat, long hours),
+                description: Extension method hint that how long the cat can sleep.
               }
             ]
           }
