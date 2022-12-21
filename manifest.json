@@ -117,30 +117,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.AssemblyLicenseAttribute.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Microsoft.DocAsCode.AssemblyLicenseAttribute.html",
-          "hash": "PLZOZGnp8RLz/09ZTPVodHD1/fULL6P2saq7hbkjbX8="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.AssemblyUsageAttribute.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Microsoft.DocAsCode.AssemblyUsageAttribute.html",
-          "hash": "FRkbweYQF8Sua1GwKcGMRiQYnRiXMegoYNTWOgEeXKA="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.Build.Common.ApplyOverwriteDocument.yml",
       "output": {
         ".html": {
@@ -4886,18 +4862,6 @@
         ".html": {
           "relative_path": "api/Microsoft.DocAsCode.ContentPairingInfo.html",
           "hash": "o3AbphnLFQ/C2RkS3GaR7RSoBY5Xv46UFW84dIsW0ww="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.CustomAssemblyTextAttribute.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Microsoft.DocAsCode.CustomAssemblyTextAttribute.html",
-          "hash": "4RtMrD6geCoBclmNh8NgqMq+Zqs/MEr1y844C72/VJQ="
         }
       },
       "is_incremental": false,
@@ -12481,7 +12445,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.DocAsCode.html",
-          "hash": "UdUNTJ1Ilk6FV19Z902jytRHeyAs6UTsaTZSiKS+L0M="
+          "hash": "3c/KImX6+X9S12Ffdxre+I1xh+YxyNdqm92lJokhJag="
         }
       },
       "is_incremental": false,
@@ -12493,7 +12457,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "RDM7ip/hVeKHf6OoaqRhUyjDJTlC9vsfazEMZCh9gM4="
+          "hash": "Ws1618Y3OpNszyYdPXX0yLtyn6Gwi0WBHE4CCqROBGY="
         }
       },
       "is_incremental": false,
@@ -13509,7 +13473,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 1033,
+          "total_file_count": 1030,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
