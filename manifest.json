@@ -3285,18 +3285,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.BuildJsonConfig.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Microsoft.DocAsCode.BuildJsonConfig.html",
-          "hash": "9QltWzPWXKpXEPzyI9Tjs+XklgZEv0zQDkzDMpGJLs4="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.CascadableOptions.yml",
       "output": {
         ".html": {
@@ -3566,18 +3554,6 @@
         ".html": {
           "relative_path": "api/Microsoft.DocAsCode.Common.ConvertToObjectHelper.html",
           "hash": "LZ1GN/njZUf0M+JKdwnxxK26EBlwEpb1b13OklUan9k="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.Common.CrossAppDomainListener.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Microsoft.DocAsCode.Common.CrossAppDomainListener.html",
-          "hash": "yAyskYmrUwbhVUWqxDOdlNyPc5re3Fh3jTZQ1J9cRMY="
         }
       },
       "is_incremental": false,
@@ -4849,19 +4825,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.DocAsCode.Common.html",
-          "hash": "QzCJPUwcEfp3Y1erNHgWVTY1rpUPYv+G29Xy5MIqO80="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.ContentPairingInfo.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Microsoft.DocAsCode.ContentPairingInfo.html",
-          "hash": "o3AbphnLFQ/C2RkS3GaR7RSoBY5Xv46UFW84dIsW0ww="
+          "hash": "N1er6pDmT+foHt4peHBvT4L4yFdvlGkM1AwL+g9YkpM="
         }
       },
       "is_incremental": false,
@@ -6597,11 +6561,23 @@
     },
     {
       "type": "ManagedReference",
+      "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.Docset.yml",
+      "output": {
+        ".html": {
+          "relative_path": "api/Microsoft.DocAsCode.Docset.html",
+          "hash": "J4ZwXOFRABbeuaQtddiF0jUwSYuS/KjUXbMrEOdiuPI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
       "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.Exceptions.DocfxException.yml",
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.DocAsCode.Exceptions.DocfxException.html",
-          "hash": "JIvy/ksnc6RTHiKZt6D69SEZQDij9LqTD7JfL/YRVF8="
+          "hash": "E8I6asA2mkIGxJeVKrsKoBIUOPdtHQEs+LQYbIkmqBg="
         }
       },
       "is_incremental": false,
@@ -6693,30 +6669,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.Exceptions.PluginDirectoryAlreadyExistsException.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Microsoft.DocAsCode.Exceptions.PluginDirectoryAlreadyExistsException.html",
-          "hash": "EwZjS4buBAEnsI5LdR27DwsyVH+0wdnWJnQMGgrT2XQ="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.Exceptions.PluginException.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Microsoft.DocAsCode.Exceptions.PluginException.html",
-          "hash": "bmdjbiZjj5MhpMqHjZyW2Rcpjn7P0EdmepSbpp0lf7A="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.Exceptions.SchemaFeatureNotSupportedException.yml",
       "output": {
         ".html": {
@@ -6745,55 +6697,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.DocAsCode.Exceptions.html",
-          "hash": "wEY3P/DXi7ALorp0KYrRs0mCR5aooKYpGrghW6q3Ulk="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.FileItems.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Microsoft.DocAsCode.FileItems.html",
-          "hash": "WmEAMGksrgc4Xx6dWkO3JM3O/iJzQyesHbBeMeORdO0="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.FileMapping.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Microsoft.DocAsCode.FileMapping.html",
-          "hash": "CVppG6GBhQIGYP+xggaZ06qdiTMpgiDKbyEPk1ubw4g="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.FileMappingConverter.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Microsoft.DocAsCode.FileMappingConverter.html",
-          "hash": "cM84Hh9m/PTm+4pBkww9YYeK0eMaOkH/CeK346k9LW4="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.FileMappingItem.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Microsoft.DocAsCode.FileMappingItem.html",
-          "hash": "F4o0IBMvt0fl/tts5Vb+u1oRfDdhr3bmw6cpEAmHG+c="
+          "hash": "nSIeStpw9670i8GrYGy2O3ceGqDJAyIbWYjYylK+7D8="
         }
       },
       "is_incremental": false,
@@ -6806,42 +6710,6 @@
         ".html": {
           "relative_path": "api/Microsoft.DocAsCode.FileMetadataConverter.html",
           "hash": "RG4sNnsbS4x159IM6oMifsNAy/BW46xRhj4H5hLUNQ4="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.FileMetadataPairs.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Microsoft.DocAsCode.FileMetadataPairs.html",
-          "hash": "ij8lU9M8AZIjtJSOpXW48F1r31KzegdoqLvETEDOeK0="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.FileMetadataPairsConverter.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Microsoft.DocAsCode.FileMetadataPairsConverter.html",
-          "hash": "DNCTJB7hK+P8vW0ubMJbhNJVFQ3rwRlpaQw3r2j2aa8="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.FileMetadataPairsItem.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Microsoft.DocAsCode.FileMetadataPairsItem.html",
-          "hash": "Cr4SobXCxKpc60yDH/djJBO1dqV/jvw6iw8DZ2BRGhM="
         }
       },
       "is_incremental": false,
@@ -6890,18 +6758,6 @@
         ".html": {
           "relative_path": "api/Microsoft.DocAsCode.Glob.html",
           "hash": "WdbAPZNDetQk8XD/8+TFHUiO0Ia/rZynS1P7QF69Xo4="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.GroupConfig.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Microsoft.DocAsCode.GroupConfig.html",
-          "hash": "iQNyddfXCYE1esOX1/g0BB9zSKrG4nMk+CxtVCiDF/c="
         }
       },
       "is_incremental": false,
@@ -7214,30 +7070,6 @@
         ".html": {
           "relative_path": "api/Microsoft.DocAsCode.HtmlToPdf.html",
           "hash": "/NjlQx9smg9rRje+QaqMVgnFmjDXqPAoS51tWNGRpLk="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.ListWithStringFallback.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Microsoft.DocAsCode.ListWithStringFallback.html",
-          "hash": "AocOvhoCPMYp2xw6b7dEQTu+1HoxQ2Pwh1XRjgHRGts="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.ListWithStringFallbackConverter.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Microsoft.DocAsCode.ListWithStringFallbackConverter.html",
-          "hash": "2w5Q8kI5LdfJFXKZp9X+L7Xdoj3YUc/vBM7o4U3UNqM="
         }
       },
       "is_incremental": false,
@@ -9981,42 +9813,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.MergeJsonConfig.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Microsoft.DocAsCode.MergeJsonConfig.html",
-          "hash": "Vm7iT7+lskJHslF/QmsNgmEG63tQAe2uBroa3V3mcEY="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.MergeJsonConfigConverter.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Microsoft.DocAsCode.MergeJsonConfigConverter.html",
-          "hash": "c/+sbmYkDRaRTwN417RLIidEjcFx+qxreD1szwcMeoM="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.MergeJsonItemConfig.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Microsoft.DocAsCode.MergeJsonItemConfig.html",
-          "hash": "qngmXrfsuMQoCMBejWe6UFWq+RldOO+Ku41cJ+iElE4="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.Metadata.ManagedReference.AbstractCompilation.yml",
       "output": {
         ".html": {
@@ -11037,47 +10833,11 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.MetadataJsonConfig.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Microsoft.DocAsCode.MetadataJsonConfig.html",
-          "hash": "48v+i7ML1RdlmM18CdELe9I4eAlXnt572xlBbjM+Pts="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.MetadataJsonItemConfig.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Microsoft.DocAsCode.MetadataJsonItemConfig.html",
-          "hash": "NQdCwEGKmKsUusEmVOE9Xf/YYLZVAadL/O/qYzyk42A="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.OptionUsageAttribute.yml",
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.DocAsCode.OptionUsageAttribute.html",
           "hash": "KSRBbk9gIc7Bcc7gepJUm004tZj9Jqz80x4NAvE78bo="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.PdfJsonConfig.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Microsoft.DocAsCode.PdfJsonConfig.html",
-          "hash": "Z+78Z0BZ2m8rcvEMzj+lmVW3FlJejWU+zXO0+8Wb79Y="
         }
       },
       "is_incremental": false,
@@ -12105,30 +11865,6 @@
     },
     {
       "type": "ManagedReference",
-      "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.SubCommands.MetadataMergeParameters.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Microsoft.DocAsCode.SubCommands.MetadataMergeParameters.html",
-          "hash": "oJPzIKx4yTBV0RlFZPYyayLNSdY2msFMevbG3Ev932c="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.SubCommands.MetadataMerger.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Microsoft.DocAsCode.SubCommands.MetadataMerger.html",
-          "hash": "/6dzqU7vSgskKrEbv8iN7Yg0yqWsXO/pilz7MXL1u64="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
       "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.SubCommands.OptionParserException.yml",
       "output": {
         ".html": {
@@ -12145,19 +11881,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.DocAsCode.SubCommands.html",
-          "hash": "LiXtM1LpFkfoVIkv6tHsechSHFzo4bvzcoGiNtfb4Qo="
-        }
-      },
-      "is_incremental": false,
-      "version": ""
-    },
-    {
-      "type": "ManagedReference",
-      "source_relative_path": "obj/temp/docfxapi/Microsoft.DocAsCode.WkhtmltopdfJsonConfig.yml",
-      "output": {
-        ".html": {
-          "relative_path": "api/Microsoft.DocAsCode.WkhtmltopdfJsonConfig.html",
-          "hash": "OC1ZZIPBGolktQpHK61BSIxQ2KVSHLEFgeCSBFwLZV8="
+          "hash": "vjN94GuekhZ0yoE9FRd9tgi/anVAMIDuxNvp0iiE6qI="
         }
       },
       "is_incremental": false,
@@ -12445,7 +12169,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.DocAsCode.html",
-          "hash": "3c/KImX6+X9S12Ffdxre+I1xh+YxyNdqm92lJokhJag="
+          "hash": "4MbkwUbJOiDk1l1rWsiwO+PbJ3cy6z4e441Z7TdWTZQ="
         }
       },
       "is_incremental": false,
@@ -12457,7 +12181,7 @@
       "output": {
         ".html": {
           "relative_path": "api/toc.html",
-          "hash": "Ws1618Y3OpNszyYdPXX0yLtyn6Gwi0WBHE4CCqROBGY="
+          "hash": "vDwR7GQzs+ejjuw+IDWSja7FrLxSjCTvWHhrlP7aHhM="
         }
       },
       "is_incremental": false,
@@ -13473,7 +13197,7 @@
         "ManagedReferenceDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 1030,
+          "total_file_count": 1007,
           "skipped_file_count": 0
         },
         "ResourceDocumentProcessor": {
