@@ -1,6 +1,6 @@
 {
   "homepages": [],
-  "source_base_path": "D:/a/docfx/docfx/docs",
+  "source_base_path": "/home/runner/work/docfx/docfx/docs",
   "xrefmap": "xrefmap.yml",
   "files": [
     {
@@ -12133,7 +12133,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.DocAsCode.YamlSerialization.YamlDeserializer.html",
-          "hash": "ASmjHrZ07CNAV/Bh9wIVQKPlRKmI8CqAtyjC33Bo3O4="
+          "hash": "31kqSaE7lySmJoJDv1fP6EDVpnIaoQCTsWZknXC/YZc="
         }
       },
       "is_incremental": false,
@@ -12157,7 +12157,7 @@
       "output": {
         ".html": {
           "relative_path": "api/Microsoft.DocAsCode.YamlSerialization.html",
-          "hash": "iAOwHaBRTnyOS4eI8RoqHKpvAZ4dV+Hf6HnYxyfhy+8="
+          "hash": "AIPH8qWe1hDyPTrogsW4qHiWqOdWNpIYjjMl8T7sIiY="
         }
       },
       "is_incremental": false,
