@@ -7,7 +7,7 @@ namespace Microsoft.DocAsCode.MarkdigEngine
 
     using Microsoft.DocAsCode.Plugins;
 
-    [Export("markdig", typeof(IMarkdownServiceProvider))]
+    [Export(typeof(IMarkdownServiceProvider))]
     public class MarkdigServiceProvider : IMarkdownServiceProvider
     {
         [Import]

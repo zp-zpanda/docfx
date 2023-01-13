@@ -18,7 +18,6 @@ namespace Microsoft.DocAsCode.Build.Engine
     using Microsoft.DocAsCode.Build.Engine.Incrementals;
     using Microsoft.DocAsCode.Build.SchemaDriven;
     using Microsoft.DocAsCode.Common;
-    using Microsoft.DocAsCode.Exceptions;
     using Microsoft.DocAsCode.MarkdigEngine;
     using Microsoft.DocAsCode.Plugins;
 
@@ -29,6 +28,9 @@ namespace Microsoft.DocAsCode.Build.Engine
 
         [ImportMany]
         internal IEnumerable<IInputMetadataValidator> MetadataValidators { get; set; }
+
+        [Import]
+        internal IMarkdownServiceProvider MarkdownServiceProvider { get; set; }
 
         private readonly string _intermediateFolder;
         private readonly CompositionHost _container;
@@ -53,6 +55,7 @@ namespace Microsoft.DocAsCode.Build.Engine
             {
                 var assemblyList = assemblies?.ToList() ?? new List<Assembly>();
                 assemblyList.Add(typeof(DocumentBuilder).Assembly);
+                assemblyList.Add(typeof(MarkdigServiceProvider).Assembly);
                 _container = CompositionContainer.GetContainer(assemblyList);
                 _container.SatisfyImports(this);
                 _assemblyList = assemblyList;
@@ -87,7 +90,6 @@ namespace Microsoft.DocAsCode.Build.Engine
                 throw new ArgumentException("Parameters are empty.", nameof(parameters));
             }
 
-            var markdownServiceProvider = GetMarkdownServiceProvider();
             var logCodesLogListener = new LogCodesLogListener();
             Logger.RegisterListener(logCodesLogListener);
 
@@ -193,7 +195,7 @@ namespace Microsoft.DocAsCode.Build.Engine
 
                         using (new LoggerPhaseScope("BuildCore"))
                         {
-                            manifests.Add(BuildCore(parameter, markdownServiceProvider, currentBuildInfo, lastBuildInfo));
+                            manifests.Add(BuildCore(parameter, MarkdownServiceProvider, currentBuildInfo, lastBuildInfo));
                         }
                     }
                 }
@@ -310,14 +312,6 @@ namespace Microsoft.DocAsCode.Build.Engine
             finally
             {
                 Logger.UnregisterListener(logCodesLogListener);
-            }
-
-            IMarkdownServiceProvider GetMarkdownServiceProvider()
-            {
-                using (new PerformanceScope(nameof(GetMarkdownServiceProvider)))
-                {
-                    return CompositionContainer.GetExport<IMarkdownServiceProvider>(_container, "markdig");
-                }
             }
 
             void EnrichCurrentBuildInfo(BuildInfo current, BuildInfo last)

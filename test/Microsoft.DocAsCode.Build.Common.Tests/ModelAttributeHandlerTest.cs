@@ -141,7 +141,7 @@ namespace Microsoft.DocAsCode.Build.Common.Tests
             Assert.Single(context.FileLinkSources);
             Assert.Single(context.UidLinkSources);
             Assert.Equal(
-                @"<p sourcefile=""test"" sourcestartlinenumber=""1"" sourceendlinenumber=""1"">Hello <em>world</em>, <xref href=""xref"" data-throw-if-not-resolved=""False"" data-raw-source=""@xref"" sourcefile=""test"" sourcestartlinenumber=""1"" sourceendlinenumber=""1""></xref>, <a href=""link.md"" data-raw-source=""[link](link.md)"" sourcefile=""test"" sourcestartlinenumber=""1"" sourceendlinenumber=""1"">link</a></p>
+                @"<p sourcefile=""test"" sourcestartlinenumber=""1"">Hello <em sourcefile=""test"" sourcestartlinenumber=""1"">world</em>, <xref href=""xref"" data-throw-if-not-resolved=""False"" data-raw-source=""@xref"" sourcefile=""test"" sourcestartlinenumber=""1""></xref>, <a href=""link.md"" sourcefile=""test"" sourcestartlinenumber=""1"">link</a></p>
 ".Replace("\r\n", "\n"),
                 model.Content);
         }
@@ -181,7 +181,7 @@ namespace Microsoft.DocAsCode.Build.Common.Tests
             Assert.Single(context.LinkToFiles);
             Assert.Single(context.FileLinkSources);
             Assert.Single(context.UidLinkSources);
-            var expected = @"<p sourcefile=""test"" sourcestartlinenumber=""1"" sourceendlinenumber=""1"">Hello <em>world</em>, <xref href=""xref"" data-throw-if-not-resolved=""False"" data-raw-source=""@xref"" sourcefile=""test"" sourcestartlinenumber=""1"" sourceendlinenumber=""1""></xref>, <a href=""link.md"" data-raw-source=""[link](link.md)"" sourcefile=""test"" sourcestartlinenumber=""1"" sourceendlinenumber=""1"">link</a></p>
+            var expected = @"<p sourcefile=""test"" sourcestartlinenumber=""1"">Hello <em sourcefile=""test"" sourcestartlinenumber=""1"">world</em>, <xref href=""xref"" data-throw-if-not-resolved=""False"" data-raw-source=""@xref"" sourcefile=""test"" sourcestartlinenumber=""1""></xref>, <a href=""link.md"" sourcefile=""test"" sourcestartlinenumber=""1"">link</a></p>
 ".Replace("\r\n", "\n");
             Assert.Equal(expected, model.Content);
             Assert.Equal(context.PlaceholderContent, model.Content2);
@@ -228,7 +228,7 @@ namespace Microsoft.DocAsCode.Build.Common.Tests
             Assert.Single(context.LinkToFiles);
             Assert.Single(context.FileLinkSources);
             Assert.Single(context.UidLinkSources);
-            var expected = @"<p sourcefile=""test"" sourcestartlinenumber=""1"" sourceendlinenumber=""1"">Hello <em>world</em>, <xref href=""xref"" data-throw-if-not-resolved=""False"" data-raw-source=""@xref"" sourcefile=""test"" sourcestartlinenumber=""1"" sourceendlinenumber=""1""></xref>, <a href=""link.md"" data-raw-source=""[link](link.md)"" sourcefile=""test"" sourcestartlinenumber=""1"" sourceendlinenumber=""1"">link</a></p>
+            var expected = @"<p sourcefile=""test"" sourcestartlinenumber=""1"">Hello <em sourcefile=""test"" sourcestartlinenumber=""1"">world</em>, <xref href=""xref"" data-throw-if-not-resolved=""False"" data-raw-source=""@xref"" sourcefile=""test"" sourcestartlinenumber=""1""></xref>, <a href=""link.md"" sourcefile=""test"" sourcestartlinenumber=""1"">link</a></p>
 ".Replace("\r\n", "\n");
             Assert.Equal(expected, model.Content);
             Assert.Equal(context.PlaceholderContent, model.Content2);
@@ -257,8 +257,8 @@ namespace Microsoft.DocAsCode.Build.Common.Tests
             Assert.Empty(context.LinkToFiles);
             Assert.Empty(context.FileLinkSources);
             Assert.Single(context.UidLinkSources);
-            Assert.Equal("<p sourcefile=\"test\" sourcestartlinenumber=\"1\" sourceendlinenumber=\"1\"><em>list</em></p>\n", model.ListContent[0]);
-            Assert.Equal("<p sourcefile=\"test\" sourcestartlinenumber=\"1\" sourceendlinenumber=\"1\"><xref href=\"xref\" data-throw-if-not-resolved=\"False\" data-raw-source=\"@xref\" sourcefile=\"test\" sourcestartlinenumber=\"1\" sourceendlinenumber=\"1\"></xref></p>\n", model.ArrayContent[0]);
+            Assert.Equal("<p sourcefile=\"test\" sourcestartlinenumber=\"1\"><em sourcefile=\"test\" sourcestartlinenumber=\"1\">list</em></p>\n", model.ListContent[0]);
+            Assert.Equal("<p sourcefile=\"test\" sourcestartlinenumber=\"1\"><xref href=\"xref\" data-throw-if-not-resolved=\"False\" data-raw-source=\"@xref\" sourcefile=\"test\" sourcestartlinenumber=\"1\"></xref></p>\n", model.ArrayContent[0]);
             Assert.Equal("placeholder", model.ArrayContent[1]);
         }
 

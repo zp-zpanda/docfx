@@ -136,7 +136,6 @@ namespace Microsoft.DocAsCode.Tests
                     "Test XRef: @unknown_xref",
                     "Test XRef: [<img src=\".\">](xref:xref2)",
                     "Test link: [link text](test2.md)",
-                    "<p>",
                     "test",
                 });
             var conceptualFile2 = _inputFolder + "/test2.md";
@@ -154,7 +153,6 @@ namespace Microsoft.DocAsCode.Tests
                     "Test XRef: [](xref:xref1)",
                     "Test XRef auto link: <xref:xref1>",
                     "Test link: [link text](test1.md)",
-                    "<p>",
                     "test",
                 });
             var console = new ConsoleLogListener();
@@ -185,7 +183,6 @@ namespace Microsoft.DocAsCode.Tests
                     "Test XRef: @unknown_xref",
                     "Test XRef: <a class=\"xref\" href=\"test2.html\"><img src=\".\"></a>",
                     "Test link: <a href=\"test2.html\">link text</a>",
-                    "<p>",
                     "test</p>",
                     "",
                 },
@@ -201,7 +198,6 @@ namespace Microsoft.DocAsCode.Tests
                     "<p>Test XRef: <a class=\"xref\" href=\"test1.html\">Hello Test1</a>",
                     "Test XRef auto link: <a class=\"xref\" href=\"test1.html\">Hello Test1</a>",
                     "Test link: <a href=\"test1.html\">link text</a>",
-                    "<p>",
                     "test</p>",
                     ""
                 },

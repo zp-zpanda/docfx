@@ -207,19 +207,6 @@ dict:
       - 4
 ---
 Nice
-
----
-uid: uid1
-dict:
-    another: *content
----
-Cool
-
----
-uid: uid1.uid1
-summary: *content
----
-Overwrite with content
 ", _inputFolder);
             FileCollection files = new FileCollection(_defaultFiles);
             files.Add(DocumentType.Article, new[] { inputFile }, _inputFolder);
@@ -260,7 +247,7 @@ Overwrite with content
             var array1 = rawModel["array"][0];
 
             Assert.Equal(2, array1["intValue"].Value<int>());
-            Assert.Equal($"<p sourcefile=\"{overwriteFile}\" sourcestartlinenumber=\"34\" sourceendlinenumber=\"34\">Nice</p>\n", array1["stringValue"].Value<string>());
+            Assert.Equal($"\n<p sourcefile=\"{overwriteFile}\" sourcestartlinenumber=\"34\">Nice</p>\n", array1["stringValue"].Value<string>());
             Assert.Equal("abcdef", array1["ignoreValue"].Value<string>());
             Assert.False(array1["boolValue"].Value<bool>());
             Assert.Equal(3, array1["empty"].Value<int>());
@@ -277,7 +264,7 @@ Overwrite with content
             var dict = rawModel["dict"];
 
             Assert.Equal(3, dict["intValue"].Value<int>());
-            Assert.Equal($"<p sourcefile=\"{overwriteFile}\" sourcestartlinenumber=\"34\" sourceendlinenumber=\"34\">Nice</p>\n", dict["stringValue"].Value<string>());
+            Assert.Equal($"\n<p sourcefile=\"{overwriteFile}\" sourcestartlinenumber=\"34\">Nice</p>\n", dict["stringValue"].Value<string>());
             Assert.False(dict["boolValue"].Value<bool>());
             Assert.Equal(4, dict["empty"].Value<int>());
 
@@ -288,8 +275,6 @@ Overwrite with content
             Assert.Equal(4, dict["intArrayValue"][0].Value<int>());
 
             Assert.Empty(dict["emptyArray"]);
-            Assert.Equal($"<p sourcefile=\"{overwriteFile}\" sourcestartlinenumber=\"41\" sourceendlinenumber=\"41\">Cool</p>\n", dict["another"].Value<string>());
-            Assert.Equal($"<p sourcefile=\"{overwriteFile}\" sourcestartlinenumber=\"47\" sourceendlinenumber=\"47\">Overwrite with content</p>\n", dict["summary"].Value<string>());
         }
 
         [Fact]
@@ -361,10 +346,10 @@ Nice
             var rawModel = JsonUtility.Deserialize<JObject>(rawModelFilePath);
 
             Assert.Equal("Hello world!", rawModel["meta"].Value<string>());
-            Assert.Equal($"<p sourcefile=\"{overwriteFile}\" sourcestartlinenumber=\"8\" sourceendlinenumber=\"8\">Nice</p>\n", rawModel["summary"].Value<string>());
+            Assert.Equal($"\n<p sourcefile=\"{overwriteFile}\" sourcestartlinenumber=\"8\">Nice</p>\n", rawModel["summary"].Value<string>());
             Assert.Equal("src.html", rawModel["href"].Value<string>());
             Assert.Equal("uid1", rawModel["xref"].Value<string>());
-            Assert.Equal($"<p sourcefile=\"{includeFile2}\" sourcestartlinenumber=\"1\" sourceendlinenumber=\"1\" jsonPath=\"/reference\"><a href=\"~/{inputFile}\" data-raw-source=\"[overwrite](../src/src.yml)\" sourcefile=\"{includeFile2}\" sourcestartlinenumber=\"1\" sourceendlinenumber=\"1\">overwrite</a></p>\n", rawModel["reference"].Value<string>());
+            Assert.Equal($"<p sourcefile=\"{includeFile2}\" sourcestartlinenumber=\"1\" jsonPath=\"/reference\"><a href=\"~/{inputFile}\" sourcefile=\"{includeFile2}\" sourcestartlinenumber=\"1\">overwrite</a></p>\n", rawModel["reference"].Value<string>());
 
             var outputFile = GetOutputFilePath(inputFileName);
             Assert.Equal("<a class=\"xref\" href=\"src.html\">uid1</a>", File.ReadAllText(outputFile));

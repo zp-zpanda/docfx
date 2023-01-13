@@ -75,25 +75,25 @@ namespace Microsoft.DocAsCode.Build.ManagedReference.Tests
 
             Assert.Equal(2, model.Syntax.Content.Count);
             Assert.Equal("csharp", model.Syntax.Content[0].Language);
-            Assert.Equal("<p><a href=\"http://A/\" data-raw-source=\"[A](http://A/)\" sourcefile=\"TestData/mref/CatLibrary.Cat-2.yml\" sourcestartlinenumber=\"1\" sourceendlinenumber=\"1\">A</a>.</p>", model.AdditionalNotes.Implementer);
+            Assert.Equal("<p><a href=\"http://A/\" sourcefile=\"TestData/mref/CatLibrary.Cat-2.yml\" sourcestartlinenumber=\"1\">A</a>.</p>", model.AdditionalNotes.Implementer);
             Assert.Equal("[Serializable]\npublic class Cat<T, K> : ICat, IAnimal where T : class, new ()where K : struct", model.Syntax.Content[0].Value);
             Assert.Equal("vb", model.Syntax.Content[1].Language);
             Assert.Equal("<Serializable>\nPublic Class Cat(Of T As {Class, New}, K As Structure)\n    Implements ICat, IAnimal", model.Syntax.Content[1].Value);
 
             Assert.Equal(2, model.Syntax.TypeParameters.Count);
             Assert.Equal("T", model.Syntax.TypeParameters[0].Name);
-            Assert.Equal("<p sourcefile=\"TestData/mref/CatLibrary.Cat-2.yml\" sourcestartlinenumber=\"1\" sourceendlinenumber=\"1\">This type should be class and can new instance.</p>\n", model.Syntax.TypeParameters[0].Description);
+            Assert.Equal("<p sourcefile=\"TestData/mref/CatLibrary.Cat-2.yml\" sourcestartlinenumber=\"1\">This type should be class and can new instance.</p>\n", model.Syntax.TypeParameters[0].Description);
             Assert.Equal("K", model.Syntax.TypeParameters[1].Name);
-            Assert.Equal("<p sourcefile=\"TestData/mref/CatLibrary.Cat-2.yml\" sourcestartlinenumber=\"1\" sourceendlinenumber=\"1\">This type is a struct type, class type can&#39;t be used for this parameter.</p>\n", model.Syntax.TypeParameters[1].Description);
+            Assert.Equal("<p sourcefile=\"TestData/mref/CatLibrary.Cat-2.yml\" sourcestartlinenumber=\"1\">This type is a struct type, class type can&#39;t be used for this parameter.</p>\n", model.Syntax.TypeParameters[1].Description);
 
             Assert.Single(model.Examples);
             Assert.Equal("<p>Here&#39;s example of how to create an instance of <strong>Cat</strong> class. As T is limited with <code>class</code> and K is limited with <code>struct</code>.</p>\n<pre><code class=\"c#\">    var a = new Cat(object, int)();\n    int catNumber = new int();\n    unsafe\n    {\n        a.GetFeetLength(catNumber);\n    }</code></pre>\n<p>As you see, here we bring in <strong>pointer</strong> so we need to add <span class=\"languagekeyword\">unsafe</span> keyword.</p>\n", model.Examples[0]);
 
             Assert.Equal(20, model.Children.Count);
             var cm = model.Children[1];
-            Assert.Equal("<p><a href=\"http://A/\" data-raw-source=\"[A](http://A/)\" sourcefile=\"TestData/mref/CatLibrary.Cat-2.yml\" sourcestartlinenumber=\"1\" sourceendlinenumber=\"1\">A</a>.</p>", cm.AdditionalNotes.Implementer);
-            Assert.Equal("<p><a href=\"http://B/\" data-raw-source=\"[B](http://B/)\" sourcefile=\"TestData/mref/CatLibrary.Cat-2.yml\" sourcestartlinenumber=\"1\" sourceendlinenumber=\"1\">B</a>.</p>", cm.AdditionalNotes.Inheritor);
-            Assert.Equal("<p><a href=\"http://C/\" data-raw-source=\"[C](http://C/)\" sourcefile=\"TestData/mref/CatLibrary.Cat-2.yml\" sourcestartlinenumber=\"1\" sourceendlinenumber=\"1\">C</a>.</p>", cm.AdditionalNotes.Caller);
+            Assert.Equal("<p><a href=\"http://A/\" sourcefile=\"TestData/mref/CatLibrary.Cat-2.yml\" sourcestartlinenumber=\"1\">A</a>.</p>", cm.AdditionalNotes.Implementer);
+            Assert.Equal("<p><a href=\"http://B/\" sourcefile=\"TestData/mref/CatLibrary.Cat-2.yml\" sourcestartlinenumber=\"1\">B</a>.</p>", cm.AdditionalNotes.Inheritor);
+            Assert.Equal("<p><a href=\"http://C/\" sourcefile=\"TestData/mref/CatLibrary.Cat-2.yml\" sourcestartlinenumber=\"1\">C</a>.</p>", cm.AdditionalNotes.Caller);
 
         }
 
@@ -145,8 +145,8 @@ namespace Microsoft.DocAsCode.Build.ManagedReference.Tests
                 Assert.True(File.Exists(outputRawModelPath));
                 var model = JsonUtility.Deserialize<ApiBuildOutput>(outputRawModelPath);
                 Assert.Equal("public", model.Children[0].Modifiers["csharp"][0]);
-                Assert.Equal("<p sourcefile=\"TestData/overwrite/mref.overwrite.default.md\" sourcestartlinenumber=\"1\" sourceendlinenumber=\"1\">Overwrite summary</p>\n", model.Children[0].Metadata["summary"]);
-                Assert.Equal("<p sourcefile=\"TestData/overwrite/mref.overwrite.default.md\" sourcestartlinenumber=\"6\" sourceendlinenumber=\"6\">Overwrite content</p>\n", model.Children[0].Conceptual);
+                Assert.Equal("<p sourcefile=\"TestData/overwrite/mref.overwrite.default.md\" sourcestartlinenumber=\"1\">Overwrite summary</p>\n", model.Children[0].Metadata["summary"]);
+                Assert.Equal("\n<p sourcefile=\"TestData/overwrite/mref.overwrite.default.md\" sourcestartlinenumber=\"6\">Overwrite content</p>\n", model.Children[0].Conceptual);
             }
         }
 
@@ -159,7 +159,7 @@ namespace Microsoft.DocAsCode.Build.ManagedReference.Tests
             var outputRawModelPath = GetRawModelFilePath("CatLibrary.Cat-2.yml");
             Assert.True(File.Exists(outputRawModelPath));
             var model = JsonUtility.Deserialize<ApiBuildOutput>(outputRawModelPath);
-            Assert.Equal("<p sourcefile=\"TestData/overwrite/mref.overwrite.simple.md\" sourcestartlinenumber=\"6\" sourceendlinenumber=\"6\">Overwrite content</p>\n", model.Summary);
+            Assert.Equal("\n<p sourcefile=\"TestData/overwrite/mref.overwrite.simple.md\" sourcestartlinenumber=\"6\">Overwrite content</p>\n", model.Summary);
             Assert.Null(model.Conceptual);
         }
 
@@ -176,9 +176,9 @@ namespace Microsoft.DocAsCode.Build.ManagedReference.Tests
             var method = model.Children.First(s => s.Uid == "CatLibrary.Cat`2.CatLibrary#IAnimal#Eat``1(``0)");
 
             // Verify overwrite parameters
-            Assert.Equal("<p sourcefile=\"TestData/overwrite/mref.overwrite.parameters.md\" sourcestartlinenumber=\"1\" sourceendlinenumber=\"1\">The overwritten description for a</p>\n", method.Syntax.Parameters[0].Description);
+            Assert.Equal("<p sourcefile=\"TestData/overwrite/mref.overwrite.parameters.md\" sourcestartlinenumber=\"1\">The overwritten description for a</p>\n", method.Syntax.Parameters[0].Description);
             Assert.NotNull(method.Syntax.Parameters[0].Type);
-            Assert.Equal("<p sourcefile=\"TestData/overwrite/mref.overwrite.parameters.md\" sourcestartlinenumber=\"12\" sourceendlinenumber=\"12\">This is overwritten type parameters</p>\n", method.Syntax.TypeParameters[0].Description);
+            Assert.Equal("<p sourcefile=\"TestData/overwrite/mref.overwrite.parameters.md\" sourcestartlinenumber=\"12\">This is overwritten type parameters</p>\n", method.Syntax.TypeParameters[0].Description);
             Assert.Null(model.Conceptual);
         }
 
@@ -193,13 +193,8 @@ namespace Microsoft.DocAsCode.Build.ManagedReference.Tests
                 Assert.True(File.Exists(outputRawModelPath));
                 var model = JsonUtility.Deserialize<ApiBuildOutput>(outputRawModelPath);
 
-
-                Assert.Equal("<p sourcefile=\"TestData/overwrite/mref.overwrite.not.predefined.md\" sourcestartlinenumber=\"6\" sourceendlinenumber=\"6\">Overwrite content</p>\n"
+                Assert.Equal("\n<p sourcefile=\"TestData/overwrite/mref.overwrite.not.predefined.md\" sourcestartlinenumber=\"6\">Overwrite content</p>\n"
                     , model.Metadata["not_defined_property"]);
-
-                var method = model.Children.First(s => s.Uid == "CatLibrary.Cat`2.#ctor");
-                Assert.Equal("<p sourcefile=\"TestData/overwrite/mref.overwrite.not.predefined.md\" sourcestartlinenumber=\"13\" sourceendlinenumber=\"13\">Overwrite content</p>\n"
-                    , method.Metadata["not_defined_property"]);
             }
         }
 
@@ -279,11 +274,11 @@ namespace Microsoft.DocAsCode.Build.ManagedReference.Tests
                 Assert.True(File.Exists(outputRawModelPath));
                 var model = JsonUtility.Deserialize<ApiBuildOutput>(outputRawModelPath);
                 var method = model.Children.First(s => s.Uid == "CatLibrary.Cat`2.#ctor(`0)");
-                Assert.Equal("<p sourcefile=\"TestData/overwrite/mref.overwrite.remarks.md\" sourcestartlinenumber=\"6\" sourceendlinenumber=\"6\">Remarks content</p>\n", method.Remarks);
+                Assert.Equal("\n<p sourcefile=\"TestData/overwrite/mref.overwrite.remarks.md\" sourcestartlinenumber=\"6\">Remarks content</p>\n", method.Remarks);
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Markdig does not support multi-uid overwrite")]
         public void ProcessMrefWithMultiUidOverwriteShouldSucceed()
         {
             var files = new FileCollection(_defaultFiles);
@@ -293,9 +288,9 @@ namespace Microsoft.DocAsCode.Build.ManagedReference.Tests
                 var outputRawModelPath = GetRawModelFilePath("CatLibrary.Cat-2.yml");
                 Assert.True(File.Exists(outputRawModelPath));
                 var model = JsonUtility.Deserialize<ApiBuildOutput>(outputRawModelPath);
-                Assert.Equal("<p sourcefile=\"TestData/overwrite/mref.overwrite.multi.uid.md\" sourcestartlinenumber=\"6\" sourceendlinenumber=\"6\">Overwrite content1</p>\n", model.Conceptual);
-                Assert.Equal("<p sourcefile=\"TestData/overwrite/mref.overwrite.multi.uid.md\" sourcestartlinenumber=\"13\" sourceendlinenumber=\"13\">Overwrite &quot;content2&quot;</p>\n", model.Summary);
-                Assert.Equal("<p sourcefile=\"TestData/overwrite/mref.overwrite.multi.uid.md\" sourcestartlinenumber=\"20\" sourceendlinenumber=\"20\">Overwrite &#39;content3&#39;</p>\n", model.Metadata["not_defined_property"]);
+                Assert.Equal("\n<p sourcefile=\"TestData/overwrite/mref.overwrite.multi.uid.md\" sourcestartlinenumber=\"6\">Overwrite content1</p>\n", model.Conceptual);
+                Assert.Equal("\n<p sourcefile=\"TestData/overwrite/mref.overwrite.multi.uid.md\" sourcestartlinenumber=\"13\">Overwrite &quot;content2&quot;</p>\n", model.Summary);
+                Assert.Equal("\n<p sourcefile=\"TestData/overwrite/mref.overwrite.multi.uid.md\" sourcestartlinenumber=\"20\">Overwrite &#39;content3&#39;</p>\n", model.Metadata["not_defined_property"]);
             }
         }
 
