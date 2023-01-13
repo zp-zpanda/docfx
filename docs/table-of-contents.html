@@ -5,11 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Namespace Microsoft.DocAsCode
- | docfx </title>
+    <title>Table of Contents | docfx </title>
     <meta name="viewport" content="width=device-width">
-    <meta name="title" content="Namespace Microsoft.DocAsCode
- | docfx ">
+    <meta name="title" content="Table of Contents | docfx ">
   
     <link rel="shortcut icon" href="../favicon.ico">
     <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -77,19 +75,55 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Microsoft.DocAsCode">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="table-of-contents">Table of Contents</h1>
 
-  <h1 id="Microsoft_DocAsCode" data-uid="Microsoft.DocAsCode" class="text-break">Namespace Microsoft.DocAsCode
-</h1>
-  <div class="markdown level0 summary"></div>
-  <div class="markdown level0 conceptual"></div>
-  <div class="markdown level0 remarks"></div>
-    <h3 id="classes">Classes
-</h3>
-      <h4><a class="xref" href="Microsoft.DocAsCode.Docset.html">Docset</a></h4>
-      <section><p>Provides access to a set of documentations
-and their associated configs, compilations and models.</p>
-</section>
+<p>A table of contents (TOC) defines the structure of a set of documents.</p>
+<h2 id="yaml-toc">YAML TOC</h2>
+<p>To add a TOC, create a file named <code>toc.yml</code>. Here's the structure for a simple YAML TOC:</p>
+<pre><code class="lang-yaml">items:
+- name: Tutorial
+  items:
+  - name: Introduction
+    href: tutorial.md
+  - name: Step 1
+    href: step-1.md
+  - name: Step 2
+    href: step-2.md
+  - name: Step 3
+    href: step-3.md
+</code></pre>
+<p>The YAML document is a tree of TOC nodes, each of which has these properties:</p>
+<ul>
+<li><code>name</code>: The display name for the TOC node.</li>
+<li><code>href</code>: The path the TOC node leads to. Optional because a node can exist just to parent other nodes.</li>
+<li><code>items</code>: If a node has children, they're listed in the items array.</li>
+</ul>
+<h2 id="navigation-bar">Navigation Bar</h2>
+<p>The <code>toc.yml</code> file in the <code>docfx.json</code> folder will be used to fill the content of the navigation bar at the top of the page.</p>
+<h2 id="nested-tocs">Nested TOCs</h2>
+<p>To nest a TOC within another TOC, set the <code>href</code> property to point to the <code>toc.yml</code> file that you want to nest. You can also use this structure as a way to reuse a TOC structure in one or more TOC files.</p>
+<p>Consider the following two <code>toc.yml</code> files:</p>
+<p><em>toc.yml</em>:</p>
+<pre><code class="lang-yaml">items:
+- name: Overview
+  href: overview.md
+- name: Reference
+  href: api/toc.yml
+</code></pre>
+<p><em>api/toc.yml</em>:</p>
+<pre><code class="lang-yaml">items:
+- name: System.String
+  href: system.string.yml
+- name: System.Float
+  href: system.float.yml
+</code></pre>
+<p>This structure renders as follows:</p>
+<pre><code>Overview
+Reference
+├─ System.String
+├─ System.Float
+</code></pre>
 </article>
           </div>
 
@@ -97,6 +131,9 @@ and their associated configs, compilations and models.</p>
             <div class="sideaffix">
               <div class="contribution">
                 <ul class="nav">
+                  <li>
+                    <a href="https://github.com/dotnet/docfx/blob/main/docs/docs/table-of-contents.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
                 </ul>
               </div>
               <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">

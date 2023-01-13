@@ -1,0 +1,285 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Config | docfx </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="Config | docfx ">
+  
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+  
+  <meta property="docfx:rel" content="../">
+  
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="config">Config</h1>
+
+<p>Docfx uses <code>docfx.json</code> as the config file for the site. Most docfx commands operate in a directory containing <code>docfx.json</code>.</p>
+<p>The <code>build</code> config determines what files are included in the site:</p>
+<pre><code class="lang-json">{
+  &quot;build&quot;: {
+    &quot;content&quot;: [
+      { &quot;files&quot;: &quot;**/*.{md,yml}&quot;, &quot;exclude&quot;: &quot;**/include/**&quot; }
+    ],
+    &quot;resource&quot;: [
+      { &quot;files&quot;: &quot;**/images/**&quot; }
+    ]
+  }
+}
+</code></pre>
+<p>The <code>content</code> config defines glob patterns of files that are transformed to HTML by the build process. It is usually the markdown files and auto-generated API YAML files.</p>
+<p>The <code>resource</code> config defines static resources copied to output as is.</p>
+<h2 id="url-management">URL Management</h2>
+<p>URL is determined by the file path relative to <code>docfx.json</code>. Docfx uses “Ugly URLs”: a file named <code>docs/urls.md</code> is accessible from the <code>docs/urls.html</code> URL.</p>
+<p>To customize URL pattern for a directory, use the <code>src</code> property to remove the directory name from the URL, and use the <code>dest</code> property to insert an URL prefix:</p>
+<pre><code class="lang-json">{
+  &quot;build&quot;: {
+    &quot;content&quot;: [
+      { &quot;files&quot;: &quot;**/*.{md,yml}&quot;, &quot;src&quot;: &quot;articles&quot;, &quot;dest&quot;: &quot;docs&quot; }
+    ]
+  }
+}
+</code></pre>
+<p>In this example, files in the <code>articles</code> directory uses <code>docs</code> as the base URL: The <code>articles/getting-started/installation.md</code> file is accessible by the <code>docs/getting-started/installation.html</code> URL.</p>
+<h2 id="metadata">Metadata</h2>
+<p>Metadata are attributes attached to an file. It helps shape the look and feel of a page and provides extra context to the article.</p>
+<p>To add metadata to an article, use &quot;YAML Front Matter&quot; markdown extension syntax:</p>
+<pre><code class="lang-md">---
+title: a title
+description: a description
+---
+</code></pre>
+<p>Some metadata attributes are consistent across a set of content. Use the <code>globalMetadata</code> property in <code>docfx.json</code> to apply the same metadata to all articles:</p>
+<pre><code class="lang-json">{
+  &quot;build&quot;: {
+    &quot;globalMetadata&quot;: {
+      &quot;_appTitle&quot;: &quot;My App&quot;
+    }
+  }
+}
+</code></pre>
+<p>To apply identical metadata values to a folder or a set of content, use the <code>fileMetadata</code> config:</p>
+<pre><code class="lang-json">{
+  &quot;build&quot;: {
+    &quot;fileMetadata&quot;: {
+      &quot;_appTitle&quot;: {
+        &quot;articles/dotnet/**/*.md&quot;: &quot;.NET&quot;,
+        &quot;articles/typescript/**/*.md&quot;: &quot;TypeScript&quot;
+      }
+    }
+  }
+}
+</code></pre>
+<p>When the same metadata key is defined in multiple places, YAML Front Matter takes precedence over <code>fileMetadata</code> which in turn takes precedence over <code>globalMetadata</code>.</p>
+<h3 id="predefined-metadata">Predefined Metadata</h3>
+<p>Here is a list of predefined metadata recognized by the default docfx site template to customize basic site settings:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>_appTitle</code></td>
+<td>string</td>
+<td>A string append to every page title.</td>
+</tr>
+<tr>
+<td><code>_appFooter</code></td>
+<td>string</td>
+<td>The footer HTML.</td>
+</tr>
+<tr>
+<td><code>_appLogoPath</code></td>
+<td>string</td>
+<td>App logo URL path.</td>
+</tr>
+<tr>
+<td><code>_appFaviconPath</code></td>
+<td>string</td>
+<td>Favicon URL path.</td>
+</tr>
+<tr>
+<td><code>_enableSearch</code></td>
+<td>bool</td>
+<td>Whether to show the search box.</td>
+</tr>
+<tr>
+<td><code>_enableNewTab</code></td>
+<td>bool</td>
+<td>Whether to open external links in a new tab.</td>
+</tr>
+<tr>
+<td><code>_disableNavbar</code></td>
+<td>bool</td>
+<td>Whether to show the navigation bar.</td>
+</tr>
+<tr>
+<td><code>_disableBreadcrumb</code></td>
+<td>bool</td>
+<td>Whether to show the breadcrumb.</td>
+</tr>
+<tr>
+<td><code>_disableToc</code></td>
+<td>bool</td>
+<td>Whether to show the TOC.</td>
+</tr>
+<tr>
+<td><code>_disableAffix</code></td>
+<td>bool</td>
+<td>Whether to show the right rail.</td>
+</tr>
+<tr>
+<td><code>_noindex</code></td>
+<td>bool</td>
+<td>Whether to include in search results</td>
+</tr>
+<tr>
+<td><code>_disableContribution</code></td>
+<td>bool</td>
+<td>Whether to show the <em>&quot;Improve this Doc&quot;</em> and _&quot;View Source&quot; buttons.</td>
+</tr>
+<tr>
+<td><code>_gitContribute</code></td>
+<td>object</td>
+<td>Defines the <code>repo</code> and <code>branch</code> property of git links.</td>
+</tr>
+<tr>
+<td><code>_gitUrlPattern</code></td>
+<td>string</td>
+<td>URL pattern of git links.</td>
+</tr>
+</tbody>
+</table>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Docfx produces the right git links for major CI pipelines including <a href="https://github.com/features/actions">GitHub</a>, <a href="https://about.gitlab.com/gitlab-ci/">GitLab</a>, <a href="https://azure.microsoft.com/en-us/services/devops/pipelines/">Azure Pipelines</a>, <a href="https://www.appveyor.com/">AppVeyor</a>, <a href="https://www.jetbrains.com/teamcity/">TeamCity</a>, <a href="https://jenkins.io/">Jenkins</a>. <code>_gitContribute</code> and <code>_gitUrlPattern</code> are optional on these platforms.</p>
+</div>
+<h2 id="sitemap">Sitemap</h2>
+<p>Docfx produces a <a href="https://www.sitemaps.org/protocol.html">sitemap.xml</a> about the pages on your site for search engines like Google to crawl your site more efficiently.</p>
+<p>The <code>sitemap</code> option in <code>docfx.json</code> controls how sitemaps are generated:</p>
+<pre><code class="lang-json">{
+  &quot;build&quot;: {
+    &quot;sitemap&quot;: {
+      &quot;baseUrl&quot;: &quot;https://dotnet.github.iodocfx&quot;,
+      &quot;priority&quot;: 0.1,
+      &quot;changefreq&quot;: &quot;monthly&quot;
+    }
+  }
+}
+</code></pre>
+<p>Where:</p>
+<ul>
+<li><code>baseUrl</code> is the base URL for the website. It should start with <code>http</code> or <code>https</code> and end with a trailing slash. For example, <code>https://dotnet.github.io/docfx/</code>.</li>
+<li><a href="https://www.sitemaps.org/protocol.html#lastmod"><code>lastmod</code></a> is the date of last modification of the page. If not specified, docfx sets the date to the build time.</li>
+<li><a href="https://www.sitemaps.org/protocol.html#changefreqdef"><code>changefreq</code></a> determines how frequently the page is likely to change. Valid values are <code>always</code>, <code>hourly</code>, <code>daily</code>, <code>weekly</code>, <code>monthly</code>, <code>yearly</code>, <code>never</code>. Default to <code>daily</code>.</li>
+<li><a href="https://www.sitemaps.org/protocol.html#priority"><code>priority</code></a> is the priority of this URL relative to other URLs on your site. Valid values range from 0.0 to 1.0.</li>
+<li><code>fileOptions</code> is a per file config of the above options. The key is the file glob pattern and value is the sitemap options.</li>
+</ul>
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/dotnet/docfx/blob/main/docs/docs/config.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      Made with <a href='https://dotnet.github.io/docfx/'>docfx</a>
+      
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

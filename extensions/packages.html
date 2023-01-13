@@ -1,0 +1,193 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Packages | </title>
+    <meta name="title" content="Packages | ">
+  <meta name="viewport" content="width=device-width">
+    <link rel="shortcut icon" href="../favicon.ico">
+  <link rel="stylesheet" href="../styles/docfx.vendor.css">
+  <link rel="stylesheet" href="../styles/docfx.css">
+  <link rel="stylesheet" href="../styles/main.css">
+  <meta property="docfx:navrel" content="../toc.html">
+  <meta property="docfx:tocrel" content="toc.html">
+    <meta property="docfx:rel" content="../">
+</head>  <body data-spy="scroll" data-target="#affix">
+  <style type="text/css">
+  #template-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    clear: both;
+  }
+  .template-item {
+    flex: 0 0 50%;
+    display: block;
+    padding: 16px;
+  }
+  .template-screenshot {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 16px;
+    padding-top: 60%;
+    height: 0;
+  }
+  .template-screenshot-img {
+    position: absolute;
+    top: 0;
+    width: auto;
+    height: auto;
+    max-height: 100%;
+    max-width: 100%;
+  }
+  .template-title {
+    font-weight: 600;
+    font-size: 1.1em;
+  }
+  </style>
+    <div id="wrapper">
+      <header>
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html">
+  <img id="logo" class="svg" src="../logo.svg" alt="">
+</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar">
+      <form class="navbar-form navbar-right" role="search" id="search">
+        <div class="form-group">
+          <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+        <div class="subnav navbar navbar-default">
+  <div class="container hide-when-search" id="breadcrumb">
+    <ul class="breadcrumb">
+      <li></li>
+    </ul>
+  </div>
+</div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="sidenav hide-when-search">
+  <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+  <div class="sidetoggle collapse" id="sidetoggle">
+    <div id="sidetoc"></div>
+  </div>
+</div>
+        <div class="article row grid-right">
+          <h1>Packages</h1>
+          <span class="pull-right mobile-hide">
+          <a href="https://github.com/dotnet/docfx/edit/main/docs/extensions/packages.yml" class="contribution-link">Improve this Doc</a>
+          </span>
+          <ul id="template-container">
+              <li class="template-item">
+                <div class="template-screenshot">
+                  <img src="images/memberpage.default.screenshot.png" class="template-screenshot-img">
+                </div>
+                <a class="template-title" href="https://www.nuget.org/packages/memberpage/">memberpage</a>
+                <p class="template-desc"><p>It splits the <em>YAML</em> data model into member level. Currently it supports ManagedReference document type. With this template enabled, the class page contains lists of method overloads, fields, events and so on, while every method overload, field or event displays in a separated page.</p>
+
+                <ul>
+                  <li><span>Init:<code>nuget install memberpage -OutputDirectory &lt;output&gt;</code></span></li>
+                  <li><span>In command:<code>-t default,&lt;output&gt;/memberpage.&lt;version&gt;/content</code></span></li>
+                  <li><span>In <c>docfx.json</c>:<code>template: [&quot;statictoc&quot;, &quot;&lt;output&gt;/memberpage.&lt;version&gt;/content&quot;]</code></span></li>
+                </ul>
+              </li>
+              <li class="template-item">
+                <div class="template-screenshot">
+                  <img src="images/rest.tagpage.default.screenshot.png" class="template-screenshot-img">
+                </div>
+                <a class="template-title" href="https://www.nuget.org/packages/rest.tagpage/">rest.tagpage</a>
+                <p class="template-desc"><p>It splits the <em>REST</em> model into tag level model. With this plugin enabled, operations with the same tag are grouped into one page. If the operation is in multiple tags, it would be included in first tag level page.</p>
+
+                <ul>
+                  <li><span>Init:<code>nuget install rest.tagpage -OutputDirectory &lt;output&gt;</code></span></li>
+                  <li><span>In command:<code>-t default,&lt;output&gt;/rest.tagpage.&lt;version&gt;/content</code></span></li>
+                  <li><span>In <c>docfx.json</c>:<code>template: [&quot;default&quot;, &quot;&lt;output&gt;/rest.tagpage.&lt;version&gt;/content&quot;]</code></span></li>
+                </ul>
+              </li>
+              <li class="template-item">
+                <div class="template-screenshot">
+                  <img src="images/rest.operationpage.default.screenshot.png" class="template-screenshot-img">
+                </div>
+                <a class="template-title" href="https://www.nuget.org/packages/rest.operationpage/">rest.operationpage</a>
+                <p class="template-desc"><p>It splits the <em>REST</em> model into operation level model. If it's enabled together with <code>rest.tagpage</code>, the <em>REST</em> model will split to tag level first, then split to operation level.</p>
+
+                <ul>
+                  <li><span>Init:<code>nuget install rest.operationpage -OutputDirectory &lt;output&gt;</code></span></li>
+                  <li><span>In command:<code>-t default,&lt;output&gt;/rest.operationpage.&lt;version&gt;/content</code></span></li>
+                  <li><span>In <c>docfx.json</c>:<code>template: [&quot;default&quot;, &quot;&lt;output&gt;/rest.operationpage.&lt;version&gt;/content&quot;]</code></span></li>
+                </ul>
+              </li>
+              <li class="template-item">
+                <div class="template-screenshot">
+                  <img src="images/roel4ez-feather.screenshot.png" class="template-screenshot-img">
+                </div>
+                <a class="template-title" href="https://github.com/roel4ez/docfx-lightbox-plugin">docfx-lightbox-plugin (Featherlight)</a>
+                <p class="template-desc"><p>A template which adds a lightbox to each image, using the jquery plugin Featherlight.</p>
+
+                <ul>
+                  <li><span>Init:<code>git clone https://github.com/roel4ez/docfx-lightbox-plugin.git docfx-lightbox-plugin</code></span></li>
+                  <li><span>In command:<code>-t default,docfx-lightbox-plugin/templates/lightbox-featherlight</code></span></li>
+                  <li><span>In <c>docfx.json</c>:<code>&quot;template&quot;:[&quot;default&quot;,&quot;docfx-lightbox-plugin/templates/lightbox-featherlight&quot;]</code></span></li>
+                </ul>
+              </li>
+              <li class="template-item">
+                <div class="template-screenshot">
+                  <img src="images/roel4ez-modal.screenshot.png" class="template-screenshot-img">
+                </div>
+                <a class="template-title" href="https://github.com/roel4ez/docfx-lightbox-plugin">docfx-lightbox-plugin (Bootstrap Modal)</a>
+                <p class="template-desc"><p>A template which adds a lightbox to each image, using the Modal window from Bootstrap.</p>
+
+                <ul>
+                  <li><span>Init:<code>git clone https://github.com/roel4ez/docfx-lightbox-plugin.git docfx-lightbox-plugin</code></span></li>
+                  <li><span>In command:<code>-t default,docfx-lightbox-plugin/templates/bootstrap-modal</code></span></li>
+                  <li><span>In <c>docfx.json</c>:<code>&quot;template&quot;:[&quot;default&quot;,&quot;docfx-lightbox-plugin/templates/bootstrap-modal&quot;]</code></span></li>
+                </ul>
+              </li>
+              <li class="template-item">
+                <div class="template-screenshot">
+                  <img src="images/docfx.plantuml.plugin.screenshot.png" class="template-screenshot-img">
+                </div>
+                <a class="template-title" href="https://github.com/KevReed/DocFx.Plugins.PlantUml">DocFx.Plugins.PlantUml</a>
+                <p class="template-desc"><p>A template to render PlantUml diagrams from markdown code blocks.</p>
+
+                <ul>
+                  <li><span>Init:<code>nuget install DocFx.Plugins.PlantUml -ExcludeVersion -OutputDirectory .</code></span></li>
+                  <li><span>In command:<code>-t default,DocFx.Plugins.PlantUml/template</code></span></li>
+                  <li><span>In <c>docfx.json</c>:<code>&quot;template&quot;:[&quot;default&quot;,&quot;DocFx.Plugins.PlantUml/template&quot;]</code></span></li>
+                </ul>
+              </li>
+          </ul>
+        </div>
+      </div>
+      <footer>
+  <div class="grad-bottom"></div>
+  <div class="footer">
+    <div class="container">
+      <span class="pull-right">
+        <a href="#top">Back to top</a>
+      </span>
+    Made with <a href='https://dotnet.github.io/docfx/'>docfx</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+<script type="text/javascript" src="../styles/docfx.js"></script>
+<script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
