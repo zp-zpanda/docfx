@@ -13,11 +13,11 @@ namespace Microsoft.DocAsCode.Build.Engine
     using System.Collections.Immutable;
 
     using Microsoft.DocAsCode.Common;
-    using Microsoft.DocAsCode.MarkdownLite;
     using Microsoft.DocAsCode.Plugins;
 
     using HtmlAgilityPack;
     using Newtonsoft.Json;
+    using System.Net;
 
     [Export(nameof(ExtractSearchIndex), typeof(IPostProcessor))]
     public class ExtractSearchIndex : IPostProcessor
@@ -132,7 +132,7 @@ namespace Microsoft.DocAsCode.Build.Engine
             {
                 return string.Empty;
             }
-            str = StringHelper.HtmlDecode(str);
+            str = WebUtility.HtmlDecode(str);
             return RegexWhiteSpace.Replace(str, " ").Trim();
         }
 

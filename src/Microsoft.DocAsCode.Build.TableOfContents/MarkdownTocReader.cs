@@ -6,7 +6,6 @@
     using System.Text.RegularExpressions;
     using Microsoft.DocAsCode.Common;
     using Microsoft.DocAsCode.DataContracts.Common;
-    using Microsoft.DocAsCode.Dfm;
     using Microsoft.DocAsCode.Plugins;
 
     public static class MarkdownTocReader
@@ -201,10 +200,13 @@
         /// </summary>
         internal sealed class TopicXrefAutoLinkTocParseRule : ParseRule
         {
+            public static readonly string XrefAutoLinkRegexString = @"(<xref:([^ >]+)>)";
+            public static readonly string XrefAutoLinkRegexWithQuoteString = @"<xref:(['""])(\s*?\S+?[\s\S]*?)\1>";
+
             public static readonly Regex XrefAutoLinkTocRegex =
-                new Regex($@"^(#+)(?: |\t)*{DfmXrefAutoLinkInlineRule.XrefAutoLinkRegexString}( |\t)*#*( |\t)*(\n|$)", RegexOptions.Compiled);
+                new Regex($@"^(#+)(?: |\t)*{XrefAutoLinkRegexString}( |\t)*#*( |\t)*(\n|$)", RegexOptions.Compiled);
             public static readonly Regex XrefAutoLinkWithQuoteTocRegex =
-                new Regex($@"^(#+)(?: |\t)*{DfmXrefAutoLinkInlineRule.XrefAutoLinkRegexWithQuoteString}( |\t)*#*( |\t)*(\n|$)", RegexOptions.Compiled);
+                new Regex($@"^(#+)(?: |\t)*{XrefAutoLinkRegexWithQuoteString}( |\t)*#*( |\t)*(\n|$)", RegexOptions.Compiled);
 
             public override Match Match(string text)
             {
@@ -225,10 +227,16 @@
 
         internal sealed class TopicXrefShortcutTocParseRule : ParseRule
         {
+            private const string ContinuableCharacters = ".,;:!?~";
+            private const string StopCharacters = @"\s\""\'<>";
+
+            public static readonly string XrefShortcutRegexWithQuoteString = @"@(?:(['""])(?<uid>\s*?\S+?[\s\S]*?)\1)";
+            public static readonly string XrefShortcutRegexString = $@"@(?<uid>[a-zA-Z](?:[{ContinuableCharacters}]?[^{StopCharacters}{ContinuableCharacters}])*)";
+
             public static readonly Regex XrefShortcutTocRegex =
-                new Regex($@"^(#+)(?: |\t)*{DfmXrefShortcutInlineRule.XrefShortcutRegexString}( |\t)*#*( |\t)*(\n|$)", RegexOptions.Compiled);
+                new Regex($@"^(#+)(?: |\t)*{XrefShortcutRegexString}( |\t)*#*( |\t)*(\n|$)", RegexOptions.Compiled);
             public static readonly Regex XrefShortcutTocWithQuoteTocRegex =
-                new Regex($@"^(#+)(?: |\t)*{DfmXrefShortcutInlineRule.XrefShortcutRegexWithQuoteString}( |\t)*#*( |\t)*(\n|$)", RegexOptions.Compiled);
+                new Regex($@"^(#+)(?: |\t)*{XrefShortcutRegexWithQuoteString}( |\t)*#*( |\t)*(\n|$)", RegexOptions.Compiled);
 
             public override Match Match(string text)
             {

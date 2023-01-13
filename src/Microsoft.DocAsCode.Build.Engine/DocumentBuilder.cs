@@ -18,7 +18,6 @@ namespace Microsoft.DocAsCode.Build.Engine
     using Microsoft.DocAsCode.Build.Engine.Incrementals;
     using Microsoft.DocAsCode.Build.SchemaDriven;
     using Microsoft.DocAsCode.Common;
-    using Microsoft.DocAsCode.Dfm.MarkdownValidators;
     using Microsoft.DocAsCode.Exceptions;
     using Microsoft.DocAsCode.MarkdigEngine;
     using Microsoft.DocAsCode.Plugins;
@@ -317,14 +316,7 @@ namespace Microsoft.DocAsCode.Build.Engine
             {
                 using (new PerformanceScope(nameof(GetMarkdownServiceProvider)))
                 {
-                    var result = CompositionContainer.GetExport<IMarkdownServiceProvider>(_container, parameters[0].MarkdownEngineName);
-                    if (result == null)
-                    {
-                        Logger.LogError($"Unable to find markdown engine: {parameters[0].MarkdownEngineName}");
-                        throw new DocfxException($"Unable to find markdown engine: {parameters[0].MarkdownEngineName}");
-                    }
-                    Logger.LogInfo($"Markdown engine is {parameters[0].MarkdownEngineName}", code: InfoCodes.Build.MarkdownEngineName);
-                    return result;
+                    return CompositionContainer.GetExport<IMarkdownServiceProvider>(_container, "markdig");
                 }
             }
 
@@ -356,7 +348,7 @@ namespace Microsoft.DocAsCode.Build.Engine
                 CurrentBuildInfo = currentBuildInfo,
                 LastBuildInfo = lastBuildInfo,
                 IntermediateFolder = _intermediateFolder,
-                MetadataValidators = MetadataValidators.Concat(GetMetadataRules(parameter)).ToList(),
+                MetadataValidators = MetadataValidators,
                 Processors = Processors,
                 MarkdownServiceProvider = markdownServiceProvider,
             };
@@ -451,20 +443,6 @@ namespace Microsoft.DocAsCode.Build.Engine
                 {
                     Logger.LogWarning($"Failed to delete cache files in path: {subFolder}. Details: {ex.Message}.");
                 }
-            }
-        }
-
-        private IEnumerable<IInputMetadataValidator> GetMetadataRules(DocumentBuildParameters parameter)
-        {
-            try
-            {
-                var mvb = MarkdownValidatorBuilder.Create(new CompositionContainer(), parameter.Files.DefaultBaseDir, parameter.TemplateDir);
-                return mvb.GetEnabledMetadataRules().ToList();
-            }
-            catch (Exception ex)
-            {
-                Logger.LogWarning($"Fail to init markdown style, details:{Environment.NewLine}{ex.Message}");
-                return Enumerable.Empty<IInputMetadataValidator>();
             }
         }
 

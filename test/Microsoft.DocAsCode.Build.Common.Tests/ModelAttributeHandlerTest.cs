@@ -13,6 +13,7 @@ namespace Microsoft.DocAsCode.Build.Common.Tests
     using Microsoft.DocAsCode.Build.Engine;
     using Microsoft.DocAsCode.DataContracts.Common;
     using Microsoft.DocAsCode.Plugins;
+    using Microsoft.DocAsCode.MarkdigEngine;
 
     [Trait("Owner", "lianwei")]
     public class ModelAttributeHandlerTest
@@ -305,7 +306,7 @@ namespace Microsoft.DocAsCode.Build.Common.Tests
             {
                 Host = new HostService(null, Enumerable.Empty<FileModel>())
                 {
-                    MarkdownService = new DfmServiceProvider().CreateMarkdownService(new MarkdownServiceParameters { BasePath = string.Empty }),
+                    MarkdownService = new MarkdigServiceProvider().CreateMarkdownService(new MarkdownServiceParameters { BasePath = string.Empty }),
                     SourceFiles = new Dictionary<string, FileAndType>
                     {
                         { "~/test" , new FileAndType(Environment.CurrentDirectory, "test", DocumentType.Article)},

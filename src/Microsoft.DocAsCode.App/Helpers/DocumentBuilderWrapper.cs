@@ -218,10 +218,6 @@ namespace Microsoft.DocAsCode.SubCommands
                 parameters.MaxHttpParallelism = Math.Max(64, parameters.MaxParallelism * 2);
                 ServicePointManager.DefaultConnectionLimit = parameters.MaxHttpParallelism;
 
-                if (config.MarkdownEngineName != null)
-                {
-                    parameters.MarkdownEngineName = config.MarkdownEngineName;
-                }
                 if (config.MarkdownEngineProperties != null)
                 {
                     parameters.MarkdownEngineParameters = config.MarkdownEngineProperties.ToImmutableDictionary();

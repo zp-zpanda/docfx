@@ -10,10 +10,10 @@ namespace Microsoft.DocAsCode.Build.Engine
     using System.Linq;
 
     using Microsoft.DocAsCode.Common;
-    using Microsoft.DocAsCode.MarkdownLite;
     using Microsoft.DocAsCode.Plugins;
 
     using HtmlAgilityPack;
+    using System.Net;
 
     public static class MarkupUtility
     {
@@ -50,7 +50,7 @@ namespace Microsoft.DocAsCode.Build.Engine
             var node = doc.DocumentNode.SelectSingleNode("//yamlheader");
             if (node != null)
             {
-                using (var sr = new StringReader(StringHelper.HtmlDecode(node.InnerHtml)))
+                using (var sr = new StringReader(WebUtility.HtmlDecode(node.InnerHtml)))
                 {
                     result.YamlHeader = YamlUtility.Deserialize<Dictionary<string, object>>(sr).ToImmutableDictionary();
                 }

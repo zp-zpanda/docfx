@@ -22,7 +22,6 @@ namespace Microsoft.DocAsCode.Build.Engine.Tests
     using Microsoft.DocAsCode.Build.TableOfContents;
     using Microsoft.DocAsCode.Common;
     using Microsoft.DocAsCode.DataContracts.Common;
-    using Microsoft.DocAsCode.Dfm.MarkdownValidators;
     using Microsoft.DocAsCode.Plugins;
     using Microsoft.DocAsCode.Tests.Common;
     using System.Composition;
@@ -174,7 +173,7 @@ tagRules : [
             files.Add(DocumentType.Resource, new[] { resourceFile });
             #endregion
 
-            Init(MarkdownValidatorBuilder.MarkdownValidatePhaseName);
+            Init();
             try
             {
                 using (new LoggerPhaseScope(nameof(DocumentBuilderTest)))
@@ -455,7 +454,7 @@ settings : [
             files.Add(DocumentType.Resource, new[] { resourceFile });
             #endregion
 
-            Init(MarkdownValidatorBuilder.MarkdownValidatePhaseName);
+            Init();
             try
             {
                 using (new LoggerPhaseScope(nameof(DocumentBuilderTest)))
@@ -904,7 +903,7 @@ exports.getOptions = function (){
             files.Add(DocumentType.Article, new[] { tocFile, conceptualFile });
             #endregion
 
-            Init(MarkdownValidatorBuilder.MarkdownValidatePhaseName);
+            Init();
             try
             {
                 using (new LoggerPhaseScope(nameof(DocumentBuilderTest)))
@@ -1112,9 +1111,9 @@ exports.getOptions = function (){
             yield return typeof(DocumentBuilderTest).Assembly;
         }
 
-        private void Init(string phaseName)
+        private void Init()
         {
-            Listener = TestLoggerListener.CreateLoggerListenerWithPhaseEndFilter(phaseName);
+            Listener = TestLoggerListener.CreateLoggerListenerWithPhaseEndFilter("Test");
             Logger.RegisterListener(Listener);
         }
 
