@@ -61,6 +61,39 @@
       "version": ""
     },
     {
+      "type": "Resource",
+      "source_relative_path": "codesnippet/Rtf/Hyperlink/RtfDocumentProcessor.cs",
+      "output": {
+        "resource": {
+          "relative_path": "codesnippet/Rtf/Hyperlink/RtfDocumentProcessor.cs"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "codesnippet/Rtf/RtfBuildStep.cs",
+      "output": {
+        "resource": {
+          "relative_path": "codesnippet/Rtf/RtfBuildStep.cs"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "codesnippet/Rtf/RtfDocumentProcessor.cs",
+      "output": {
+        "resource": {
+          "relative_path": "codesnippet/Rtf/RtfDocumentProcessor.cs"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
       "type": "Conceptual",
       "source_relative_path": "docs/config.md",
       "output": {
@@ -162,7 +195,7 @@
       "output": {
         ".html": {
           "relative_path": "docs/toc.html",
-          "hash": "3on4sp+Hy8SZhs93XBJ8loSkGjQ3vGsjixnjMmtkUX8="
+          "hash": "goSwHxALf6GKAzatRROzLxvmcLJRCrgziR1ZYs2pzDU="
         }
       },
       "is_incremental": false,
@@ -438,12 +471,494 @@
       "version": ""
     },
     {
+      "type": "Conceptual",
+      "source_relative_path": "spec/docfx_build_manifest_file.md",
+      "output": {
+        ".html": {
+          "relative_path": "spec/docfx_build_manifest_file.html",
+          "hash": "8xgL4HzC6AOnuFKneX3ujxEeKXiyx7V6UU/sUjni0+0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "spec/docfx_design_spec.md",
+      "output": {
+        ".html": {
+          "relative_path": "spec/docfx_design_spec.html",
+          "hash": "ADPUJa4R6c6F+hmvcfXdWpzOXBZzp6Wl/+yRFE2myp4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "spec/docfx_document_schema.md",
+      "output": {
+        ".html": {
+          "relative_path": "spec/docfx_document_schema.html",
+          "hash": "qKZa1Lys8ksHa1a5BWvLFAww4QLONy+Rh/bCzF0my4M="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "spec/docfx_flavored_markdown.md",
+      "output": {
+        ".html": {
+          "relative_path": "spec/docfx_flavored_markdown.html",
+          "hash": "SEXIISsBG6z9y8FHMg9nv22VgP/ULldbL9ZVFTaoo2Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "spec/docfx_incremental.md",
+      "output": {
+        ".html": {
+          "relative_path": "spec/docfx_incremental.html",
+          "hash": "z0wI1jb9RKLswOYYBwRjTY//NusOsLYu3U80kzfiS+0="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "spec/images/docfx_workflow.png",
+      "output": {
+        "resource": {
+          "relative_path": "spec/images/docfx_workflow.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "spec/images/docfx_workflow.vsdx",
+      "output": {
+        "resource": {
+          "relative_path": "spec/images/docfx_workflow.vsdx"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "spec/images/docfx_workflow_highlevel.png",
+      "output": {
+        "resource": {
+          "relative_path": "spec/images/docfx_workflow_highlevel.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "spec/images/sdp_workflow.png",
+      "output": {
+        "resource": {
+          "relative_path": "spec/images/sdp_workflow.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "spec/metadata_dotnet_spec.md",
+      "output": {
+        ".html": {
+          "relative_path": "spec/metadata_dotnet_spec.html",
+          "hash": "gc0Z3buHF5FSXq1b8FhiDd6534WrdVvyfvnROlhk+bs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "spec/metadata_format_spec.md",
+      "output": {
+        ".html": {
+          "relative_path": "spec/metadata_format_spec.html",
+          "hash": "PwWFezAEqOcSPu5Em7yihcksOSKjnCPSMdKY4dIIOT4="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "spec/sdp_design_spec.md",
+      "output": {
+        ".html": {
+          "relative_path": "spec/sdp_design_spec.html",
+          "hash": "ZViTikP6OgD7DaxyXbhwiNjGei2l9OkbXxjsgBQbEkI="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "spec/toc.md",
+      "output": {
+        ".html": {
+          "relative_path": "spec/toc.html",
+          "hash": "r5s9Z+Rb5pbMj8oPc4eNL+yqU8udZUPHIa+c7KplPwc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "spec/triple_slash_comments_spec.md",
+      "output": {
+        ".html": {
+          "relative_path": "spec/triple_slash_comments_spec.html",
+          "hash": "eYmipm9d+D+KttgW+m84xwILsYIcasU80nFkXqWHacg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
       "type": "Toc",
       "source_relative_path": "toc.yml",
       "output": {
         ".html": {
           "relative_path": "toc.html",
           "hash": "ujrApczcebkPTDgiUW2WmW1Idd/q5Pm5TTL2WhfUPkU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "tutorial/advanced_support_hyperlink.md",
+      "output": {
+        ".html": {
+          "relative_path": "tutorial/advanced_support_hyperlink.html",
+          "hash": "X3bCyo41YLhJ603CDuEDGsnG+OHWM68AS7nYyBWQJMo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "tutorial/docfx.exe_user_manual.md",
+      "output": {
+        ".html": {
+          "relative_path": "tutorial/docfx.exe_user_manual.html",
+          "hash": "cODXJMIoUX7TXTRXWMGi+eAgJC+520cuo65ei5ut0kg="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "tutorial/docfx_getting_started.md",
+      "output": {
+        ".html": {
+          "relative_path": "tutorial/docfx_getting_started.html",
+          "hash": "0VczPTS8EWtwVTqfD1IOYspvUTVGZ/dzmPseaisbdjs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "tutorial/howto_add_a_customized_post_processor.md",
+      "output": {
+        ".html": {
+          "relative_path": "tutorial/howto_add_a_customized_post_processor.html",
+          "hash": "z3NDdR2TUXsjC2kFKfW3ABASKD3cegTcraRFU9C3ScU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "tutorial/howto_build_your_own_type_of_documentation_with_custom_plug-in.md",
+      "output": {
+        ".html": {
+          "relative_path": "tutorial/howto_build_your_own_type_of_documentation_with_custom_plug-in.html",
+          "hash": "cPk+JaKuDR4z96MCGHjAYuylucJApePptDc9uwExU9U="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "tutorial/howto_create_custom_template.md",
+      "output": {
+        ".html": {
+          "relative_path": "tutorial/howto_create_custom_template.html",
+          "hash": "9Esvy7G37HgB4jGxSxU5nrxDN4MqA0ueldi2a+Mnv/Y="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "UidNotFound"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "tutorial/howto_customize_docfx_flavored_markdown.md",
+      "output": {
+        ".html": {
+          "relative_path": "tutorial/howto_customize_docfx_flavored_markdown.html",
+          "hash": "F0EBgeVVGLCTkFhXk1jZNE5mukDNI9zLt6KyCwNDPjs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "tutorial/howto_filter_out_unwanted_apis_attributes.md",
+      "output": {
+        ".html": {
+          "relative_path": "tutorial/howto_filter_out_unwanted_apis_attributes.html",
+          "hash": "16uwgAtPDtYuRbKwIPWd3dZzuOv06nCMqHo5ObXiNQo="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "tutorial/images/simple_web_page.png",
+      "output": {
+        "resource": {
+          "relative_path": "tutorial/images/simple_web_page.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "tutorial/images/toc_web_page.png",
+      "output": {
+        "resource": {
+          "relative_path": "tutorial/images/toc_web_page.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "tutorial/images/web_page_with_extra_property.png",
+      "output": {
+        "resource": {
+          "relative_path": "tutorial/images/web_page_with_extra_property.png"
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "UidNotFound"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "tutorial/intro_markdown_lite.md",
+      "output": {
+        ".html": {
+          "relative_path": "tutorial/intro_markdown_lite.html",
+          "hash": "Q44vUoI+0wP46wBDvNURZIXqKI0Aw7cXWU8cc6YyAqU="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "tutorial/intro_overwrite_files.md",
+      "output": {
+        ".html": {
+          "relative_path": "tutorial/intro_overwrite_files.html",
+          "hash": "qhnOnG097xdsoiFLwShX1fzTL6L8ecePFpO8Sg6WzOc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "tutorial/intro_rest_api_documentation.md",
+      "output": {
+        ".html": {
+          "relative_path": "tutorial/intro_rest_api_documentation.html",
+          "hash": "OjmYfkC29eOcv/p10DJjK063iGln3RCrCVZLQ5VM/DM="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "tutorial/intro_template.md",
+      "output": {
+        ".html": {
+          "relative_path": "tutorial/intro_template.html",
+          "hash": "VDYr2Fpq6YJrJOGHnkUvNzsqiPZVNiXe897lfWc9KpA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "tutorial/intro_toc.md",
+      "output": {
+        ".html": {
+          "relative_path": "tutorial/intro_toc.html",
+          "hash": "54rqrSqzaZyUyS1+U6PWfSkc73LSdFMZEnzLOETPCs8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "tutorial/links_and_cross_references.md",
+      "output": {
+        ".html": {
+          "relative_path": "tutorial/links_and_cross_references.html",
+          "hash": "QGLNzhKmSDuou7kPFUa8zLDGeHt/h2g2c7+tWRo6UhA="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "tutorial/universalreference/gen_doc_for_js.md",
+      "output": {
+        ".html": {
+          "relative_path": "tutorial/universalreference/gen_doc_for_js.html",
+          "hash": "16YdffQHBt/uln+/bbYi2Lt8dDZrPvF9N1bpYuAe7W8="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "tutorial/universalreference/gen_doc_for_ts.md",
+      "output": {
+        ".html": {
+          "relative_path": "tutorial/universalreference/gen_doc_for_ts.html",
+          "hash": "oCJtH7ve3SXxqy0ijcBLu2syqp481OLNcy9+h8xU7Xc="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "tutorial/universalreference/intro_multiple_langs_support.md",
+      "output": {
+        ".html": {
+          "relative_path": "tutorial/universalreference/intro_multiple_langs_support.html",
+          "hash": "JWIaSstUzwAJ7RU/pLlexz7VhRPH3TJ3d6NyuPURkKQ="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "log_codes": [
+        "UidNotFound"
+      ],
+      "type": "Conceptual",
+      "source_relative_path": "tutorial/validate_your_markdown_files.md",
+      "output": {
+        ".html": {
+          "relative_path": "tutorial/validate_your_markdown_files.html",
+          "hash": "8oJrpo/wMayAmgr0RGndR4Qps2QYD681jK/UdIGxA/w="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "tutorial/walkthrough/advanced_walkthrough.md",
+      "output": {
+        ".html": {
+          "relative_path": "tutorial/walkthrough/advanced_walkthrough.html",
+          "hash": "tTAFDubHtPE2sZICh4YI1qFmoMRTocP9p96WBF2Wc3o="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "tutorial/walkthrough/walkthrough_create_a_docfx_project.md",
+      "output": {
+        ".html": {
+          "relative_path": "tutorial/walkthrough/walkthrough_create_a_docfx_project.html",
+          "hash": "i3aHY+Z9RL1EvrspSPwv+V6y8OVRg53W4PVxQSBXPtk="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "tutorial/walkthrough/walkthrough_create_a_docfx_project_2.md",
+      "output": {
+        ".html": {
+          "relative_path": "tutorial/walkthrough/walkthrough_create_a_docfx_project_2.html",
+          "hash": "41RumWPsY7FxskmK0X1cNvN4EyU/VJIBvLd5l8O0tNs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "tutorial/walkthrough/walkthrough_generate_pdf.md",
+      "output": {
+        ".html": {
+          "relative_path": "tutorial/walkthrough/walkthrough_generate_pdf.html",
+          "hash": "WlbJ3DAs4sB/sdaRjG4n64UyMpLZzTn6SQhWhsZ9PIs="
+        }
+      },
+      "is_incremental": false,
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "tutorial/walkthrough/walkthrough_overview.md",
+      "output": {
+        ".html": {
+          "relative_path": "tutorial/walkthrough/walkthrough_overview.html",
+          "hash": "DjS/eX7VL4PHKENQKSPARCr9frZ2k8IQEpIh/ysgwDc="
         }
       },
       "is_incremental": false,
@@ -464,7 +979,7 @@
         "ConceptualDocumentProcessor": {
           "can_incremental": false,
           "incrementalPhase": "build",
-          "total_file_count": 10,
+          "total_file_count": 42,
           "skipped_file_count": 0
         },
         "Dashboard": {

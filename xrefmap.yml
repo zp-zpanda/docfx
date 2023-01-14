@@ -26,3 +26,6 @@ references:
   isSpec: "True"
   fullName: Microsoft.DocAsCode.Docset.Build
   nameWithType: Docset.Build
+- uid: user_manual
+  name: docfx.exe User Manual
+  href: tutorial/docfx.exe_user_manual.html
