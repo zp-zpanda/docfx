@@ -1,12 +1,23 @@
 ### YamlMime:XRefMap
 sorted: true
 references:
+- uid: att1
+  name: >-
+    uid: apt1
+
+    title: 1
+
+    description: *content
+  href: apispec/overwriteSdp.html
 - uid: Microsoft.DocAsCode
   name: Microsoft.DocAsCode
   href: api/Microsoft.DocAsCode.html
   commentId: N:Microsoft.DocAsCode
   fullName: Microsoft.DocAsCode
   nameWithType: Microsoft.DocAsCode
+- uid: Microsoft.DocAsCode.Common.YamlUtility
+  name: Microsoft.DocAsCode.Common.YamlUtility
+  href: apispec/YamlUtility.html
 - uid: Microsoft.DocAsCode.Docset
   name: Docset
   href: api/Microsoft.DocAsCode.Docset.html
@@ -26,3 +37,6 @@ references:
   isSpec: "True"
   fullName: Microsoft.DocAsCode.Docset.Build
   nameWithType: Docset.Build
+- uid: user_manual
+  name: docfx.exe User Manual
+  href: tutorial/docfx.exe_user_manual.html

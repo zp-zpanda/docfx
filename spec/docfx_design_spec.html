@@ -5,9 +5,9 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Add REST API docs | docfx </title>
+    <title>docfx Design Spec | docfx </title>
       <meta name="viewport" content="width=device-width">
-      <meta name="title" content="Add REST API docs | docfx ">
+      <meta name="title" content="docfx Design Spec | docfx ">
     
       <link rel="shortcut icon" href="../favicon.ico">
       <link rel="stylesheet" href="../styles/docfx.vendor.css">
@@ -76,79 +76,54 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="add-rest-api-docs">Add REST API docs</h1>
+<h1 id="docfx-design-spec"><code>docfx</code> Design Spec</h1>
 
-<p>Docfx generates REST API documentation from <a href="http://swagger.io/specification/">Swagger 2.0</a> files.</p>
-<p>To add REST API docs, include the swagger JSON file to the <code>build</code> config in <code>docfx.json</code>:</p>
-<pre><code class="lang-json">{
-  &quot;metadata&quot;: {
-    &quot;src&quot;: [ &quot;../src/**/bin/Release/**.dll&quot; ],
-    &quot;dest&quot;: &quot;api&quot;
-  },
-  &quot;build&quot;: {
-    &quot;content&quot;: [{
-      &quot;files&quot;: [ &quot;**/*.swagger.json&quot; ] // &lt;-- Include swagger JSON files
-    }]
-  }
-}
-</code></pre>
-<p>Each swagger file produces one output HTML file.</p>
-<h2 id="organize-rest-apis-using-tags">Organize REST APIs using Tags</h2>
-<p>APIs can be organized using the <a href="http://swagger.io/specification/#tagObject">Tag Object</a>. An API can be associated with one or more tags. Untagged APIs are put in the <em>Other apis</em> section.</p>
-<p>This example defines the <code>Basic</code> and <code>Advanced</code> tags and organize APIs using the two tags. The <a href="http://swagger.io/specification/#vendorExtensions"><code>x-bookmark-id</code></a> property specifies the URL fragment for the tag.</p>
-<pre><code class="lang-json">{
-  &quot;swagger&quot;: &quot;2.0&quot;,
-  &quot;info&quot;: {
-    &quot;title&quot;: &quot;Contacts&quot;,
-    &quot;version&quot;: &quot;1.6&quot;
-  },
-  &quot;host&quot;: &quot;microsoft.com&quot;,
-  &quot;basePath&quot;: &quot;/docfx&quot;,
-  &quot;schemes&quot;: [
-    &quot;https&quot;
-  ],
-  &quot;tags&quot;: [
-    {
-      &quot;name&quot;: &quot;Basic&quot;,
-      &quot;x-bookmark-id&quot;: &quot;BasicBookmark&quot;,
-      &quot;description&quot;: &quot;Basic description&quot;
-    },
-    {
-      &quot;name&quot;: &quot;Advanced&quot;,
-      &quot;description&quot;: &quot;Advanced description&quot;
-    }
-  ],
-  &quot;paths&quot;: {
-    &quot;/contacts&quot;: {
-      &quot;get&quot;: {
-        &quot;operationId&quot;: &quot;get_contacts&quot;,
-        &quot;tags&quot;: [
-          &quot;Basic&quot;,
-          &quot;Advanced&quot;
-        ]
-      },      
-      &quot;set&quot;: {
-        &quot;operationId&quot;: &quot;set_contacts&quot;,
-        &quot;tags&quot;: [
-          &quot;Advanced&quot;
-        ]
-      },
-      &quot;delete&quot;: {
-        &quot;operationId&quot;: &quot;delete_contacts&quot;
-      }
-    }
-  }
-}
-</code></pre>
-<p>The above example produces the following layout:</p>
-<pre><code>Basic
-├─ get_contacts
-Advanced
-├─ get_contacts
-├─ set_contacts
-Other APIs
-├─ delete_contacts
-</code></pre>
+<h2 id="0-terms">0. Terms</h2>
+<table>
+<thead>
+<tr>
+<th>Term</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DFM</td>
+<td><a href="docfx_flavored_markdown.html">DocFX Flavored Markdown</a></td>
+</tr>
+<tr>
+<td>API</td>
+<td>The API generated from source code</td>
+</tr>
+<tr>
+<td>Overwrite Files</td>
+<td>The files with YAML header used to override YAML files when <code>uid</code> matches.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="1-scenarios">1. Scenarios</h2>
+<p><code>docfx</code> should support the following scenarios:</p>
+<ol>
+<li>Source Code =&gt; Website</li>
+<li>Conceptual =&gt; Website</li>
+<li>YAML files =&gt; Website</li>
+</ol>
+<!--break list-->
+<h2 id="2-architecture">2. Architecture</h2>
+<p><img src="images/docfx_workflow.png" alt="Workflow"></p>
+<h2 id="3-feature-list">3. Feature List</h2>
+<ol>
+<li>Support for <a href="docfx_flavored_markdown.html">DocFX Flavored Markdown</a></li>
+<li>Ability to parse TOC.json/TOC.yml/TOC.md</li>
+<li>Custom template naming: {type}.{extension}.tmpl under folder {templateName}</li>
+</ol>
+<h2 id="4-open-issues">4. Open Issues</h2>
+<ol>
+<li>Should we support other conceptual file format, for example, RST?
+==&gt; How to parse?</li>
+<li>How do you know which link to replace to html, and which not?
+==&gt;</li>
+</ol>
 </article>
           </div>
 
@@ -157,7 +132,7 @@ Other APIs
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/dotnet/docfx/blob/main/docs/docs/rest-api-docs.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/dotnet/docfx/blob/main/docs/spec/docfx_design_spec.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>

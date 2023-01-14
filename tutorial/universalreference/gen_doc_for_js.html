@@ -5,18 +5,18 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Add REST API docs | docfx </title>
+    <title>Generate API Documentation for JavaScript | docfx </title>
       <meta name="viewport" content="width=device-width">
-      <meta name="title" content="Add REST API docs | docfx ">
+      <meta name="title" content="Generate API Documentation for JavaScript | docfx ">
     
-      <link rel="shortcut icon" href="../favicon.ico">
-      <link rel="stylesheet" href="../styles/docfx.vendor.css">
-      <link rel="stylesheet" href="../styles/docfx.css">
-      <link rel="stylesheet" href="../styles/main.css">
-      <meta property="docfx:navrel" content="../toc.html">
-      <meta property="docfx:tocrel" content="toc.html">
+      <link rel="shortcut icon" href="../../favicon.ico">
+      <link rel="stylesheet" href="../../styles/docfx.vendor.css">
+      <link rel="stylesheet" href="../../styles/docfx.css">
+      <link rel="stylesheet" href="../../styles/main.css">
+      <meta property="docfx:navrel" content="../../toc.html">
+      <meta property="docfx:tocrel" content="../../docs/toc.html">
     
-    <meta property="docfx:rel" content="../">
+    <meta property="docfx:rel" content="../../">
     
   </head>
   <body data-spy="scroll" data-target="#affix" data-offset="120">
@@ -33,8 +33,8 @@
                 <span class="icon-bar"></span>
               </button>
 
-              <a class="navbar-brand" href="../index.html">
-                <img id="logo" class="svg" src="../logo.svg" alt="">
+              <a class="navbar-brand" href="../../index.html">
+                <img id="logo" class="svg" src="../../logo.svg" alt="">
               </a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
@@ -76,79 +76,52 @@
         <div class="article row grid-right">
           <div class="col-md-10">
             <article class="content wrap" id="_content" data-uid="">
-<h1 id="add-rest-api-docs">Add REST API docs</h1>
+<h1 id="generate-api-documentation-for-javascript">Generate API Documentation for JavaScript</h1>
 
-<p>Docfx generates REST API documentation from <a href="http://swagger.io/specification/">Swagger 2.0</a> files.</p>
-<p>To add REST API docs, include the swagger JSON file to the <code>build</code> config in <code>docfx.json</code>:</p>
+<h2 id="1-prerequisite">1. Prerequisite</h2>
+<ul>
+<li><a href="https://dotnet.github.io/docfx/tutorial/docfx_getting_started.html#2-use-docfx-as-a-command-line-tool">DocFX</a></li>
+<li><a href="https://nodejs.org/en/download/">Node.js</a> (includes npm)</li>
+</ul>
+<h2 id="2-steps">2. Steps</h2>
+<h3 id="21-prepare-source-code">2.1 Prepare Source Code</h3>
+<p>Prepare the JavaScript source code for generating document. In this tutorial, we take <a href="https://www.npmjs.com/package/azure-batch">azure-batch</a> as an example</p>
+<pre><code>npm install azure-batch
+</code></pre>
+<h3 id="22-generate-metadata">2.2 Generate Metadata</h3>
+<p>We use <a href="https://www.npmjs.com/package/node2docfx">Node2DocFX</a> tool to generate YAML files.</p>
+<pre><code>npm install node2docfx
+</code></pre>
+<p>Create the <code>node2docfx.json</code> for the tool configuration:</p>
 <pre><code class="lang-json">{
-  &quot;metadata&quot;: {
-    &quot;src&quot;: [ &quot;../src/**/bin/Release/**.dll&quot; ],
-    &quot;dest&quot;: &quot;api&quot;
+  &quot;source&quot;: {
+    &quot;include&quot;: [&quot;node_modules/azure-batch/lib&quot;]
   },
+  &quot;destination&quot;: &quot;yml&quot;
+}
+</code></pre>
+<p>With this config, the tool will read source code under <code>node_modules/azure-batch/lib</code>, and extract metadata to YAML files under <code>yml</code> folder:</p>
+<pre><code>node node_modules/node2docfx/node2docfx.js node2docfx.json
+</code></pre>
+<h3 id="23-build-document">2.3 Build Document</h3>
+<p>Create the configuration <code>docfx.json</code> for DocFX:</p>
+<pre><code class="lang-json">{
   &quot;build&quot;: {
-    &quot;content&quot;: [{
-      &quot;files&quot;: [ &quot;**/*.swagger.json&quot; ] // &lt;-- Include swagger JSON files
-    }]
-  }
-}
-</code></pre>
-<p>Each swagger file produces one output HTML file.</p>
-<h2 id="organize-rest-apis-using-tags">Organize REST APIs using Tags</h2>
-<p>APIs can be organized using the <a href="http://swagger.io/specification/#tagObject">Tag Object</a>. An API can be associated with one or more tags. Untagged APIs are put in the <em>Other apis</em> section.</p>
-<p>This example defines the <code>Basic</code> and <code>Advanced</code> tags and organize APIs using the two tags. The <a href="http://swagger.io/specification/#vendorExtensions"><code>x-bookmark-id</code></a> property specifies the URL fragment for the tag.</p>
-<pre><code class="lang-json">{
-  &quot;swagger&quot;: &quot;2.0&quot;,
-  &quot;info&quot;: {
-    &quot;title&quot;: &quot;Contacts&quot;,
-    &quot;version&quot;: &quot;1.6&quot;
-  },
-  &quot;host&quot;: &quot;microsoft.com&quot;,
-  &quot;basePath&quot;: &quot;/docfx&quot;,
-  &quot;schemes&quot;: [
-    &quot;https&quot;
-  ],
-  &quot;tags&quot;: [
-    {
-      &quot;name&quot;: &quot;Basic&quot;,
-      &quot;x-bookmark-id&quot;: &quot;BasicBookmark&quot;,
-      &quot;description&quot;: &quot;Basic description&quot;
-    },
-    {
-      &quot;name&quot;: &quot;Advanced&quot;,
-      &quot;description&quot;: &quot;Advanced description&quot;
-    }
-  ],
-  &quot;paths&quot;: {
-    &quot;/contacts&quot;: {
-      &quot;get&quot;: {
-        &quot;operationId&quot;: &quot;get_contacts&quot;,
-        &quot;tags&quot;: [
-          &quot;Basic&quot;,
-          &quot;Advanced&quot;
-        ]
-      },      
-      &quot;set&quot;: {
-        &quot;operationId&quot;: &quot;set_contacts&quot;,
-        &quot;tags&quot;: [
-          &quot;Advanced&quot;
-        ]
-      },
-      &quot;delete&quot;: {
-        &quot;operationId&quot;: &quot;delete_contacts&quot;
+    &quot;content&quot;: [
+      {
+        &quot;files&quot;: [&quot;**/*.yml&quot;],
+        &quot;src&quot;: &quot;yml&quot;,
+        &quot;dest&quot;: &quot;api&quot;
       }
-    }
+    ],
+    &quot;dest&quot;: &quot;_site&quot;
   }
 }
 </code></pre>
-<p>The above example produces the following layout:</p>
-<pre><code>Basic
-├─ get_contacts
-Advanced
-├─ get_contacts
-├─ set_contacts
-Other APIs
-├─ delete_contacts
+<p>More information about <code>docfx.json</code> can be found in <a href="https://dotnet.github.io/docfx/tutorial/docfx.exe_user_manual.html">user manual</a>. Run:</p>
+<pre><code>docfx docfx.json --serve
 </code></pre>
+<p>Now you can see your generated pages: http://localhost:8080/api/Account.html</p>
 </article>
           </div>
 
@@ -157,7 +130,7 @@ Other APIs
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/dotnet/docfx/blob/main/docs/docs/rest-api-docs.md/#L1" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/dotnet/docfx/blob/main/docs/tutorial/universalreference/gen_doc_for_js.md/#L1" class="contribution-link">Improve this Doc</a>
                   </li>
                 </ul>
               </div>
@@ -184,8 +157,8 @@ Other APIs
       </footer>
     </div>
 
-    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
-    <script type="text/javascript" src="../styles/docfx.js"></script>
-    <script type="text/javascript" src="../styles/main.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../../styles/docfx.js"></script>
+    <script type="text/javascript" src="../../styles/main.js"></script>
   </body>
 </html>
