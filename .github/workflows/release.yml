@@ -19,23 +19,52 @@ jobs:
           6.x
           7.x
 
-    - run: |
-        npm install
-        npm run build
+    - run: npm install
       working-directory: templates
 
-    - name: dotnet pack
-      run: dotnet pack -c Release -o drop /p:Version=${GITHUB_REF_NAME#v}
+    - run: npm run build
+      working-directory: templates
+
+    #- name: dotnet pack
+    #  run: dotnet pack -c Release /p:Version=${GITHUB_REF_NAME#v} -o drop/nuget
+
+    #- uses: actions/upload-artifact@v3
+    #  with:
+    #    name: nuget
+    #    path: drop/nuget
+
+    #- name: publish
+    #  uses: Azure/pipelines@v1.2
+    #  with:
+    #    azure-devops-project-url: https://dev.azure.com/ceapex/Engineering
+    #    azure-pipeline-name: 'dotnet.docfx'
+    #    azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
+    #    azure-pipeline-variables: '{"GH_RUNID": "${{github.run_id}}"}'
+
+    - name: dotnet publish
+      run: |
+        dotnet publish src/docfx -f net7.0 -c Release /p:Version=${GITHUB_REF_NAME#v} --self-contained -r win-x64 -o drop/publish/win-x64
+        dotnet publish src/docfx -f net7.0 -c Release /p:Version=${GITHUB_REF_NAME#v} --self-contained -r linux-x64 -o drop/publish/linux-x64
+        dotnet publish src/docfx -f net7.0 -c Release /p:Version=${GITHUB_REF_NAME#v} --self-contained -r osx-x64 -o drop/publish/osx-x64
+        mkdir -p drop/bin
+
+    - run: zip -r ../../bin/docfx-${GITHUB_REF_NAME}-win-x64.zip .
+      working-directory: drop/publish/win-x64
+    - run: zip -r ../../bin/docfx-${GITHUB_REF_NAME}-linux-x64.zip .
+      working-directory: drop/publish/linux-x64
+    - run: zip -r ../../bin/docfx-${GITHUB_REF_NAME}-osx-x64.zip .
+      working-directory: drop/publish/osx-x64
 
     - uses: actions/upload-artifact@v3
       with:
-        name: nuget
-        path: drop
+        name: bin
+        path: drop/bin
 
-    - name: publish
-      uses: Azure/pipelines@v1.2
-      with:
-        azure-devops-project-url: https://dev.azure.com/ceapex/Engineering
-        azure-pipeline-name: 'dotnet.docfx'
-        azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
-        azure-pipeline-variables: '{"GH_RUNID": "${{github.run_id}}"}'
+    - name: Upload GitHub release
+      run: |
+        gh release upload ${GITHUB_REF_NAME} drop/bin/docfx-${GITHUB_REF_NAME}-win-x64.zip
+        gh release upload ${GITHUB_REF_NAME} drop/bin/docfx-${GITHUB_REF_NAME}-linux-x64.zip
+        gh release upload ${GITHUB_REF_NAME} drop/bin/docfx-${GITHUB_REF_NAME}-osx-x64.zip
+      env:
+        GH_TOKEN: ${{ github.token }}
+
