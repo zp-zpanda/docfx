@@ -5,10 +5,10 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Class Docset
+    <title>Class BuildOptions
  | docfx </title>
       <meta name="viewport" content="width=device-width">
-      <meta name="title" content="Class Docset
+      <meta name="title" content="Class BuildOptions
  | docfx ">
     
       <link rel="shortcut icon" href="../favicon.ico">
@@ -77,19 +77,18 @@
         </div>
         <div class="article row grid-right">
           <div class="col-md-10">
-            <article class="content wrap" id="_content" data-uid="Microsoft.DocAsCode.Docset">
+            <article class="content wrap" id="_content" data-uid="Microsoft.DocAsCode.BuildOptions">
 
 
-  <h1 id="Microsoft_DocAsCode_Docset" data-uid="Microsoft.DocAsCode.Docset" class="text-break">Class Docset
+  <h1 id="Microsoft_DocAsCode_BuildOptions" data-uid="Microsoft.DocAsCode.BuildOptions" class="text-break">Class BuildOptions
 </h1>
-  <div class="markdown level0 summary"><p>Provides access to a set of documentations
-and their associated configs, compilations and models.</p>
+  <div class="markdown level0 summary"><p>Provides options to be used with <a class="xref" href="Microsoft.DocAsCode.Docset.html#Microsoft_DocAsCode_Docset_Build_System_String_Microsoft_DocAsCode_BuildOptions_">Build(String, BuildOptions)</a>.</p>
 </div>
   <div class="markdown level0 conceptual"></div>
   <div class="inheritance">
     <h5>Inheritance</h5>
     <div class="level0"><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">Object</a></div>
-    <div class="level1"><span class="xref">Docset</span></div>
+    <div class="level1"><span class="xref">BuildOptions</span></div>
   </div>
   <div class="inheritedMembers">
     <h5>Inherited Members</h5>
@@ -117,53 +116,29 @@ and their associated configs, compilations and models.</p>
   </div>
   <h6><strong>Namespace</strong>: <a class="xref" href="Microsoft.DocAsCode.html">Microsoft.DocAsCode</a></h6>
   <h6><strong>Assembly</strong>: Microsoft.DocAsCode.App.dll</h6>
-  <h5 id="Microsoft_DocAsCode_Docset_syntax">Syntax</h5>
+  <h5 id="Microsoft_DocAsCode_BuildOptions_syntax">Syntax</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static class Docset</code></pre>
+    <pre><code class="lang-csharp hljs">public class BuildOptions</code></pre>
   </div>
-  <h3 id="methods">Methods
+  <h3 id="properties">Properties
 </h3>
   <span class="small pull-right mobile-hide">
     <span class="divider">|</span>
-    <a href="https://github.com/dotnet/docfx/new/main/apiSpec/new?filename=Microsoft_DocAsCode_Docset_Build_System_String_Microsoft_DocAsCode_BuildOptions_.md&amp;value=---%0Auid%3A%20Microsoft.DocAsCode.Docset.Build(System.String%2CMicrosoft.DocAsCode.BuildOptions)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
+    <a href="https://github.com/dotnet/docfx/new/main/apiSpec/new?filename=Microsoft_DocAsCode_BuildOptions_ConfigureMarkdig.md&amp;value=---%0Auid%3A%20Microsoft.DocAsCode.BuildOptions.ConfigureMarkdig%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
   </span>
   <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dotnet/docfx/blob/main/src/Microsoft.DocAsCode.App/Docset.cs/#L33">View Source</a>
+    <a href="https://github.com/dotnet/docfx/blob/main/src/Microsoft.DocAsCode.App/BuildOptions.cs/#L19">View Source</a>
   </span>
-  <a id="Microsoft_DocAsCode_Docset_Build_" data-uid="Microsoft.DocAsCode.Docset.Build*"></a>
-  <h4 id="Microsoft_DocAsCode_Docset_Build_System_String_Microsoft_DocAsCode_BuildOptions_" data-uid="Microsoft.DocAsCode.Docset.Build(System.String,Microsoft.DocAsCode.BuildOptions)">Build(String, BuildOptions)</h4>
-  <div class="markdown level1 summary"><p>Builds a docset specified by docfx.json config.</p>
+  <a id="Microsoft_DocAsCode_BuildOptions_ConfigureMarkdig_" data-uid="Microsoft.DocAsCode.BuildOptions.ConfigureMarkdig*"></a>
+  <h4 id="Microsoft_DocAsCode_BuildOptions_ConfigureMarkdig" data-uid="Microsoft.DocAsCode.BuildOptions.ConfigureMarkdig">ConfigureMarkdig</h4>
+  <div class="markdown level1 summary"><p>Configures the markdig markdown pipeline.</p>
 </div>
   <div class="markdown level1 conceptual"></div>
   <h5 class="declaration">Declaration</h5>
   <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static Task Build(string configPath, BuildOptions options)</code></pre>
+    <pre><code class="lang-csharp hljs">public Func&lt;MarkdownPipelineBuilder, MarkdownPipelineBuilder&gt; ConfigureMarkdig { get; set; }</code></pre>
   </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">configPath</span></td>
-        <td><p>The path to docfx.json config file.</p>
-</td>
-      </tr>
-      <tr>
-        <td><a class="xref" href="Microsoft.DocAsCode.BuildOptions.html">BuildOptions</a></td>
-        <td><span class="parametername">options</span></td>
-        <td><p>The build options.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
+  <h5 class="propertyValue">Property Value</h5>
   <table class="table table-bordered table-striped table-condensed">
     <thead>
       <tr>
@@ -173,59 +148,8 @@ and their associated configs, compilations and models.</p>
     </thead>
     <tbody>
       <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td><p>A task to await for build completion.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <span class="small pull-right mobile-hide">
-    <span class="divider">|</span>
-    <a href="https://github.com/dotnet/docfx/new/main/apiSpec/new?filename=Microsoft_DocAsCode_Docset_Build_System_String_.md&amp;value=---%0Auid%3A%20Microsoft.DocAsCode.Docset.Build(System.String)%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">Improve this Doc</a>
-  </span>
-  <span class="small pull-right mobile-hide">
-    <a href="https://github.com/dotnet/docfx/blob/main/src/Microsoft.DocAsCode.App/Docset.cs/#L22">View Source</a>
-  </span>
-  <a id="Microsoft_DocAsCode_Docset_Build_" data-uid="Microsoft.DocAsCode.Docset.Build*"></a>
-  <h4 id="Microsoft_DocAsCode_Docset_Build_System_String_" data-uid="Microsoft.DocAsCode.Docset.Build(System.String)">Build(String)</h4>
-  <div class="markdown level1 summary"><p>Builds a docset specified by docfx.json config.</p>
-</div>
-  <div class="markdown level1 conceptual"></div>
-  <h5 class="declaration">Declaration</h5>
-  <div class="codewrapper">
-    <pre><code class="lang-csharp hljs">public static Task Build(string configPath)</code></pre>
-  </div>
-  <h5 class="parameters">Parameters</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Name</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">String</a></td>
-        <td><span class="parametername">configPath</span></td>
-        <td><p>The path to docfx.json config file.</p>
-</td>
-      </tr>
-    </tbody>
-  </table>
-  <h5 class="returns">Returns</h5>
-  <table class="table table-bordered table-striped table-condensed">
-    <thead>
-      <tr>
-        <th>Type</th>
-        <th>Description</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></td>
-        <td><p>A task to await for build completion.</p>
-</td>
+        <td><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.func-2">Func</a>&lt;<span class="xref">Markdig.MarkdownPipelineBuilder</span>, <span class="xref">Markdig.MarkdownPipelineBuilder</span>&gt;</td>
+        <td></td>
       </tr>
     </tbody>
   </table>
@@ -237,10 +161,10 @@ and their associated configs, compilations and models.</p>
               <div class="contribution">
                 <ul class="nav">
                   <li>
-                    <a href="https://github.com/dotnet/docfx/new/main/apiSpec/new?filename=Microsoft_DocAsCode_Docset.md&amp;value=---%0Auid%3A%20Microsoft.DocAsCode.Docset%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
+                    <a href="https://github.com/dotnet/docfx/new/main/apiSpec/new?filename=Microsoft_DocAsCode_BuildOptions.md&amp;value=---%0Auid%3A%20Microsoft.DocAsCode.BuildOptions%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A" class="contribution-link">Improve this Doc</a>
                   </li>
                   <li>
-                    <a href="https://github.com/dotnet/docfx/blob/main/src/Microsoft.DocAsCode.App/Docset.cs/#L15" class="contribution-link">View Source</a>
+                    <a href="https://github.com/dotnet/docfx/blob/main/src/Microsoft.DocAsCode.App/BuildOptions.cs/#L14" class="contribution-link">View Source</a>
                   </li>
                 </ul>
               </div>

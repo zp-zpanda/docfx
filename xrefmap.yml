@@ -7,12 +7,37 @@ references:
   commentId: N:Microsoft.DocAsCode
   fullName: Microsoft.DocAsCode
   nameWithType: Microsoft.DocAsCode
+- uid: Microsoft.DocAsCode.BuildOptions
+  name: BuildOptions
+  href: api/Microsoft.DocAsCode.BuildOptions.html
+  commentId: T:Microsoft.DocAsCode.BuildOptions
+  fullName: Microsoft.DocAsCode.BuildOptions
+  nameWithType: BuildOptions
+- uid: Microsoft.DocAsCode.BuildOptions.ConfigureMarkdig
+  name: ConfigureMarkdig
+  href: api/Microsoft.DocAsCode.BuildOptions.html#Microsoft_DocAsCode_BuildOptions_ConfigureMarkdig
+  commentId: P:Microsoft.DocAsCode.BuildOptions.ConfigureMarkdig
+  fullName: Microsoft.DocAsCode.BuildOptions.ConfigureMarkdig
+  nameWithType: BuildOptions.ConfigureMarkdig
+- uid: Microsoft.DocAsCode.BuildOptions.ConfigureMarkdig*
+  name: ConfigureMarkdig
+  href: api/Microsoft.DocAsCode.BuildOptions.html#Microsoft_DocAsCode_BuildOptions_ConfigureMarkdig_
+  commentId: Overload:Microsoft.DocAsCode.BuildOptions.ConfigureMarkdig
+  isSpec: "True"
+  fullName: Microsoft.DocAsCode.BuildOptions.ConfigureMarkdig
+  nameWithType: BuildOptions.ConfigureMarkdig
 - uid: Microsoft.DocAsCode.Docset
   name: Docset
   href: api/Microsoft.DocAsCode.Docset.html
   commentId: T:Microsoft.DocAsCode.Docset
   fullName: Microsoft.DocAsCode.Docset
   nameWithType: Docset
+- uid: Microsoft.DocAsCode.Docset.Build(System.String,Microsoft.DocAsCode.BuildOptions)
+  name: Build(String, BuildOptions)
+  href: api/Microsoft.DocAsCode.Docset.html#Microsoft_DocAsCode_Docset_Build_System_String_Microsoft_DocAsCode_BuildOptions_
+  commentId: M:Microsoft.DocAsCode.Docset.Build(System.String,Microsoft.DocAsCode.BuildOptions)
+  fullName: Microsoft.DocAsCode.Docset.Build(System.String, Microsoft.DocAsCode.BuildOptions)
+  nameWithType: Docset.Build(String, BuildOptions)
 - uid: Microsoft.DocAsCode.Docset.Build(System.String)
   name: Build(String)
   href: api/Microsoft.DocAsCode.Docset.html#Microsoft_DocAsCode_Docset_Build_System_String_
