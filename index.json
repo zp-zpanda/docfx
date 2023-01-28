@@ -2,7 +2,7 @@
   "api/Microsoft.DocAsCode.BuildOptions.html": {
     "href": "api/Microsoft.DocAsCode.BuildOptions.html",
     "title": "Class BuildOptions | docfx",
-    "keywords": "Class BuildOptions Provides options to be used with Build(String, BuildOptions) . Inheritance Object BuildOptions Inherited Members Object.Equals(Object) Object.Equals(Object, Object) Object.GetHashCode() Object.GetType() Object.MemberwiseClone() Object.ReferenceEquals(Object, Object) Object.ToString() Namespace : Microsoft.DocAsCode Assembly : Microsoft.DocAsCode.App.dll Syntax public class BuildOptions Properties | Improve this Doc View Source ConfigureMarkdig Configures the markdig markdown pipeline. Declaration public Func<MarkdownPipelineBuilder, MarkdownPipelineBuilder> ConfigureMarkdig { get; set; } Property Value Type Description Func < Markdig.MarkdownPipelineBuilder , Markdig.MarkdownPipelineBuilder >"
+    "keywords": "Class BuildOptions Provides options to be used with Build(String, BuildOptions) . Inheritance Object BuildOptions Inherited Members Object.Equals(Object) Object.Equals(Object, Object) Object.GetHashCode() Object.GetType() Object.MemberwiseClone() Object.ReferenceEquals(Object, Object) Object.ToString() Namespace : Microsoft.DocAsCode Assembly : Microsoft.DocAsCode.App.dll Syntax public class BuildOptions Properties | Improve this Doc View Source ConfigureMarkdig Configures the markdig markdown pipeline. Declaration public Func<MarkdownPipelineBuilder, MarkdownPipelineBuilder>? ConfigureMarkdig { get; init; } Property Value Type Description Func < Markdig.MarkdownPipelineBuilder , Markdig.MarkdownPipelineBuilder >"
   },
   "api/Microsoft.DocAsCode.Docset.html": {
     "href": "api/Microsoft.DocAsCode.Docset.html",
