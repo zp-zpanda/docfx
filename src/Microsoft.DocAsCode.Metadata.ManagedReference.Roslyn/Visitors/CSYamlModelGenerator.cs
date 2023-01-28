@@ -26,7 +26,10 @@ namespace Microsoft.DocAsCode.Metadata.ManagedReference
 
         protected override void GenerateReference(ISymbol symbol, ReferenceItem reference, SymbolVisitorAdapter adapter, bool asOverload)
         {
-            symbol.Accept(new CSReferenceItemVisitor(reference, asOverload));
+            if (!reference.Parts.ContainsKey(SyntaxLanguage.CSharp))
+                reference.Parts.Add(SyntaxLanguage.CSharp, new());
+
+            reference.Parts[SyntaxLanguage.CSharp] = SymbolFormatter.GetLinkItems(symbol, SyntaxLanguage.CSharp, asOverload);
         }
     }
 }

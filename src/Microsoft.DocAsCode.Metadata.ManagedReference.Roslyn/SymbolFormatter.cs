@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Linq;
 using Microsoft.CodeAnalysis;
 using Microsoft.DocAsCode.DataContracts.ManagedReference;
 
@@ -14,20 +16,23 @@ namespace Microsoft.DocAsCode.Metadata.ManagedReference
             memberOptions: SymbolDisplayMemberOptions.IncludeParameters | SymbolDisplayMemberOptions.IncludeExplicitInterface,
             genericsOptions: SymbolDisplayGenericsOptions.IncludeTypeParameters,
             parameterOptions: SymbolDisplayParameterOptions.IncludeType,
-            miscellaneousOptions: SymbolDisplayMiscellaneousOptions.IncludeNullableReferenceTypeModifier | SymbolDisplayMiscellaneousOptions.AllowDefaultLiteral);
+            miscellaneousOptions: SymbolDisplayMiscellaneousOptions.IncludeNullableReferenceTypeModifier | SymbolDisplayMiscellaneousOptions.AllowDefaultLiteral,
+            extensionMethodStyle: SymbolDisplayExtensionMethodStyle.StaticMethod);
 
         private static readonly SymbolDisplayFormat s_nameWithTypeFormat = new(
             memberOptions: SymbolDisplayMemberOptions.IncludeParameters | SymbolDisplayMemberOptions.IncludeExplicitInterface | SymbolDisplayMemberOptions.IncludeContainingType,
             typeQualificationStyle: SymbolDisplayTypeQualificationStyle.NameAndContainingTypes,
             genericsOptions: SymbolDisplayGenericsOptions.IncludeTypeParameters,
             parameterOptions: SymbolDisplayParameterOptions.IncludeType,
-            miscellaneousOptions: SymbolDisplayMiscellaneousOptions.IncludeNullableReferenceTypeModifier | SymbolDisplayMiscellaneousOptions.AllowDefaultLiteral);
+            miscellaneousOptions: SymbolDisplayMiscellaneousOptions.IncludeNullableReferenceTypeModifier | SymbolDisplayMiscellaneousOptions.AllowDefaultLiteral,
+            extensionMethodStyle: SymbolDisplayExtensionMethodStyle.StaticMethod);
 
         private static readonly SymbolDisplayFormat s_qualifiedNameFormat = new(
             memberOptions: SymbolDisplayMemberOptions.IncludeParameters | SymbolDisplayMemberOptions.IncludeExplicitInterface | SymbolDisplayMemberOptions.IncludeContainingType,
             typeQualificationStyle: SymbolDisplayTypeQualificationStyle.NameAndContainingTypesAndNamespaces,
             genericsOptions: SymbolDisplayGenericsOptions.IncludeTypeParameters,
-            parameterOptions: SymbolDisplayParameterOptions.IncludeType);
+            parameterOptions: SymbolDisplayParameterOptions.IncludeType,
+            extensionMethodStyle: SymbolDisplayExtensionMethodStyle.StaticMethod);
 
         private static readonly SymbolDisplayFormat s_namespaceFormat = new(
             typeQualificationStyle: SymbolDisplayTypeQualificationStyle.NameAndContainingTypesAndNamespaces);
@@ -40,6 +45,14 @@ namespace Microsoft.DocAsCode.Metadata.ManagedReference
 
         private static readonly SymbolDisplayFormat s_methodQualifiedNameFormat = s_qualifiedNameFormat
             .WithParameterOptions(SymbolDisplayParameterOptions.IncludeType | SymbolDisplayParameterOptions.IncludeParamsRefOut);
+
+        private static readonly SymbolDisplayFormat s_linkItemNameWithTypeFormat = new(
+            memberOptions: SymbolDisplayMemberOptions.IncludeContainingType,
+            typeQualificationStyle: SymbolDisplayTypeQualificationStyle.NameAndContainingTypes);
+
+        private static readonly SymbolDisplayFormat s_linkItemQualifiedNameFormat = new(
+            memberOptions: SymbolDisplayMemberOptions.IncludeContainingType,
+            typeQualificationStyle: SymbolDisplayTypeQualificationStyle.NameAndContainingTypesAndNamespaces);
 
         public static string GetName(ISymbol symbol, SyntaxLanguage language)
         {
@@ -101,6 +114,60 @@ namespace Microsoft.DocAsCode.Metadata.ManagedReference
             catch (InvalidOperationException)
             {
                 return ImmutableArray<SymbolDisplayPart>.Empty;
+            }
+        }
+
+        public static List<LinkItem> GetLinkItems(ISymbol symbol, SyntaxLanguage language, bool overload)
+        {
+            var format = symbol.Kind switch
+            {
+                SymbolKind.NamedType => s_nameWithTypeFormat,
+                SymbolKind.Namespace => s_namespaceFormat,
+                SymbolKind.Method => s_methodNameFormat,
+                _ => s_nameFormat,
+            };
+
+            // Disable nullable for link items:
+            // string and string? share the same UID but are different link item
+            format = format.RemoveMiscellaneousOptions(SymbolDisplayMiscellaneousOptions.IncludeNullableReferenceTypeModifier);
+
+            if (overload)
+            {
+                format = format
+                    .WithMemberOptions(format.MemberOptions ^ SymbolDisplayMemberOptions.IncludeParameters)
+                    .WithGenericsOptions(format.GenericsOptions ^ SymbolDisplayGenericsOptions.IncludeTypeParameters);
+            }
+
+            return GetDisplayParts(symbol, language, format).Select(ToLinkItem).ToList();
+
+            LinkItem ToLinkItem(SymbolDisplayPart part)
+            {
+                var symbol = part.Symbol;
+                if (symbol is null || part.Kind is SymbolDisplayPartKind.TypeParameterName)
+                {
+                    return new()
+                    {
+                        DisplayName = part.ToString(),
+                        DisplayNamesWithType = part.ToString(),
+                        DisplayQualifiedNames = part.ToString(),
+                    };
+                }
+
+                if (symbol is INamedTypeSymbol type && type.IsGenericType)
+                {
+                    symbol = type.ConstructedFrom;
+                }
+
+                var name = overload ? VisitorHelper.GetOverloadId(symbol) : VisitorHelper.GetId(symbol);
+
+                return new()
+                {
+                    Name = overload ? VisitorHelper.GetOverloadId(symbol) : VisitorHelper.GetId(symbol),
+                    DisplayName = part.ToString(),
+                    DisplayNamesWithType = GetDisplayParts(symbol, language, s_linkItemNameWithTypeFormat).ToDisplayString(),
+                    DisplayQualifiedNames = GetDisplayParts(symbol, language, s_linkItemQualifiedNameFormat).ToDisplayString(),
+                    IsExternalPath = symbol.IsExtern || symbol.DeclaringSyntaxReferences.Length == 0,
+                };
             }
         }
 

@@ -396,7 +396,6 @@ namespace Microsoft.DocAsCode.Metadata.ManagedReference
             }
             if (list.Count == 0)
             {
-                Debug.Fail("Unexpected reference.");
                 return null;
             }
             if (list.Count == 1)
